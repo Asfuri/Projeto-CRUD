@@ -8,18 +8,18 @@
 #include <vector>
 
 #include "Data.h"
-#include "GerenciamentoOlimpíadas.h"
+#include "GerenciamentoOlimpiadas.h"
 
-class Pessoa : public GerenciamentoOlimpíadas {
+class Pessoa : public GerenciamentoOlimpiadas {
 private:
-  GerenciamentoOlimpíadas gerenciamentoOlimpíadas;
+  GerenciamentoOlimpiadas gerenciamentoOlimpiadas;
 
 protected:
   Data DataDeNascimento;
 
   std::string Nome;
 
-  std::string Código;
+  std::string Codigo;
 
   std::string Nacionalidade;
 

@@ -1,5 +1,5 @@
-#ifndef GERENCIAMENTO_OLIMPÍADAS_H
-#define GERENCIAMENTO_OLIMPÍADAS_H
+#ifndef GERENCIAMENTO_OLIMPIADAS_H
+#define GERENCIAMENTO_OLIMPIADAS_H
 
 #include <assert.h>
 #include <iostream>
@@ -9,17 +9,16 @@
 
 #include "Data.h"
 #include "Pessoa.h"
-#include "vector.h"
 
-class GerenciamentoOlimpíadas {
+class GerenciamentoOlimpiadas {
 private:
-  Data DatadeInício;
+  Data DatadeInicio;
 
   std::string Cidade;
 
   Data DataFinal;
 
-  vector<Pessoa> gerenciamento;
+  std::vector<Pessoa> gerenciamento;
 
   std::string mascote;
 
