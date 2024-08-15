@@ -1,8 +1,12 @@
+#include "GerenciamentoOlimpiadas.h"
 #include <iostream>
 
 int main() {
-  std::cout << "Hello World" << std::endl;
-  std::cout << "Marcola" << std::endl;
-  std::cout << "Lucas Henrique" << std::endl;
-  std::cout << "Asfurinho" << std::endl;
+  GerenciamentoOlimpiadas Olimpiada;
+  int opcao = 1;
+  while (!(opcao == 7) || !(opcao < 1) || !(opcao > 7)) {
+    Olimpiada.menu();
+    if (!(opcao == 7) || !(opcao < 1) || !(opcao > 7))
+      return -1;
+  }
 }

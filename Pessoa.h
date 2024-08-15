@@ -8,10 +8,8 @@
 #include <vector>
 
 #include "Data.h"
-#include "GerenciamentoOlimpiadas.h"
 
 class Pessoa {
-private:
 protected:
   Data DataDeNascimento;
 

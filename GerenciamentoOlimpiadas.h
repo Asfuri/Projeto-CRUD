@@ -7,8 +7,11 @@
 #include <string>
 #include <vector>
 
+#include "Atleta.h"
+#include "Comissao.h"
 #include "Data.h"
 #include "Pessoa.h"
+#include "Torcedor.h"
 
 class GerenciamentoOlimpiadas {
 private:
@@ -22,14 +25,18 @@ private:
 
   std::string mascote;
 
+  int posicao;
+
 public:
   GerenciamentoOlimpiadas();
 
-  void AdicionarPessoa();
+  void AdicionarPessoa(Pessoa p);
 
   void gerarRelatorio();
 
   void exibirTodos();
+
+  void menu();
 
   Pessoa buscar();
 };
