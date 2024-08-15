@@ -10,12 +10,16 @@
 #include "Pessoa.h"
 
 class Atleta : public Pessoa {
+
 protected:
   int medalha;
-
   std::string modalidade;
 
 public:
+  void setMedalha(int medalha);
+  int getMedalha();
+  void setModalidade(std::string modalidade);
+  std::string getModalidade();
   Atleta();
 };
 #endif

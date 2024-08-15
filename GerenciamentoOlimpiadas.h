@@ -23,6 +23,8 @@ private:
   std::string mascote;
 
 public:
+  GerenciamentoOlimpiadas();
+
   void AdicionarPessoa();
 
   void gerarRelatorio();

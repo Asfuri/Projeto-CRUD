@@ -10,12 +10,16 @@
 #include "Pessoa.h"
 
 class Torcedor : public Pessoa {
-private:
-  int Status;
-
-  Pessoa pessoa;
+protected:
+  bool statusVIP;
 
 public:
   Torcedor();
+
+  Torcedor(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, bool statusVIP);
+
+  bool getStatusVIP();
+
+  void setTorcedor(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, bool statusVIP);
 };
 #endif

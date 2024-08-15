@@ -10,10 +10,8 @@
 #include "Data.h"
 #include "GerenciamentoOlimpiadas.h"
 
-class Pessoa : public GerenciamentoOlimpiadas {
+class Pessoa {
 private:
-  GerenciamentoOlimpiadas gerenciamentoOlimpiadas;
-
 protected:
   Data DataDeNascimento;
 
@@ -27,6 +25,20 @@ protected:
 
 public:
   Pessoa();
+
+  Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
+
+  Data getDataDeNascimento();
+
+  std::string getNome();
+
+  std::string getCodigo();
+
+  std::string getNacionalidade();
+
+  int getIdade();
+
+  void setPessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
 
   void alterar();
 
