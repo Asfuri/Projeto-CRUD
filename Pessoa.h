@@ -38,6 +38,8 @@ public:
 
   void setPessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
 
+  void exibir();
+
   void alterar();
 
   void operation5();

@@ -21,3 +21,10 @@ Comissao::Comissao(Data DataDeNascimento, std::string Nome, std::string Codigo, 
 void Comissao::setEquipe(std::string equipeResponsavel) {
   this->equipeResponsavel = equipeResponsavel;
 }
+
+void Comissao::exibir() {
+  std::cout << "Tecnico da Comissao" << std::endl;
+  Pessoa::exibir();
+  std::cout << "Modalidade: " << this->modalidade << std::endl;
+  std::cout << "Equipe responsavel: " << this->equipeResponsavel << std::endl;
+}

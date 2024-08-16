@@ -25,5 +25,6 @@ public:
   // construtor para inicializar
   Data();
   Data(int d, int m, int a);
+  void exibir();
 };
 #endif

@@ -13,6 +13,12 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
 }
 
 void GerenciamentoOlimpiadas::exibirTodos() {
+    int count = 0;
+    for(Pessoa p : gerenciamento){
+      count++;
+      std::cout << "-> " << count << "ª Pessoa:\n ";
+      p.exibir();
+    }
 }
 
 void GerenciamentoOlimpiadas::menu() {
@@ -28,6 +34,8 @@ void GerenciamentoOlimpiadas::menu() {
   std::cin >> opcao;
   switch (opcao) {
   case 1: {
+    // Falta perguntar o tipo da pessoa (subclasse)
+
     std::string nome, codigo, nacionalidade;
     int dia, mes, ano, idade;
 
@@ -57,6 +65,7 @@ void GerenciamentoOlimpiadas::menu() {
     AdicionarPessoa(Pessoa);
   };
   case 2: {
+    exibirTodos();
     // listar
   };
   case 3: {

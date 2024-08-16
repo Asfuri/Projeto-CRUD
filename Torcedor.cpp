@@ -24,3 +24,10 @@ void Torcedor::setTorcedor(Data DataDeNascimento, std::string Nome, std::string 
   setPessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade);
   this->statusVIP = statusVIP;
 };
+
+void Torcedor::exibir(){
+  std::cout << "Torcedor" << std::endl;
+  Pessoa::exibir();
+  std::cout << "VIP: ";
+  std::cout << (this->statusVIP) ? "Sim\n" : "Nao\n";
+};

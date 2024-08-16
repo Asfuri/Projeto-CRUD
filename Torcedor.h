@@ -21,5 +21,7 @@ public:
   bool getStatusVIP();
 
   void setTorcedor(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, bool statusVIP);
+
+  void exibir();
 };
 #endif

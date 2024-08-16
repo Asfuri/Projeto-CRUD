@@ -17,9 +17,10 @@ protected:
 
 public:
   void setMedalha(int medalha);
-  int getMedalha();
   void setModalidade(std::string modalidade);
   std::string getModalidade();
+  std::string getMedalha();
   Atleta();
+  void exibir();
 };
 #endif

@@ -50,6 +50,14 @@ void Pessoa::setPessoa(Data DataDeNascimento, std::string Nome, std::string Codi
   this->idade = idade;
 };
 
+void Pessoa::exibir() {
+  std::cout << "Nome: " << this->Nome << std::endl;
+  this->DataDeNascimento.exibir();
+  std::cout << "Codigo: " << this->Codigo << std::endl;
+  std::cout << "Nacionalidade: " << this->Nacionalidade << std::endl;
+  std::cout << "idade: " << this->idade << std::endl;
+}
+
 void Pessoa::alterar() {
 }
 
