@@ -113,11 +113,37 @@ int GerenciamentoOlimpiadas::menu() {
     // listar
   };
   case 3: {
+    // Pessoa *p = &buscar();
+    // (*p).exibir();
     Pessoa p = buscar();
     p.exibir();
     // exibir
   };
   case 4: {
+    // Pessoa *p = &buscar();
+    Pessoa p = buscar();
+    int indice = 0;
+    for(Pessoa busca : gerenciamento) {
+      if(busca.getCodigo() == p.getCodigo());
+        break;
+      indice++;
+    }
+    if(indice > gerenciamento.size())
+      return;
+
+    int escolha;
+
+    std::cout << "Digite o que sera alterado" << std::endl;
+    std::cout << "-> 1 Data de Nascimento" << std::endl;
+    std::cout << "-> 2 Nome" << std::endl;
+    std::cout << "-> 3 Codigo" << std::endl;
+    std::cout << "-> 4 Nacionalidade" << std::endl;
+    std::cout << "-> 5 idade" << std::endl;
+    std::cout << "\n -> ";
+
+    std::cin >> escolha;
+
+    //faltando acabar
     // alterar
   };
   case 5: {
@@ -144,5 +170,8 @@ Pessoa GerenciamentoOlimpiadas::buscar() {
   std::cout << "\n\nEscolha o indice\n->";
   int indice;
   std::cin >> indice;
+  if(indice > gerenciamento.size())
+    return;
+  indice--;
   return gerenciamento[indice];
 }
