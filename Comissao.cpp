@@ -18,6 +18,18 @@ Comissao::Comissao(Data DataDeNascimento, std::string Nome, std::string Codigo, 
   this->equipeResponsavel = equipeResponsavel;
 }
 
+std::string Comissao::getModalidade() {
+  return this->modalidade;
+};
+
+std::string Comissao::getEquipe() {
+  return this->equipeResponsavel;
+};
+
+std::string Comissao::getTipo() {
+  return "Tecnico da comissao";
+};
+
 void Comissao::setEquipe(std::string equipeResponsavel) {
   this->equipeResponsavel = equipeResponsavel;
 }

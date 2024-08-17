@@ -6,8 +6,17 @@
 
 #include "Atleta.h"
 
-Atleta::Atleta() {
+Atleta::Atleta()
+   : Pessoa() { 
+  this->medalha = 0;
+  this->modalidade = "";
 }
+
+Atleta::Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int medalha, std::string modalidade)
+    : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade) {
+  this->medalha = medalha;
+  this->modalidade = modalidade;
+};
 
 void Atleta::setMedalha(int medalha) {
   this->medalha = medalha;
@@ -35,6 +44,10 @@ std::string Atleta::getMedalha() {
   else if((this->medalha < 0) || (this->medalha > 3))
         return "Participacao";
   
+};
+
+std::string getTipo() {
+  return "Atleta";
 };
 
 void Atleta::exibir() {

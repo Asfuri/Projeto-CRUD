@@ -36,6 +36,8 @@ public:
 
   int getIdade();
 
+  std::string getTipo();
+
   void setPessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
 
   void exibir();

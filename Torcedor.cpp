@@ -20,6 +20,10 @@ bool Torcedor::getStatusVIP() {
   return this->statusVIP;
 };
 
+std::string Torcedor::getTipo() {
+  return "Torcedor";
+};
+
 void Torcedor::setTorcedor(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, bool statusVIP) {
   setPessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade);
   this->statusVIP = statusVIP;

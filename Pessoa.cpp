@@ -42,6 +42,10 @@ int Pessoa::getIdade() {
   return this->idade;
 };
 
+std::string Pessoa::getTipo() {
+  return "Pessoa";
+};
+
 void Pessoa::setPessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade) {
   this->DataDeNascimento = DataDeNascimento;
   this->Nome = Nome;

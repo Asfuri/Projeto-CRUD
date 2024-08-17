@@ -28,6 +28,8 @@ public:
 
   std::string getEquipe();
 
+  std::string getTipo();
+
   void exibir();
 };
 #endif

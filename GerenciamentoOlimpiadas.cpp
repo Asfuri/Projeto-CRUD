@@ -34,10 +34,8 @@ void GerenciamentoOlimpiadas::menu() {
   std::cin >> opcao;
   switch (opcao) {
   case 1: {
-    // Falta perguntar o tipo da pessoa (subclasse)
-
     std::string nome, codigo, nacionalidade;
-    int dia, mes, ano, idade;
+    int dia, mes, ano, idade, tipoPessoa;
 
     std::cin.ignore();
     std::cout << "Digite o nome da pessoa a ser adicionada" << "\n ->";
@@ -61,14 +59,62 @@ void GerenciamentoOlimpiadas::menu() {
     std::cout << "Digite a idade de " << nome << "\n ->";
     std::cin >> idade;
 
-    Pessoa Pessoa(dataNasc, nome, codigo, nacionalidade, idade);
-    AdicionarPessoa(Pessoa);
+    std::cout << "Digite o tipo" << std::endl;
+    std::cout << "-> 1 Atleta\t-> 2 Tecnico da comissao\n-> 3 Torcedor\t-> 4 Cancelar operacao\n-> ";
+    std::cin >> tipoPessoa;
+
+    if(tipoPessoa == 1) {
+
+      std::cin.ignore();
+      int medalha;
+      std::string modalidade;
+      std::cout << "Digite a modalidade do atleta\n ->";
+      std::getline(std::cin, modalidade);
+      std::cout << "Digite a colocacao de " << nome << " em " << modalidade << "\n ->";
+      std::cin >> medalha;
+
+      Atleta Atleta(dataNasc, nome, codigo, nacionalidade, idade, medalha, modalidade);
+      AdicionarPessoa(Atleta);
+
+    } else if(tipoPessoa == 2) {
+    
+      std::cin.ignore();
+      std::string modalidade, equipeResponsavel;
+      std::cout << "Digite a modalidade de atuacao do tecnico\n ->";
+      std::getline(std::cin, modalidade);
+      std::cout << "Dentro de " << modalidade << ", digite a equipe de atuacao de " << nome << "\n ->";
+      std::getline(std::cin, equipeResponsavel);
+
+      Comissao Tecnico(dataNasc, nome, codigo, nacionalidade, idade, modalidade, equipeResponsavel);  
+      AdicionarPessoa(Tecnico);
+
+    } else if (tipoPessoa == 3) {
+
+      std::cin.ignore();
+      bool vipBool;
+      std::string vip;
+      std::cout << "O torcedor " << nome << " possui acesso vip? (Sim/Nao)\n ->";
+      std::getline(std::cin, vip);
+
+      if((vip.find("s") != -1) || (vip.find("S") != -1) || 
+         (vip.find("y") != -1) || (vip.find("y") != -1))
+          vipBool = true;
+      else 
+        vipBool = false;
+
+      Torcedor Torcedor(dataNasc, nome, codigo, nacionalidade, idade, vipBool); 
+      AdicionarPessoa(Torcedor);
+    } else {
+      return;
+    }
   };
   case 2: {
     exibirTodos();
     // listar
   };
   case 3: {
+    Pessoa p = buscar();
+    p.exibir();
     // exibir
   };
   case 4: {
@@ -78,6 +124,7 @@ void GerenciamentoOlimpiadas::menu() {
     // remover
   };
   case 6: {
+    // deve mostrar a quantidade de pessoas no geral, e a quantidade de cada subclasse
     // exibir relatorio
   };
   case 7: {
@@ -87,4 +134,13 @@ void GerenciamentoOlimpiadas::menu() {
 };
 
 Pessoa GerenciamentoOlimpiadas::buscar() {
+  int count = 0;
+  for(Pessoa p : gerenciamento) {
+    count++;
+    std::cout << "-> " << count << p.getTipo() << ": " << p.getNome() << std::endl;
+  }
+  std::cout << "\n\nEscolha o indice\n->";
+  int indice;
+  std::cin >> indice;
+  return gerenciamento[indice];
 }
