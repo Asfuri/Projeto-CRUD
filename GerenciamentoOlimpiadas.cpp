@@ -21,7 +21,7 @@ void GerenciamentoOlimpiadas::exibirTodos() {
     }
 }
 
-void GerenciamentoOlimpiadas::menu() {
+int GerenciamentoOlimpiadas::menu() {
   std::cout << "1. Inserir pessoa" << std::endl;
   std::cout << "2. Listar pessoas" << std::endl;
   std::cout << "3. Exibir pessoa" << std::endl;
@@ -105,7 +105,7 @@ void GerenciamentoOlimpiadas::menu() {
       Torcedor Torcedor(dataNasc, nome, codigo, nacionalidade, idade, vipBool); 
       AdicionarPessoa(Torcedor);
     } else {
-      return;
+      return 0;
     }
   };
   case 2: {
@@ -128,9 +128,11 @@ void GerenciamentoOlimpiadas::menu() {
     // exibir relatorio
   };
   case 7: {
+    return 1;
     // sair
   };
   }
+  return 0;
 };
 
 Pessoa GerenciamentoOlimpiadas::buscar() {
