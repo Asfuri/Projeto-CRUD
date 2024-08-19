@@ -16,10 +16,13 @@ protected:
   std::string modalidade;
 
 public:
+  Atleta();
+  Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int medalha, std::string modalidade);
   void setMedalha(int medalha);
-  int getMedalha();
   void setModalidade(std::string modalidade);
   std::string getModalidade();
-  Atleta();
+  std::string getMedalha();
+  std::string getTipo();
+  void exibir();
 };
 #endif

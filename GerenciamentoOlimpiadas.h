@@ -36,7 +36,7 @@ public:
 
   void exibirTodos();
 
-  void menu();
+  int menu();
 
   Pessoa buscar();
 };

@@ -41,3 +41,7 @@ void Data::setMes(int mes) {
 void Data::setAno(int ano) {
   this->ano = ano;
 }
+
+void Data::exibir(){
+  std::cout << this->dia << "/" << this->mes << "/" << this->ano << std::endl;
+};

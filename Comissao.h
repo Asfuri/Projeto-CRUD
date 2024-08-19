@@ -27,5 +27,9 @@ public:
   std::string getModalidade();
 
   std::string getEquipe();
+
+  std::string getTipo();
+
+  void exibir();
 };
 #endif
