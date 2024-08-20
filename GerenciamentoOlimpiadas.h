@@ -22,7 +22,7 @@ private:
 
   Data DataFinal;
 
-  std::vector<Pessoa> gerenciamento;
+  std::vector<Pessoa*> gerenciamento;
 
   std::string mascote;
 
@@ -35,7 +35,7 @@ public:
 
   void salvarArquivo();
 
-  void AdicionarPessoa(Pessoa p);
+  void AdicionarPessoa(Pessoa *p);
 
   void gerarRelatorio();
 
@@ -43,6 +43,6 @@ public:
 
   int menu();
 
-  Pessoa buscar();
+  Pessoa* buscar();
 };
 #endif

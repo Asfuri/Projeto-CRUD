@@ -23,7 +23,7 @@ protected:
 
 public:
   Pessoa();
-
+  ~Pessoa();
   Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
 
   Data getDataDeNascimento();

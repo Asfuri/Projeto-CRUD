@@ -51,7 +51,7 @@ void GerenciamentoOlimpiadas::lerArquivo() {
 
 
     // Alocando pessoa auxiliar no vector 
-    AdicionarPessoa(*pessoaAux);
+    AdicionarPessoa(pessoaAux);
   };
 
   arquivo.close();
@@ -76,7 +76,7 @@ void GerenciamentoOlimpiadas::salvarArquivo() {
   }
 }
 
-void GerenciamentoOlimpiadas::AdicionarPessoa(Pessoa p) { // Create
+void GerenciamentoOlimpiadas::AdicionarPessoa(Pessoa* p) { // Create
   gerenciamento.push_back(p);
 }
 
@@ -86,10 +86,10 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
 
 void GerenciamentoOlimpiadas::exibirTodos() {
     int count = 0;
-    for(Pessoa p : gerenciamento){
+    for(auto p : gerenciamento){
       count++;
       std::cout << "-> " << count << "a Pessoa:\n ";
-      p.exibir();
+      p->exibir();
     }
 }
 
@@ -106,6 +106,7 @@ int GerenciamentoOlimpiadas::menu() {
   std::cin >> opcao;
   switch (opcao) {
   case 1: {
+    Pessoa *pessoaAux;
     std::string nome, codigo, nacionalidade;
     int dia, mes, ano, idade, tipoPessoa;
 
@@ -145,8 +146,7 @@ int GerenciamentoOlimpiadas::menu() {
       std::cout << "Digite a colocacao de " << nome << " em " << modalidade << "\n ->";
       std::cin >> medalha;
 
-      Atleta Atleta(dataNasc, nome, codigo, nacionalidade, idade, medalha, modalidade);
-      AdicionarPessoa(Atleta);
+      pessoaAux = new Atleta(dataNasc, nome, codigo, nacionalidade, idade, medalha, modalidade);
 
     } else if(tipoPessoa == 2) {
     
@@ -157,8 +157,7 @@ int GerenciamentoOlimpiadas::menu() {
       std::cout << "Dentro de " << modalidade << ", digite a equipe de atuacao de " << nome << "\n ->";
       std::getline(std::cin, equipeResponsavel);
 
-      Comissao Tecnico(dataNasc, nome, codigo, nacionalidade, idade, modalidade, equipeResponsavel);  
-      AdicionarPessoa(Tecnico);
+      pessoaAux = new Comissao(dataNasc, nome, codigo, nacionalidade, idade, modalidade, equipeResponsavel);  
 
     } else if (tipoPessoa == 3) {
 
@@ -174,29 +173,31 @@ int GerenciamentoOlimpiadas::menu() {
       else 
         vipBool = false;
 
-      Torcedor Torcedor(dataNasc, nome, codigo, nacionalidade, idade, vipBool); 
-      AdicionarPessoa(Torcedor);
+      pessoaAux = new Torcedor(dataNasc, nome, codigo, nacionalidade, idade, vipBool); 
     } else {
+      delete pessoaAux;
       return 0;
     }
+    AdicionarPessoa(pessoaAux);
+    delete pessoaAux;
   };
   case 2: {
     exibirTodos();
     // listar
   };
   case 3: {
-    // Pessoa *p = &buscar();
-    // (*p).exibir();
-    Pessoa p = buscar();
-    p.exibir();
+    Pessoa *p = buscar();
+    (*p).exibir();
+    // Pessoa p = buscar();
+    // p.exibir();
     // exibir
   };
   case 4: {
     // Pessoa *p = &buscar();
-    Pessoa p = buscar();
+    Pessoa *p = buscar();
     int indice = 0;
-    for(Pessoa busca : gerenciamento) {
-      if(busca.getCodigo() == p.getCodigo());
+    for(auto busca : gerenciamento) {
+      if(busca->getCodigo() == p->getCodigo());
         break;
       indice++;
     }
@@ -233,11 +234,11 @@ int GerenciamentoOlimpiadas::menu() {
   return 0;
 };
 
-Pessoa GerenciamentoOlimpiadas::buscar() {
+Pessoa* GerenciamentoOlimpiadas::buscar() {
   int count = 0;
-  for(Pessoa p : gerenciamento) {
+  for(auto p : gerenciamento) {
     count++;
-    std::cout << "-> " << count << p.getTipo() << ": " << p.getNome() << std::endl;
+    std::cout << "-> " << count << p->getTipo() << ": " << p->getNome() << std::endl;
   }
   std::cout << "\n\nEscolha o indice\n->";
   int indice;

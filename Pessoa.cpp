@@ -14,6 +14,10 @@ Pessoa::Pessoa() {
   this->idade = 0;
 }
 
+Pessoa::~Pessoa(){
+  
+}
+
 Pessoa::Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade) {
   this->DataDeNascimento = DataDeNascimento;
   this->Nome = Nome;
