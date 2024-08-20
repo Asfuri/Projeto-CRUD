@@ -16,6 +16,7 @@ protected:
   std::string modalidade;
 
 public:
+  int tipo;
   Atleta();
   Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int medalha, std::string modalidade);
   void setMedalha(int medalha);

@@ -10,12 +10,14 @@ Comissao::Comissao()
     : Pessoa() {
   this->modalidade = "";
   this->equipeResponsavel = "";
+  this->tipo = 2;
 }
 
 Comissao::Comissao(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, std::string modalidade, std::string equipeResponsavel)
     : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade) {
   this->modalidade = modalidade;
   this->equipeResponsavel = equipeResponsavel;
+  this->tipo = 2;
 }
 
 std::string Comissao::getModalidade() {
@@ -27,7 +29,7 @@ std::string Comissao::getEquipe() {
 };
 
 std::string Comissao::getTipo() {
-  return "Tecnico da comissao";
+  return "Membro da comissao";
 };
 
 void Comissao::setEquipe(std::string equipeResponsavel) {
@@ -35,7 +37,7 @@ void Comissao::setEquipe(std::string equipeResponsavel) {
 }
 
 void Comissao::exibir() {
-  std::cout << "Tecnico da Comissao" << std::endl;
+  std::cout << "Membro da Comissao" << std::endl;
   Pessoa::exibir();
   std::cout << "Modalidade: " << this->modalidade << std::endl;
   std::cout << "Equipe responsavel: " << this->equipeResponsavel << std::endl;

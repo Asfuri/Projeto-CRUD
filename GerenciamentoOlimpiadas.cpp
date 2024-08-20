@@ -6,6 +6,26 @@
 
 #include "GerenciamentoOlimpiadas.h"
 
+
+
+GerenciamentoOlimpiadas::GerenciamentoOlimpiadas(){
+
+  this->DatadeInicio = Data();
+  this->Cidade = "";
+  this->DataFinal = Data();
+  this->mascote = "";
+  this->posicao = 0;
+}
+
+GerenciamentoOlimpiadas::GerenciamentoOlimpiadas(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote){
+
+  this->DatadeInicio = DatadeInicio;
+  this->Cidade = Cidade;
+  this->DataFinal = DataFinal;
+  this->mascote = mascote;
+  this->posicao = 0;
+}
+
 void GerenciamentoOlimpiadas::lerArquivo() {
   std::fstream arquivo;
   arquivo.open("Olimpiadas.txt", std::ios_base::in); 
@@ -40,7 +60,7 @@ void GerenciamentoOlimpiadas::lerArquivo() {
       getline(arquivo, auxMod);
       getline(arquivo, auxEquipResp);
       pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, _idade, auxMod, auxEquipResp);
-      // Instanciando um tecnico da comissao a partir dos dados do arquivo em PessoaAux
+      // Instanciando um membro da comissao a partir dos dados do arquivo em PessoaAux
     } else if(tipoPessoa == 3) {
       arquivo.ignore();
       int bitStatusVip;
@@ -133,7 +153,7 @@ int GerenciamentoOlimpiadas::menu() {
     std::cin >> idade;
 
     std::cout << "Digite o tipo" << std::endl;
-    std::cout << "-> 1 Atleta\t-> 2 Tecnico da comissao\n-> 3 Torcedor\t-> 4 Cancelar operacao\n-> ";
+    std::cout << "-> 1 Atleta\t-> 2 Membro da comissao\n-> 3 Torcedor\t-> 4 Cancelar operacao\n-> ";
     std::cin >> tipoPessoa;
 
     if(tipoPessoa == 1) {
@@ -147,18 +167,20 @@ int GerenciamentoOlimpiadas::menu() {
       std::cin >> medalha;
 
       pessoaAux = new Atleta(dataNasc, nome, codigo, nacionalidade, idade, medalha, modalidade);
+      return 0;
 
     } else if(tipoPessoa == 2) {
     
       std::cin.ignore();
       std::string modalidade, equipeResponsavel;
-      std::cout << "Digite a modalidade de atuacao do tecnico\n ->";
+      std::cout << "Digite a modalidade de atuacao do membro da comissÃƒÆ’Ã‚Â£o\n ->";
       std::getline(std::cin, modalidade);
       std::cout << "Dentro de " << modalidade << ", digite a equipe de atuacao de " << nome << "\n ->";
       std::getline(std::cin, equipeResponsavel);
 
       pessoaAux = new Comissao(dataNasc, nome, codigo, nacionalidade, idade, modalidade, equipeResponsavel);  
-
+      return 0;
+      
     } else if (tipoPessoa == 3) {
 
       std::cin.ignore();
@@ -180,9 +202,12 @@ int GerenciamentoOlimpiadas::menu() {
     }
     AdicionarPessoa(pessoaAux);
     delete pessoaAux;
+    return 0;
   };
   case 2: {
     exibirTodos();
+
+    
     // listar
   };
   case 3: {
@@ -202,7 +227,7 @@ int GerenciamentoOlimpiadas::menu() {
       indice++;
     }
     if(indice > gerenciamento.size())
-      return;
+      return 0;
 
     int escolha;
 
@@ -212,9 +237,23 @@ int GerenciamentoOlimpiadas::menu() {
     std::cout << "-> 3 Codigo" << std::endl;
     std::cout << "-> 4 Nacionalidade" << std::endl;
     std::cout << "-> 5 idade" << std::endl;
-    std::cout << "\n -> ";
+    
+    if(p->tipo == 1) {
+      std::cout << "-> 6 Medalha" << std::endl;
+      std::cout << "-> 7 Modalidade" << std::endl;
+      std::cout << "\n-> ";
 
-    std::cin >> escolha;
+
+    } else if (p->tipo == 2) {
+      std::cout << "-> 6 Modalidade" << std::endl;
+      std::cout << "-> 7 Equipe de atuacao" << std::endl;
+      std::cout << "\n-> ";
+    }
+    else if(p->tipo == 3) {
+      std::cout << "-> 6 Status VIP" << std::endl;
+      std::cout << "\n-> ";
+
+    }
 
     //faltando acabar
     // alterar
@@ -235,16 +274,22 @@ int GerenciamentoOlimpiadas::menu() {
 };
 
 Pessoa* GerenciamentoOlimpiadas::buscar() {
+  
   int count = 0;
   for(auto p : gerenciamento) {
     count++;
     std::cout << "-> " << count << p->getTipo() << ": " << p->getNome() << std::endl;
   }
-  std::cout << "\n\nEscolha o indice\n->";
-  int indice;
-  std::cin >> indice;
-  if(indice > gerenciamento.size())
-    return;
-  indice--;
-  return gerenciamento[indice];
+  
+  std::cout << "\n\nEscolha o nome\n->";
+  std::string nome;
+  std::cin >> std::ws;
+  getline(std::cin, nome);
+  for (auto p : gerenciamento) {
+    if (p->getNome() == nome){
+      std::cout << "Pessoa encontrada! " << p->getNome() << ' - ' << p->getTipo() << std::endl;
+      return p;
+    }
+  }
+  std::cout << "Pessoa n�o encontrada!" << std::endl;
 }

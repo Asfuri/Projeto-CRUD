@@ -9,11 +9,13 @@
 Torcedor::Torcedor()
     : Pessoa() {
   this->statusVIP = false;
+  this->tipo = 3;
 };
 
 Torcedor::Torcedor(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, bool statusVIP)
     : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade) {
   this->statusVIP = statusVIP;
+  this->tipo = 3;
 };
 
 bool Torcedor::getStatusVIP() {

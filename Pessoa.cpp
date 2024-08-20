@@ -12,6 +12,7 @@ Pessoa::Pessoa() {
   this->Codigo = "";
   this->Nacionalidade = "";
   this->idade = 0;
+  this->tipo = 0;
 }
 
 Pessoa::~Pessoa(){
@@ -24,6 +25,7 @@ Pessoa::Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std:
   this->Codigo = Codigo;
   this->Nacionalidade = Nacionalidade;
   this->idade = idade;
+  this->tipo = 0;
 };
 
 Data Pessoa::getDataDeNascimento() {
