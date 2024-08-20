@@ -6,8 +6,80 @@
 
 #include "GerenciamentoOlimpiadas.h"
 
-void GerenciamentoOlimpiadas::AdicionarPessoa(Pessoa p) {
+void GerenciamentoOlimpiadas::lerArquivo() {
+  std::fstream arquivo;
+  arquivo.open("Olimpiadas.txt", std::ios_base::in); 
+  if (!arquivo.is_open()) std::cout << "Erro na abertura do arquivo para leitura!" << std::endl;
+
+  while(!arquivo.eof()) {
+    // Ler pessoa por pessoa do arquivo
+    // Alocando ao vector de pessoas da superclasse
+    Pessoa *pessoaAux;
+    int tipoPessoa, _dia, _mes, _ano, _idade;
+    std::string pessoaNome, pessoaCodigo, pessoaNac;
+    arquivo >> tipoPessoa >> _dia >> _mes >> _ano;
+    Data dataAux = Data(_dia, _mes, _ano);
+    arquivo.ignore();
+    getline(arquivo, pessoaNome);
+    getline(arquivo, pessoaCodigo);
+    getline(arquivo, pessoaNac);
+    arquivo >> _idade;
+    if(tipoPessoa == 1) {
+
+      int auxMedalha;
+      std::string auxMod;
+      arquivo >> auxMedalha;
+      arquivo.ignore();
+      getline(arquivo, auxMod);
+      pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCodigo, pessoaNac, _idade, auxMedalha, auxMod);
+      // Instanciando um atleta a partir dos dados do arquivo em PessoaAux
+    } else if(tipoPessoa == 2) {
+      
+      std::string auxMod, auxEquipResp;
+      arquivo.ignore();
+      getline(arquivo, auxMod);
+      getline(arquivo, auxEquipResp);
+      pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, _idade, auxMod, auxEquipResp);
+      // Instanciando um tecnico da comissao a partir dos dados do arquivo em PessoaAux
+    } else if(tipoPessoa == 3) {
+      arquivo.ignore();
+      int bitStatusVip;
+      arquivo >> bitStatusVip;
+      bool auxStatusVip = (bitStatusVip == 1) ? true : false;
+      // Instanciando um torcedor a partir dos dados do arquivo em PessoaAux
+    }
+
+
+    // Alocando pessoa auxiliar no vector 
+    AdicionarPessoa(*pessoaAux);
+  };
+
+  arquivo.close();
+};
+
+void GerenciamentoOlimpiadas::salvarArquivo() {
+  std::fstream arquivo;
+  arquivo.open("Olimpiadas.txt", std::ios_base::out);
+
+  if (!arquivo.is_open()) std::cout << "Erro na abertura do arquivo para escrita!" << std::endl;
+  
+  for (auto pessoa: gerenciamento) {
+    int tipoPessoa, _dia, _mes, _ano, _idade;
+    std::string pessoaNome, pessoaCodigo, pessoaNac;
+    arquivo << _dia << _mes << _ano;
+    Data dataAux = Data(_dia, _mes, _ano);
+    arquivo.ignore();
+    arquivo << pessoaNome << std::endl;
+    arquivo << pessoaCodigo << std:: endl;
+    arquivo << pessoaNac << std::endl;
+    arquivo << _idade << std::endl;
+  }
 }
+
+void GerenciamentoOlimpiadas::AdicionarPessoa(Pessoa p) { // Create
+  gerenciamento.push_back(p);
+}
+
 
 void GerenciamentoOlimpiadas::gerarRelatorio() {
 }
@@ -16,7 +88,7 @@ void GerenciamentoOlimpiadas::exibirTodos() {
     int count = 0;
     for(Pessoa p : gerenciamento){
       count++;
-      std::cout << "-> " << count << "ª Pessoa:\n ";
+      std::cout << "-> " << count << "a Pessoa:\n ";
       p.exibir();
     }
 }

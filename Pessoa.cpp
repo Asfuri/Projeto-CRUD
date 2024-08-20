@@ -43,7 +43,7 @@ int Pessoa::getIdade() {
 };
 
 std::string Pessoa::getTipo() {
-  return "Pessoa";
+  return "Pessoa   ";
 };
 
 void Pessoa::setPessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade) {

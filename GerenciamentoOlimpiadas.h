@@ -6,6 +6,7 @@
 #include <list>
 #include <string>
 #include <vector>
+#include <fstream>
 
 #include "Atleta.h"
 #include "Comissao.h"
@@ -29,6 +30,10 @@ private:
 
 public:
   GerenciamentoOlimpiadas();
+
+  void lerArquivo();
+
+  void salvarArquivo();
 
   void AdicionarPessoa(Pessoa p);
 
