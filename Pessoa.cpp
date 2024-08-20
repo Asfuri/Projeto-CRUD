@@ -49,7 +49,7 @@ int Pessoa::getIdade() {
 };
 
 std::string Pessoa::getTipo() {
-  return "Pessoa   ";
+  return "Pessoa " + this->tipo;
 };
 
 void Pessoa::setPessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade) {
@@ -65,7 +65,7 @@ void Pessoa::exibir() {
   this->DataDeNascimento.exibir();
   std::cout << "Codigo: " << this->Codigo << std::endl;
   std::cout << "Nacionalidade: " << this->Nacionalidade << std::endl;
-  std::cout << "idade: " << this->idade << std::endl;
+  std::cout << "Idade: " << this->idade << std::endl;
 }
 
 void Pessoa::alterar() {

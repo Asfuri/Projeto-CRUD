@@ -7,6 +7,7 @@
 #include "Data.h"
 
 Data::Data() {
+  
 }
 
 Data::Data(int dia, int mes, int ano) {

@@ -10,7 +10,6 @@
 #include "Pessoa.h"
 
 class Atleta : public Pessoa {
-
 protected:
   int medalha;
   std::string modalidade;

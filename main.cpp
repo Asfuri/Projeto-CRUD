@@ -3,37 +3,36 @@
 #include <fstream>
 
 int main() {
+  
   std::fstream arqOlimpiada;
   GerenciamentoOlimpiadas *Olimpiada;
   arqOlimpiada.open("olimpiada.txt", std::ios_base::in);
+  
   if(arqOlimpiada.is_open()) {
-
     int _dia, _mes, _ano;
     std::string Cidade, mascote;
 
     arqOlimpiada >> _dia, _mes, _ano;
     Data DatadeInicio(_dia, _mes, _ano);
-
     arqOlimpiada.ignore();
-    getline(arqOlimpiada, Cidade);
 
+    getline(arqOlimpiada, Cidade);
     arqOlimpiada >> _dia, _mes, _ano;
     Data DataFinal(_dia, _mes, _ano);
-
     arqOlimpiada.ignore();
+    
     getline(arqOlimpiada, mascote);
-
     Olimpiada = new GerenciamentoOlimpiadas(DatadeInicio, Cidade, DataFinal, mascote);
     arqOlimpiada.close();
+
   } else {
-
     int _dia, _mes, _ano;
-    std::string Cidade, mascote;
 
+    std::string Cidade, mascote;
     std::cout << "Digite a cidade sede " << std::endl;
     std::cout << "\n-> ";
+    
     getline(std::cin, Cidade);
-
     std::cout << "Digite o ano das Olimpí­adas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> _ano;
@@ -72,5 +71,5 @@ int main() {
       break;
   }   
   Olimpiada->salvarArquivo(); // Salvar aquivos antes de sair
-  std::cout << "\n\nAte a próxima!";
+  std::cout << "\n\nAte a pr�xima!";
 }

@@ -14,17 +14,17 @@ private:
   int ano;
 
 public:
+  // construtor para inicializar
+  Data();
+  Data(int dia, int mes, int ano);
+  void exibir();
   int getDia();
   int getMes();
   int getAno();
-  void setDia(int d);
-  void setMes(int m);
-  void setAno(int a);
+  void setDia(int dia);
+  void setMes(int mes);
+  void setAno(int ano);
   void operation0();
 
-  // construtor para inicializar
-  Data();
-  Data(int d, int m, int a);
-  void exibir();
 };
 #endif

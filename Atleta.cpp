@@ -36,13 +36,10 @@ std::string Atleta::getMedalha() {
 
   if(this->medalha == 1) 
         return "Ouro";
-
   else if(this->medalha == 2) 
         return "Prata";
-
   else if(this->medalha == 3)
         return "Bronze";
-
   else if((this->medalha < 0) || (this->medalha > 3))
         return "Participacao";
   

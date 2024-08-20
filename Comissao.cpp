@@ -42,3 +42,8 @@ void Comissao::exibir() {
   std::cout << "Modalidade: " << this->modalidade << std::endl;
   std::cout << "Equipe responsavel: " << this->equipeResponsavel << std::endl;
 }
+
+
+void Comissao::setModalidade(std::string modalidade){
+  this->modalidade = modalidade;
+}

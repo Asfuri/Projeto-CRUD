@@ -173,7 +173,7 @@ int GerenciamentoOlimpiadas::menu() {
     
       std::cin.ignore();
       std::string modalidade, equipeResponsavel;
-      std::cout << "Digite a modalidade de atuacao do membro da comissÃƒÆ’Ã‚Â£o\n ->";
+      std::cout << "Digite a modalidade de atuacao do membro da comiss�o\n ->";
       std::getline(std::cin, modalidade);
       std::cout << "Dentro de " << modalidade << ", digite a equipe de atuacao de " << nome << "\n ->";
       std::getline(std::cin, equipeResponsavel);
@@ -287,9 +287,11 @@ Pessoa* GerenciamentoOlimpiadas::buscar() {
   getline(std::cin, nome);
   for (auto p : gerenciamento) {
     if (p->getNome() == nome){
-      std::cout << "Pessoa encontrada! " << p->getNome() << ' - ' << p->getTipo() << std::endl;
+      std::cout << "Pessoa encontrada! " << p->getNome() << " - " << p->getTipo() << std::endl;
       return p;
     }
   }
+  // Adicionei o retorno nulo caso nao encontre nenhuma pessoa, alem de exibir uma mensagem
   std::cout << "Pessoa n�o encontrada!" << std::endl;
+  return nullptr;
 }

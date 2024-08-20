@@ -12,13 +12,9 @@
 class Pessoa {
 protected:
   Data DataDeNascimento;
-
   std::string Nome;
-
   std::string Codigo;
-
   std::string Nacionalidade;
-
   int idade;
 
 public:
@@ -26,25 +22,15 @@ public:
   ~Pessoa();
   Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
   int tipo;
-
   Data getDataDeNascimento();
-
   std::string getNome();
-
   std::string getCodigo();
-
   std::string getNacionalidade();
-
-  int getIdade();
-
   std::string getTipo();
-
+  int getIdade();
   void setPessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
-
   void exibir();
-
   void alterar();
-
   void operation5();
 };
 #endif
