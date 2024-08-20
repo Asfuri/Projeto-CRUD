@@ -38,30 +38,34 @@ void GerenciamentoOlimpiadas::lerArquivo() {
     int tipoPessoa, _dia, _mes, _ano, _idade;
     std::string pessoaNome, pessoaCodigo, pessoaNac;
     arquivo >> tipoPessoa >> _dia >> _mes >> _ano;
+
     Data dataAux = Data(_dia, _mes, _ano);
     arquivo.ignore();
-    getline(arquivo, pessoaNome);
-    getline(arquivo, pessoaCodigo);
-    getline(arquivo, pessoaNac);
+    std::getline(arquivo, pessoaNome);
+    std::getline(arquivo, pessoaCodigo);
+    std::getline(arquivo, pessoaNac);
     arquivo >> _idade;
+
     if(tipoPessoa == 1) {
 
       int auxMedalha;
       std::string auxMod;
       arquivo >> auxMedalha;
       arquivo.ignore();
-      getline(arquivo, auxMod);
+      std::getline(arquivo, auxMod);
       pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCodigo, pessoaNac, _idade, auxMedalha, auxMod);
       // Instanciando um atleta a partir dos dados do arquivo em PessoaAux
     } else if(tipoPessoa == 2) {
       
       std::string auxMod, auxEquipResp;
       arquivo.ignore();
-      getline(arquivo, auxMod);
-      getline(arquivo, auxEquipResp);
+      std::getline(arquivo, auxMod);
+      std::getline(arquivo, auxEquipResp);
       pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, _idade, auxMod, auxEquipResp);
+    
       // Instanciando um membro da comissao a partir dos dados do arquivo em PessoaAux
     } else if(tipoPessoa == 3) {
+      
       arquivo.ignore();
       int bitStatusVip;
       arquivo >> bitStatusVip;
@@ -85,6 +89,7 @@ void GerenciamentoOlimpiadas::salvarArquivo() {
   
   for (auto pessoa: gerenciamento) {
     int tipoPessoa, _dia, _mes, _ano, _idade;
+    
     std::string pessoaNome, pessoaCodigo, pessoaNac;
     arquivo << _dia << _mes << _ano;
     Data dataAux = Data(_dia, _mes, _ano);
