@@ -11,13 +11,16 @@ Atleta::Atleta()
   this->medalha = 0;
   this->modalidade = "";
   this->tipo = 1;
+  
 }
 
 Atleta::Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int medalha, std::string modalidade)
     : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade) {
+
   this->medalha = medalha;
   this->modalidade = modalidade;
   this->tipo = 1;
+
 };
 
 void Atleta::setMedalha(int medalha) {
