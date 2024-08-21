@@ -86,13 +86,14 @@ int main() {
 
   }
 
-
-  Olimpiada->lerArquivo(); // READ 
+  // READ 
+  Olimpiada->lerArquivo();
   while (1) {
     int error = Olimpiada->menu();
     if (error == 1)
       break;
   }   
-  Olimpiada->salvarArquivo(); // Salvar aquivos antes de sair
-  std::cout << "\n\nAte a próxima!";
+  // Salvar aquivos antes de sair
+  Olimpiada->salvarArquivo(); 
+  std::cout << "\n\nAte a prï¿½xima!";
 }
