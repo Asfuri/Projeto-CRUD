@@ -18,14 +18,17 @@ int main() {
 
     getline(arqOlimpiada, Cidade);
     arqOlimpiada >> _dia, _mes, _ano;
+
     Data DataFinal(_dia, _mes, _ano);
     arqOlimpiada.ignore();
     
     getline(arqOlimpiada, mascote);
+    
     Olimpiada = new GerenciamentoOlimpiadas(DatadeInicio, Cidade, DataFinal, mascote);
     arqOlimpiada.close();
 
   } else {
+    arqOlimpiada.close();
     int _dia, _mes, _ano;
 
     std::string Cidade, mascote;
@@ -58,7 +61,28 @@ int main() {
 
     Olimpiada = new GerenciamentoOlimpiadas(DatadeInicio, Cidade, DataFinal, mascote);
     
-    // Escrever no arquivo
+    // Comeca a escrever no arquivo as informacoes sobre a olimpiada
+    // O usuario so consegue "criar" outra olimpiada se apagar o arquivo olimpiada.txt
+    // Isso deve ser documentado no README
+    arqOlimpiada.open("olimpiada.txt", std::ios_base::out);
+
+    // Salvando a data inicial
+    arqOlimpiada << DatadeInicio.getDia() << std::endl;
+    arqOlimpiada << DatadeInicio.getMes() << std::endl;
+    arqOlimpiada << DatadeInicio.getAno() << std::endl;
+
+    // Salvando a cidade
+    arqOlimpiada << Cidade << std::endl;
+
+    // Salvando a data final
+    arqOlimpiada << DataFinal.getDia() << std::endl;
+    arqOlimpiada << DataFinal.getMes() << std::endl;
+    arqOlimpiada << DataFinal.getAno() << std::endl;
+
+    // Salvando mascote
+    arqOlimpiada << mascote << std::endl;
+
+    arqOlimpiada.close();
 
   }
 
