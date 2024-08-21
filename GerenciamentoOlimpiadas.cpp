@@ -211,8 +211,6 @@ int GerenciamentoOlimpiadas::menu() {
   };
   case 2: {
     exibirTodos();
-
-    
     // listar
   };
   case 3: {
@@ -257,8 +255,12 @@ int GerenciamentoOlimpiadas::menu() {
     else if(p->tipo == 3) {
       std::cout << "-> 6 Status VIP" << std::endl;
       std::cout << "\n-> ";
-
     }
+
+    std::cin >> escolha;
+    if(escolha == 1) {
+      std::string novoNome;
+    };
 
     //faltando acabar
     // alterar
