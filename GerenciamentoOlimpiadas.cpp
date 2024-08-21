@@ -82,6 +82,7 @@ void GerenciamentoOlimpiadas::lerArquivo() {
 };
 
 void GerenciamentoOlimpiadas::salvarArquivo() {
+  // FALTA ATUALIZAR ESSE METODO, FALTA IMPRIMIR O TIPO E OS ATRIBUTOS DO TIPO
   std::fstream arquivo;
   arquivo.open("Olimpiadas.txt", std::ios_base::out);
 
