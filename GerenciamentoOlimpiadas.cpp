@@ -271,7 +271,7 @@ int GerenciamentoOlimpiadas::menu() {
         break;
       indice++;
     }
-    gerenciamento.erase(gerenciamento.begin()+indice, gerenciamento.begin()+indice+1);
+    gerenciamento.erase(gerenciamento.begin()+indice);
     // remover
   };
   case 6: {
