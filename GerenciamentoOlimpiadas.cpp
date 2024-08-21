@@ -222,6 +222,7 @@ int GerenciamentoOlimpiadas::menu() {
   };
   case 4: {
     // Pessoa *p = &buscar();
+    Pessoa *pessoaAlterar; 
     Pessoa *p = buscar();
     int indice = 0;
     for(auto busca : gerenciamento) {
@@ -260,8 +261,22 @@ int GerenciamentoOlimpiadas::menu() {
     std::cin >> escolha;
     if(escolha == 1) {
       std::string novoNome;
-    };
+      std::cin.ignore();
+      getline(std::cin, novoNome);
+      if(p->tipo == 1)
+        std::cout << "so pra n dar erro aq";
+        // pessoaAlterar = new Atleta(p->getDataDeNascimento(), novoNome, p->getCodigo(), p->getNacionalidade(), p->getIdade(), p->getMedalhaNum(), p->getModalidade());
+        // ta dando erro
+      // A ideia eh fazer isso para os 3 tipos em cada atributo
+      else if(p->tipo == 2)
+        std::cout << "so pra n dar erro aq";
+      else if (p->tipo == 3)
+        std::cout << "so pra n dar erro aq";
+    } // else if das demais escolhas
 
+    // Substituindo no array
+    gerenciamento.erase(gerenciamento.begin()+indice);
+    gerenciamento.insert(gerenciamento.begin()+3, pessoaAlterar);
     //faltando acabar
     // alterar
   };

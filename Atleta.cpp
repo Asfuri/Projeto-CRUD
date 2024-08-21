@@ -47,6 +47,10 @@ std::string Atleta::getMedalha() {
   
 };
 
+int Atleta::getMedalhaNum() {
+  return medalha;
+};
+
 std::string getTipo() {
   return "Atleta";
 };

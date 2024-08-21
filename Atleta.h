@@ -22,6 +22,7 @@ public:
   void setModalidade(std::string modalidade);
   std::string getModalidade();
   std::string getMedalha();
+  int getMedalhaNum();
   std::string getTipo();
   void exibir();
 };
