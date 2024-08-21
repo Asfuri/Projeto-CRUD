@@ -23,7 +23,7 @@ int main() {
     arqOlimpiada.ignore();
     
     getline(arqOlimpiada, mascote);
-    
+
     Olimpiada = new GerenciamentoOlimpiadas(DatadeInicio, Cidade, DataFinal, mascote);
     arqOlimpiada.close();
 
@@ -88,10 +88,9 @@ int main() {
 
 
   Olimpiada->lerArquivo(); // READ 
-  int opcao = 1;
-  while (!(opcao == 7) || !(opcao < 1) || !(opcao > 7)) {
+  while (1) {
     int error = Olimpiada->menu();
-    if (!(opcao == 7) || !(opcao < 1) || !(opcao > 7) || (error = 1))
+    if (error == 1)
       break;
   }   
   Olimpiada->salvarArquivo(); // Salvar aquivos antes de sair

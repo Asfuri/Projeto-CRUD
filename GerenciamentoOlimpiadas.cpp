@@ -264,11 +264,40 @@ int GerenciamentoOlimpiadas::menu() {
     // alterar
   };
   case 5: {
+    Pessoa *pessoaRemov = buscar();
+    int indice = 0;
+    for(auto p : gerenciamento) {
+      if(p->getNome() == pessoaRemov->getNome())
+        break;
+      indice++;
+    }
+    gerenciamento.erase(gerenciamento.begin()+indice, gerenciamento.begin()+indice+1);
     // remover
   };
   case 6: {
     // deve mostrar a quantidade de pessoas no geral, e a quantidade de cada subclasse
     // exibir relatorio
+    int countTotal = 0, countTorcedor = 0, countComissao = 0, countAtleta = 0;
+
+    // Conta pessoas e os tipos
+    for(auto p : gerenciamento) {
+      if(p->tipo == 1)
+        countAtleta++;
+      else if(p->tipo == 2)
+        countComissao++;
+      else if(p->tipo == 3)
+        countTorcedor++;
+      countTotal++;
+    }
+
+    float porcAtleta = 100* (float)countAtleta/(float)countTotal;
+    float porcComissao = 100* (float)countComissao/(float)countTotal;
+    float porcTorcedor = 100* (float)countTorcedor/(float)countTotal;
+
+    std::cout << "Quantidade total de pessoas: " << countTotal << std::endl;
+    std::cout << "Quantidade total de Atletas: " << countAtleta << "(" << porcAtleta << "%)" << std::endl;
+    std::cout << "Quantidade total de Membros da Comissao: " << countComissao << "(" << porcComissao << "%)" << std::endl;
+    std::cout << "Quantidade total de Torcedores: " << countTorcedor << "(" << porcTorcedor << "%)" << std::endl;
   };
   case 7: {
     return 1;
