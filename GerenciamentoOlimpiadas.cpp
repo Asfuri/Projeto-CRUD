@@ -295,9 +295,9 @@ int GerenciamentoOlimpiadas::menu() {
     float porcTorcedor = 100* (float)countTorcedor/(float)countTotal;
 
     std::cout << "Quantidade total de pessoas: " << countTotal << std::endl;
-    std::cout << "Quantidade total de Atletas: " << countAtleta << "(" << porcAtleta << "%)" << std::endl;
-    std::cout << "Quantidade total de Membros da Comissao: " << countComissao << "(" << porcComissao << "%)" << std::endl;
-    std::cout << "Quantidade total de Torcedores: " << countTorcedor << "(" << porcTorcedor << "%)" << std::endl;
+    std::cout << "Quantidade total de Atletas: " << countAtleta << " (" << porcAtleta << "%)" << std::endl;
+    std::cout << "Quantidade total de Membros da Comissao: " << countComissao << " (" << porcComissao << "%)" << std::endl;
+    std::cout << "Quantidade total de Torcedores: " << countTorcedor << " (" << porcTorcedor << "%)" << std::endl;
   };
   case 7: {
     return 1;
