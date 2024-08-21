@@ -36,23 +36,23 @@ int main() {
     std::cout << "\n-> ";
     
     getline(std::cin, Cidade);
-    std::cout << "Digite o ano das Olimpí­adas de " << Cidade << std::endl;
+    std::cout << "Digite o ano das olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> _ano;
-    std::cout << "Digite o mes de " << _ano << " que começam as Olimpí­adas de " << Cidade << std::endl;
+    std::cout << "Digite o mes de " << _ano << " que começam as olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> _mes;
-    std::cout << "Digite dia do mes de " << _mes << "/" << _ano << " que começam as Olimpí­adas de " << Cidade << std::endl;
+    std::cout << "Digite dia do mes de " << _mes << "/" << _ano << " que começam as olimpiadas de " << Cidade << std::endl;
     std::cin >> _dia;
     Data DatadeInicio(_dia, _mes, _ano);
     
-    std::cout << "Digite o ano que acaba as Olimpí­adas de " << Cidade << std::endl;
+    std::cout << "Digite o ano que acaba as olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> _ano;
-    std::cout << "Digite o mes de " << _ano << " que acabam as Olimpí­adas de " << Cidade << std::endl;
+    std::cout << "Digite o mes de " << _ano << " que acabam as olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> _mes;
-    std::cout << "Digite dia do mes de " << _mes << "/" << _ano << " que acabam as Olimpí­adas de " << Cidade << std::endl;
+    std::cout << "Digite dia do mes de " << _mes << "/" << _ano << " que acabam as olimpiadas de " << Cidade << std::endl;
     std::cin >> _dia;
     Data DataFinal(_dia, _mes, _ano);
 

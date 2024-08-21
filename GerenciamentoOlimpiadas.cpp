@@ -30,6 +30,7 @@ void GerenciamentoOlimpiadas::lerArquivo() {
   std::fstream arquivo;
   arquivo.open("Olimpiadas.txt", std::ios_base::in); 
   if (!arquivo.is_open()) std::cout << "Erro na abertura do arquivo para leitura!" << std::endl;
+    return;
 
   while(!arquivo.eof()) {
     // Ler pessoa por pessoa do arquivo
