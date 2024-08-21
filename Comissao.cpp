@@ -6,8 +6,7 @@
 
 #include "Comissao.h"
 
-Comissao::Comissao()
-    : Pessoa() {
+Comissao::Comissao() : Pessoa() {
   this->modalidade = "";
   this->equipeResponsavel = "";
   this->tipo = 2;
@@ -15,6 +14,7 @@ Comissao::Comissao()
 
 Comissao::Comissao(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, std::string modalidade, std::string equipeResponsavel)
     : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade) {
+  
   this->modalidade = modalidade;
   this->equipeResponsavel = equipeResponsavel;
   this->tipo = 2;

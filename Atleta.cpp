@@ -46,8 +46,6 @@ std::string Atleta::getMedalha() {
   else {
         return "Participacao";
   }
-
-  
 };
 
 int Atleta::getMedalhaNum() {
