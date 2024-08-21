@@ -108,6 +108,29 @@ void GerenciamentoOlimpiadas::AdicionarPessoa(Pessoa* p) { // Create
 
 
 void GerenciamentoOlimpiadas::gerarRelatorio() {
+  // deve mostrar a quantidade de pessoas no geral, e a quantidade de cada subclasse
+    // exibir relatorio
+    int countTotal = 0, countTorcedor = 0, countComissao = 0, countAtleta = 0;
+
+    // Conta pessoas e os tipos
+    for(auto p : gerenciamento) {
+      if(p->tipo == 1)
+        countAtleta++;
+      else if(p->tipo == 2)
+        countComissao++;
+      else if(p->tipo == 3)
+        countTorcedor++;
+      countTotal++;
+    }
+
+    float porcAtleta = 100* (float)countAtleta/(float)countTotal;
+    float porcComissao = 100* (float)countComissao/(float)countTotal;
+    float porcTorcedor = 100* (float)countTorcedor/(float)countTotal;
+
+    std::cout << "Quantidade total de pessoas: " << countTotal << std::endl;
+    std::cout << "Quantidade total de Atletas: " << countAtleta << " (" << porcAtleta << "%)" << std::endl;
+    std::cout << "Quantidade total de Membros da Comissao: " << countComissao << " (" << porcComissao << "%)" << std::endl;
+    std::cout << "Quantidade total de Torcedores: " << countTorcedor << " (" << porcTorcedor << "%)" << std::endl;
 }
 
 void GerenciamentoOlimpiadas::exibirTodos() {
@@ -179,7 +202,7 @@ int GerenciamentoOlimpiadas::menu() {
     
       std::cin.ignore();
       std::string modalidade, equipeResponsavel;
-      std::cout << "Digite a modalidade de atuacao do membro da comissão\n ->";
+      std::cout << "Digite a modalidade de atuacao do membro da comissï¿½o\n ->";
       std::getline(std::cin, modalidade);
       std::cout << "Dentro de " << modalidade << ", digite a equipe de atuacao de " << nome << "\n ->";
       std::getline(std::cin, equipeResponsavel);
@@ -293,29 +316,7 @@ int GerenciamentoOlimpiadas::menu() {
     // remover
   };
   case 6: {
-    // deve mostrar a quantidade de pessoas no geral, e a quantidade de cada subclasse
-    // exibir relatorio
-    int countTotal = 0, countTorcedor = 0, countComissao = 0, countAtleta = 0;
-
-    // Conta pessoas e os tipos
-    for(auto p : gerenciamento) {
-      if(p->tipo == 1)
-        countAtleta++;
-      else if(p->tipo == 2)
-        countComissao++;
-      else if(p->tipo == 3)
-        countTorcedor++;
-      countTotal++;
-    }
-
-    float porcAtleta = 100* (float)countAtleta/(float)countTotal;
-    float porcComissao = 100* (float)countComissao/(float)countTotal;
-    float porcTorcedor = 100* (float)countTorcedor/(float)countTotal;
-
-    std::cout << "Quantidade total de pessoas: " << countTotal << std::endl;
-    std::cout << "Quantidade total de Atletas: " << countAtleta << " (" << porcAtleta << "%)" << std::endl;
-    std::cout << "Quantidade total de Membros da Comissao: " << countComissao << " (" << porcComissao << "%)" << std::endl;
-    std::cout << "Quantidade total de Torcedores: " << countTorcedor << " (" << porcTorcedor << "%)" << std::endl;
+    gerarRelatorio();
   };
   case 7: {
     return 1;
@@ -344,6 +345,6 @@ Pessoa* GerenciamentoOlimpiadas::buscar() {
     }
   }
   // Adicionei o retorno nulo caso nao encontre nenhuma pessoa, alem de exibir uma mensagem
-  std::cout << "Pessoa não encontrada!" << std::endl;
+  std::cout << "Pessoa nï¿½o encontrada!" << std::endl;
   return nullptr;
 }

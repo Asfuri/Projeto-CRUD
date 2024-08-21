@@ -95,5 +95,5 @@ int main() {
   }   
   // Salvar aquivos antes de sair
   Olimpiada->salvarArquivo(); 
-  std::cout << "\n\nAte a pr�xima!";
+  std::cout << "\n\nAte a proxima!";
 }
