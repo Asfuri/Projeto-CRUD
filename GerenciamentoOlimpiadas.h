@@ -23,20 +23,23 @@ private:
   std::string mascote;
   int posicao;
 
-public:
-  GerenciamentoOlimpiadas();
+  // Metodos privados
   void setOlimpiada(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote);
-  void iniciarOlimpiada();
   void lerArquivoOlimpiadas();
   void lerArquivoPessoas();
-  void salvarArquivo();
   int lerDadosPessoa();
   int alterarPessoa();
   void removerPessoa();
   void AdicionarPessoa(Pessoa *p);
   void gerarRelatorio();
   void exibirTodos();
-  int menu();
   Pessoa* buscar();
+
+public:
+  void iniciarOlimpiada();
+  int menu();
+  void salvarArquivo();
+  GerenciamentoOlimpiadas();
+  
 };
 #endif

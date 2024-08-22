@@ -28,9 +28,12 @@ public:
   std::string getNacionalidade();
   std::string getTipo();
   int getIdade();
-  void setPessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
   void exibir();
-  void alterar();
-  void operation5();
+  // Setters
+  void setDataDeNascimento(Data DataDeNascimento);
+  void setNome(std::string Nome);
+  void setCodigo(std::string Codigo);
+  void setNacionalidade(std::string Nacionalidade);
+  void setIdade(int idade);
 };
 #endif

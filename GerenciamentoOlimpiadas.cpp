@@ -34,7 +34,7 @@ void GerenciamentoOlimpiadas::iniciarOlimpiada() {
 
 void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
   std::fstream arqOlimpiada;    
-  arqOlimpiada.open("olimpiada.txt", std::ios_base::in);
+  arqOlimpiada.open("dadosOlimpiadas.txt", std::ios_base::in);
   
   if(arqOlimpiada.is_open()) {
     int _dia, _mes, _ano;
@@ -92,7 +92,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     // Comeca a escrever no arquivo as informacoes sobre a olimpiada
     // O usuario so consegue "criar" outra olimpiada se apagar o arquivo olimpiada.txt
     // Isso deve ser documentado no README
-    arqOlimpiada.open("olimpiada.txt", std::ios_base::out);
+    arqOlimpiada.open("dadosOlimpiadas.txt", std::ios_base::out);
 
     // Salvando a data inicial
     arqOlimpiada << _dataInicio.getDia() << std::endl;
@@ -117,7 +117,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
 
 void GerenciamentoOlimpiadas::lerArquivoPessoas() {
   std::fstream arquivo;
-  arquivo.open("Olimpiadas.txt", std::ios_base::in); 
+  arquivo.open("dadosPessoas.txt", std::ios_base::in); 
   if (!arquivo.is_open()) std::cout << "Erro na abertura do arquivo para leitura!" << std::endl;
     return;
 
@@ -174,7 +174,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
 void GerenciamentoOlimpiadas::salvarArquivo() {
   // FALTA ATUALIZAR ESSE METODO, FALTA IMPRIMIR O TIPO E OS ATRIBUTOS DO TIPO
   std::fstream arquivo;
-  arquivo.open("Olimpiadas.txt", std::ios_base::out);
+  arquivo.open("dadosPessoas.txt", std::ios_base::out);
 
   if (!arquivo.is_open()) std::cout << "Erro na abertura do arquivo para escrita!" << std::endl;
   
@@ -317,63 +317,172 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
 
 int GerenciamentoOlimpiadas::alterarPessoa() {
   // Pessoa *p = &buscar();
-    Pessoa *pessoaAlterar; 
-    Pessoa *p = buscar();
-    int indice = 0;
-    for(auto busca : gerenciamento) {
-      if(busca->getCodigo() == p->getCodigo());
-        break;
-      indice++;
-    }
-    if(indice > gerenciamento.size())
-      return 0;
+  Pessoa *pessoaAlterar; 
+  Pessoa *p = buscar();
+  int indice = 0;
+  for(auto busca : gerenciamento) {
+    if(busca->getCodigo() == p->getCodigo());
+      break;
+    indice++;
+  }
+  if(indice > gerenciamento.size())
+    return 0;
 
-    int escolha;
+  int escolha;
 
-    std::cout << "Digite o que sera alterado" << std::endl;
-    std::cout << "-> 1 Data de Nascimento" << std::endl;
-    std::cout << "-> 2 Nome" << std::endl;
-    std::cout << "-> 3 Codigo" << std::endl;
-    std::cout << "-> 4 Nacionalidade" << std::endl;
-    std::cout << "-> 5 idade" << std::endl;
-    
-    if(p->tipo == 1) {
-      std::cout << "-> 6 Medalha" << std::endl;
-      std::cout << "-> 7 Modalidade" << std::endl;
+  std::cout << "Digite o que sera alterado" << std::endl;
+  std::cout << "-> 1 Data de Nascimento" << std::endl;
+  std::cout << "-> 2 Nome" << std::endl;
+  std::cout << "-> 3 Codigo" << std::endl;
+  std::cout << "-> 4 Nacionalidade" << std::endl;
+  std::cout << "-> 5 idade" << std::endl;
+  
+  if(p->tipo == 1) {
+    std::cout << "-> 6 Medalha" << std::endl;
+    std::cout << "-> 7 Modalidade" << std::endl;
+    std::cout << "\n-> ";
+
+  } else if (p->tipo == 2) {
+    std::cout << "-> 6 Modalidade" << std::endl;
+    std::cout << "-> 7 Equipe de atuacao" << std::endl;
+    std::cout << "\n-> ";
+
+  }
+  else if(p->tipo == 3) {
+    std::cout << "-> 6 Status VIP" << std::endl;
+    std::cout << "\n-> ";
+
+  }
+
+  std::cin >> escolha;
+  
+  switch(escolha) {
+    case 1: {
+      // Para alterar a data de nascimento
+      int _dia, _mes, _ano;
+      std::cout << "Digite o dia da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
       std::cout << "\n-> ";
-
-
-    } else if (p->tipo == 2) {
-      std::cout << "-> 6 Modalidade" << std::endl;
-      std::cout << "-> 7 Equipe de atuacao" << std::endl;
+      std::cin >> _dia;
+      std::cout << "Digite o mes da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
       std::cout << "\n-> ";
-    }
-    else if(p->tipo == 3) {
-      std::cout << "-> 6 Status VIP" << std::endl;
+      std::cin >> _mes;
+      std::cout << "Digite o ano da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
       std::cout << "\n-> ";
+      std::cin >> _ano;
+      Data novaDataDeNascimento(_dia, _mes, _ano);
+      gerenciamento[indice]->setDataDeNascimento(novaDataDeNascimento);
+      std::cout << "Nova data de nascimento de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     }
-
-    std::cin >> escolha;
-    if(escolha == 1) {
+      break;
+    case 2: {
+      // Para alterar o nome
+      std::cout << "Digite o novo nome para alterar " << gerenciamento[indice]->getNome() << std::endl;
+      std::cout << "\n-> ";
       std::string novoNome;
       std::cin.ignore();
       getline(std::cin, novoNome);
-      if(p->tipo == 1)
-        std::cout << "so pra n dar erro aq";
-        // pessoaAlterar = new Atleta(p->getDataDeNascimento(), novoNome, p->getCodigo(), p->getNacionalidade(), p->getIdade(), p->getMedalhaNum(), p->getModalidade());
-        // ta dando erro
-      // A ideia eh fazer isso para os 3 tipos em cada atributo
-      else if(p->tipo == 2)
-        std::cout << "so pra n dar erro aq";
-      else if (p->tipo == 3)
-        std::cout << "so pra n dar erro aq";
-    } // else if das demais escolhas
+      gerenciamento[indice]->setNome(novoNome);
+      std::cout << "Novo nome definido com sucesso!" << std::endl;
+    }
+      break;
+    case 3: {
+      // Para alterar o codigo
+      std::cout << "Digite o novo codigo para " << gerenciamento[indice]->getNome() << std::endl;
+      std::cout << "\n-> ";
+      std::string novoCodigo;
+      std::cin.ignore();
+      getline(std::cin, novoCodigo);
+      gerenciamento[indice]->setCodigo(novoCodigo);
+      std::cout << "Novo codigo de " << gerenciamento[indice]->getNome() << " definido com sucesso!" << std::endl;
+    }
+      break;
+    case 4: {
+      // Para alterar a nacionalidade
+      std::cout << "Digite a nova nacionalidade para " << gerenciamento[indice]->getNome() << std::endl;
+      std::cout << "\n-> ";
+      std::string novaNacionalidade;
+      std::cin.ignore();
+      getline(std::cin, novaNacionalidade);
+      gerenciamento[indice]->setNacionalidade(novaNacionalidade);
+      std::cout << "Nova nacionalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+    }
+      break;
+    case 5: {
+      // Para alterar a idade
+      std::cout << "Digite a nova idade para " << gerenciamento[indice]->getNome() << std::endl;
+      std::cout << "\n-> ";
+      int idade;
+      std::cin >> idade;
+      gerenciamento[indice]->setIdade(idade);
+      std::cout << "Nova idade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+    }
+      break;
+    default:
+      break;
+  }
+    
+  if(p->tipo == 1 && escolha == 6) {
+    // alterar a medalha do atleta
 
-    // Substituindo no array
-    gerenciamento.erase(gerenciamento.begin()+indice);
-    gerenciamento.insert(gerenciamento.begin()+3, pessoaAlterar);
-    //faltando acabar
-    // alterar
+    // Atleta* atleta = dynamic_cast<Atleta*>(gerenciamento[indice]);
+    int medalha;
+    // std::cout << "Digite a nova colocacao de " << gerenciamento[indice]->getNome() << " em " << atleta->getModalidade() <<std::endl;
+    std::cout << "\n-> ";
+    std::cin >> medalha;
+    // gerenciamento[indice]->Atleta::setMedalha(medalha);
+    std::cout << "Nova medalha de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+  } else if(p->tipo == 2 && escolha == 7) {
+    // alterar a modalidade do atleta
+    
+      std::cout << "Digite a nova modalidade para " << gerenciamento[indice]->getNome() << std::endl;
+      std::cout << "\n-> ";
+      std::string novaModalidade;
+      std::cin.ignore();
+      getline(std::cin, novaModalidade);
+      // gerenciamento[indice]->setModalidade(novaModalidade);
+      std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+  }
+  
+  if(p->tipo == 2 && escolha == 6) {
+    // alterar a modalidade do membro da comissao
+
+    std::cout << "Digite a nova modalidade para " << gerenciamento[indice]->getNome() << std::endl;
+    std::cout << "\n-> ";
+    std::string novaModalidade;
+    std::cin.ignore();
+    getline(std::cin, novaModalidade);
+    // gerenciamento[indice]->setModalidade(novaModalidade);
+    std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+
+  } else if(p->tipo == 2 && escolha == 7) {
+    // alterar a equipe do membro da comissao
+
+    std::cout << "Digite a nova equipe da comissao para " << gerenciamento[indice]->getNome() << std::endl;
+    std::cout << "\n-> ";
+    std::string novaEquipeResponsavel;
+    std::cin.ignore();
+    getline(std::cin, novaEquipeResponsavel);
+    // gerenciamento[indice]->setEquipeResponsavel(novaModalidade);
+    std::cout << "Nova equipe de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+  }
+
+  if(p->tipo == 3 && escolha == 6) {
+    // alterar o statusVip do torcedor
+
+    std::string vip;
+    std::cout << "O torcedor " << gerenciamento[indice]->getNome();
+    // std::cout << (gerenciamento[indice]->getStatusVIP()) ? " possui status VIP" : " nao possui status VIP";
+    std::cout << "\nGostaria de alterar?\n\n->";
+    std::getline(std::cin, vip);
+
+    if((vip.find("s") != -1) || (vip.find("S") != -1) || 
+        (vip.find("y") != -1) || (vip.find("y") != -1)) {
+          // gerenciamento[indice]->setStatusVip(!gerenciamento[indice]->getStatusVIP());
+          std::cout << "Status VIP de " << gerenciamento[indice]->getNome() << " alterado com sucesso!" << std::endl;
+        }     
+
+  };
+
 }
 
 void GerenciamentoOlimpiadas::removerPessoa() {
