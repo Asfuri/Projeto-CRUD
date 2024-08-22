@@ -321,8 +321,9 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   Pessoa *p = buscar();
   int indice = 0;
   for(auto busca : gerenciamento) {
-    if(busca->getCodigo() == p->getCodigo());
+    if(busca->getCodigo() == p->getCodigo()){
       break;
+    }
     indice++;
   }
   if(indice > gerenciamento.size())
@@ -355,7 +356,8 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   }
 
   std::cin >> escolha;
-  
+  std::cin.ignore();
+
   switch(escolha) {
     case 1: {
       // Para alterar a data de nascimento
@@ -423,8 +425,8 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     
   if(p->tipo == 1 && escolha == 6) {
     // alterar a medalha do atleta
-
     // Atleta* atleta = dynamic_cast<Atleta*>(gerenciamento[indice]);
+    
     int medalha;
     // std::cout << "Digite a nova colocacao de " << gerenciamento[indice]->getNome() << " em " << atleta->getModalidade() <<std::endl;
     std::cout << "\n-> ";
