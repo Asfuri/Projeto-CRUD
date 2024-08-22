@@ -25,9 +25,14 @@ private:
 
 public:
   GerenciamentoOlimpiadas();
-  GerenciamentoOlimpiadas(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote);
-  void lerArquivo();
+  void setOlimpiada(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote);
+  void iniciarOlimpiada();
+  void lerArquivoOlimpiadas();
+  void lerArquivoPessoas();
   void salvarArquivo();
+  int lerDadosPessoa();
+  int alterarPessoa();
+  void removerPessoa();
   void AdicionarPessoa(Pessoa *p);
   void gerarRelatorio();
   void exibirTodos();

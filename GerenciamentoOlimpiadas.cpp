@@ -7,7 +7,6 @@
 #include "GerenciamentoOlimpiadas.h"
 
 
-
 GerenciamentoOlimpiadas::GerenciamentoOlimpiadas(){
 
   this->DatadeInicio = Data();
@@ -17,8 +16,8 @@ GerenciamentoOlimpiadas::GerenciamentoOlimpiadas(){
   this->posicao = 0;
 }
 
-GerenciamentoOlimpiadas::GerenciamentoOlimpiadas(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote){
 
+void GerenciamentoOlimpiadas::setOlimpiada(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote){
   this->DatadeInicio = DatadeInicio;
   this->Cidade = Cidade;
   this->DataFinal = DataFinal;
@@ -26,7 +25,97 @@ GerenciamentoOlimpiadas::GerenciamentoOlimpiadas(Data DatadeInicio, std::string 
   this->posicao = 0;
 }
 
-void GerenciamentoOlimpiadas::lerArquivo() {
+void GerenciamentoOlimpiadas::iniciarOlimpiada() {
+  
+  lerArquivoOlimpiadas();
+  // Read Pessoas
+  lerArquivoPessoas();
+}
+
+void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
+  std::fstream arqOlimpiada;    
+  arqOlimpiada.open("olimpiada.txt", std::ios_base::in);
+  
+  if(arqOlimpiada.is_open()) {
+    int _dia, _mes, _ano;
+    std::string Cidade, mascote;
+
+    arqOlimpiada >> _dia, _mes, _ano;
+    Data _dataInicio(_dia, _mes, _ano);
+    arqOlimpiada.ignore();
+
+    getline(arqOlimpiada, Cidade);
+    arqOlimpiada >> _dia, _mes, _ano;
+
+    Data _dataFinal(_dia, _mes, _ano);
+    arqOlimpiada.ignore();
+    
+    getline(arqOlimpiada, mascote);
+
+    setOlimpiada(_dataInicio, Cidade, _dataFinal, mascote);
+    arqOlimpiada.close();
+
+  } else {
+    arqOlimpiada.close();
+    int _dia, _mes, _ano;
+
+    std::string Cidade, mascote;
+    std::cout << "Digite a cidade sede " << std::endl;
+    std::cout << "\n-> ";
+    
+    getline(std::cin, Cidade);
+    std::cout << "Digite o ano das olimpiadas de " << Cidade << std::endl;
+    std::cout << "\n-> ";
+    std::cin >> _ano;
+    std::cout << "Digite o mes de " << _ano << " que começam as olimpiadas de " << Cidade << std::endl;
+    std::cout << "\n-> ";
+    std::cin >> _mes;
+    std::cout << "Digite dia do mes de " << _mes << "/" << _ano << " que começam as olimpiadas de " << Cidade << std::endl;
+    std::cin >> _dia;
+    Data _dataInicio(_dia, _mes, _ano);
+    
+    std::cout << "Digite o ano que acaba as olimpiadas de " << Cidade << std::endl;
+    std::cout << "\n-> ";
+    std::cin >> _ano;
+    std::cout << "Digite o mes de " << _ano << " que acabam as olimpiadas de " << Cidade << std::endl;
+    std::cout << "\n-> ";
+    std::cin >> _mes;
+    std::cout << "Digite dia do mes de " << _mes << "/" << _ano << " que acabam as olimpiadas de " << Cidade << std::endl;
+    std::cin >> _dia;
+    Data _dataFinal(_dia, _mes, _ano);
+
+    std::cin.ignore();
+    getline(std::cin, mascote);
+
+    setOlimpiada(_dataInicio, Cidade, _dataFinal, mascote);
+    
+    // Comeca a escrever no arquivo as informacoes sobre a olimpiada
+    // O usuario so consegue "criar" outra olimpiada se apagar o arquivo olimpiada.txt
+    // Isso deve ser documentado no README
+    arqOlimpiada.open("olimpiada.txt", std::ios_base::out);
+
+    // Salvando a data inicial
+    arqOlimpiada << _dataInicio.getDia() << std::endl;
+    arqOlimpiada << _dataInicio.getMes() << std::endl;
+    arqOlimpiada << _dataInicio.getAno() << std::endl;
+
+    // Salvando a cidade
+    arqOlimpiada << Cidade << std::endl;
+
+    // Salvando a data final
+    arqOlimpiada << _dataFinal.getDia() << std::endl;
+    arqOlimpiada << _dataFinal.getMes() << std::endl;
+    arqOlimpiada << _dataFinal.getAno() << std::endl;
+
+    // Salvando mascote
+    arqOlimpiada << mascote << std::endl;
+
+    arqOlimpiada.close();
+  }
+};
+
+
+void GerenciamentoOlimpiadas::lerArquivoPessoas() {
   std::fstream arquivo;
   arquivo.open("Olimpiadas.txt", std::ios_base::in); 
   if (!arquivo.is_open()) std::cout << "Erro na abertura do arquivo para leitura!" << std::endl;
@@ -124,39 +213,31 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
       countTotal++;
     }
 
-    float porcAtleta = 100* (float)countAtleta/(float)countTotal;
-    float porcComissao = 100* (float)countComissao/(float)countTotal;
-    float porcTorcedor = 100* (float)countTorcedor/(float)countTotal;
+    if(countTotal == 0) {
+      std::cout << "Não há pessoas cadastradas" << std::endl;
+      return;
+    } else {
+      float porcAtleta = 100* (float)countAtleta/(float)countTotal;
+      float porcComissao = 100* (float)countComissao/(float)countTotal;
+      float porcTorcedor = 100* (float)countTorcedor/(float)countTotal;
 
-    std::cout << "Quantidade total de pessoas: " << countTotal << std::endl;
-    std::cout << "Quantidade total de Atletas: " << countAtleta << " (" << porcAtleta << "%)" << std::endl;
-    std::cout << "Quantidade total de Membros da Comissao: " << countComissao << " (" << porcComissao << "%)" << std::endl;
-    std::cout << "Quantidade total de Torcedores: " << countTorcedor << " (" << porcTorcedor << "%)" << std::endl;
+      std::cout << "Quantidade total de pessoas: " << countTotal << std::endl;
+      std::cout << "Quantidade total de Atletas: " << countAtleta << " (" << porcAtleta << "%)" << std::endl;
+      std::cout << "Quantidade total de Membros da Comissao: " << countComissao << " (" << porcComissao << "%)" << std::endl;
+      std::cout << "Quantidade total de Torcedores: " << countTorcedor << " (" << porcTorcedor << "%)" << std::endl;
+    }
 }
 
 void GerenciamentoOlimpiadas::exibirTodos() {
     int count = 0;
-    for(auto p : gerenciamento){
-      count++;
-      std::cout << "-> " << count << "a Pessoa:\n ";
-      p->exibir();
-    }
+    for(auto p : gerenciamento) {
+    count++;
+    std::cout << "-> " << count << p->getTipo() << ": " << p->getNome() << std::endl;
+  }
 }
 
-int GerenciamentoOlimpiadas::menu() {
-  std::cout << "1. Inserir pessoa" << std::endl;
-  std::cout << "2. Listar pessoas" << std::endl;
-  std::cout << "3. Exibir pessoa" << std::endl;
-  std::cout << "4. Alterar pessoa" << std::endl;
-  std::cout << "5. Remover pessoa" << std::endl;
-  std::cout << "6. Exibir Relatorio" << std::endl;
-  std::cout << "7. Sair" << "\n\n-> ";
-
-  int opcao;
-  std::cin >> opcao;
-  switch (opcao) {
-  case 1: {
-    Pessoa *pessoaAux;
+int GerenciamentoOlimpiadas::lerDadosPessoa() {
+  Pessoa *pessoaAux;
     std::string nome, codigo, nacionalidade;
     int dia, mes, ano, idade, tipoPessoa;
 
@@ -232,21 +313,10 @@ int GerenciamentoOlimpiadas::menu() {
     }
     AdicionarPessoa(pessoaAux);
     delete pessoaAux;
-    return 0;
-  };
-  case 2: {
-    exibirTodos();
-    // listar
-  };
-  case 3: {
-    Pessoa *p = buscar();
-    (*p).exibir();
-    // Pessoa p = buscar();
-    // p.exibir();
-    // exibir
-  };
-  case 4: {
-    // Pessoa *p = &buscar();
+}
+
+int GerenciamentoOlimpiadas::alterarPessoa() {
+  // Pessoa *p = &buscar();
     Pessoa *pessoaAlterar; 
     Pessoa *p = buscar();
     int indice = 0;
@@ -304,10 +374,15 @@ int GerenciamentoOlimpiadas::menu() {
     gerenciamento.insert(gerenciamento.begin()+3, pessoaAlterar);
     //faltando acabar
     // alterar
-  };
-  case 5: {
-    Pessoa *pessoaRemov = buscar();
+}
+
+void GerenciamentoOlimpiadas::removerPessoa() {
+  Pessoa *pessoaRemov = buscar();
     int indice = 0;
+    if(pessoaRemov == nullptr){
+      std::cout << "Pessoa nao encontrada, logo, nao sera apagada" << std::endl;
+      return;
+    };
     for(auto p : gerenciamento) {
       if(p->getNome() == pessoaRemov->getNome())
         break;
@@ -315,6 +390,48 @@ int GerenciamentoOlimpiadas::menu() {
     }
     gerenciamento.erase(gerenciamento.begin()+indice);
     // remover
+}
+
+int GerenciamentoOlimpiadas::menu() {
+  std::cout << "1. Inserir pessoa" << std::endl;
+  std::cout << "2. Listar pessoas" << std::endl;
+  std::cout << "3. Exibir pessoa" << std::endl;
+  std::cout << "4. Alterar pessoa" << std::endl;
+  std::cout << "5. Remover pessoa" << std::endl;
+  std::cout << "6. Exibir Relatorio" << std::endl;
+  std::cout << "7. Sair" << "\n\n-> ";
+
+  int opcao;
+  std::cin >> opcao;
+  switch (opcao) {
+  case 1: {
+    int erro = lerDadosPessoa();
+    if(erro == 1)
+      return 1;
+    return 0;
+  };
+  case 2: {
+    exibirTodos();
+    // listar
+  };
+  case 3: {
+    Pessoa *p = buscar();
+    (*p).exibir();
+    // Pessoa p = buscar();
+    // p.exibir();
+    // exibir
+  };
+  case 4: {
+    //alterar
+    //falta tratar o retorno e acabar o metodo
+    int erro = alterarPessoa();
+    if(erro == 1)
+      return 1;
+    return 0;
+  };
+  case 5: {
+    removerPessoa();
+    return 0;
   };
   case 6: {
     gerarRelatorio();
