@@ -431,7 +431,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     // std::cout << "Digite a nova colocacao de " << gerenciamento[indice]->getNome() << " em " << atleta->getModalidade() <<std::endl;
     std::cout << "\n-> ";
     std::cin >> medalha;
-    // gerenciamento[indice]->Atleta::setMedalha(medalha);
+    // mudança! agora está certo! ->  dynamic_cast<Atleta*>(gerenciamento[indice])->setMedalha(medalha);
     std::cout << "Nova medalha de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
   } else if(p->tipo == 2 && escolha == 7) {
     // alterar a modalidade do atleta

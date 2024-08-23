@@ -19,7 +19,7 @@ protected:
 
 public:
   Pessoa();
-  ~Pessoa();
+  virtual ~Pessoa();
   Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
   int tipo;
   Data getDataDeNascimento();
