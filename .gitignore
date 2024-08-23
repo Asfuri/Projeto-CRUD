@@ -57,6 +57,6 @@
 # Arquivos .txt sao utilizados no programa para o salvamento de dados
 # Considerando o uso individual do programa, nos, desenvolvedores, preferimos deixa-los invisiveis
 # no codigo
-.txt
+*.txt
 
 
