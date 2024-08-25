@@ -16,7 +16,7 @@ Atleta::Atleta()
 
 Atleta::~Atleta() {
 
-};
+}
 
 Atleta::Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int medalha, std::string modalidade)
     : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade) {
@@ -48,7 +48,7 @@ int Atleta::getMedalhaNum() {
   return medalha;
 };
 
-std::string getTipo() {
+std::string Atleta::getTipo() {
   return "Atleta";
 };
 

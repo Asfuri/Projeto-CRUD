@@ -14,9 +14,8 @@ protected:
   bool statusVIP;
 
 public:
-  int tipo;
   Torcedor();
-  ~Torcedor();
+  virtual ~Torcedor();
   Torcedor(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, bool statusVIP);
   bool getStatusVIP();
   std::string getTipo();

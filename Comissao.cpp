@@ -14,7 +14,7 @@ Comissao::Comissao() : Pessoa() {
 
 Comissao::~Comissao() {
 
-};
+}
 
 Comissao::Comissao(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, std::string modalidade, std::string equipeResponsavel)
     : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade) {

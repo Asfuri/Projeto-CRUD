@@ -15,8 +15,8 @@ Pessoa::Pessoa() {
   this->tipo = 0;
 }
 
-Pessoa::~Pessoa(){
-  
+Pessoa::~Pessoa() {
+
 }
 
 Pessoa::Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade) {

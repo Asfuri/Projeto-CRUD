@@ -16,9 +16,8 @@ protected:
   std::string equipeResponsavel;
 
 public:
-  int tipo;
   Comissao();
-  ~Comissao();
+  virtual ~Comissao();
   Comissao(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, std::string modalidade, std::string equipeResponsavel);
   std::string getModalidade();
   std::string getEquipe();

@@ -228,12 +228,26 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
 }
 
 void GerenciamentoOlimpiadas::exibirTodos() {
-  int count = 0;
-    for(auto p : gerenciamento) {
-    count++;
-    std::cout << "-> " << count << p->getTipo() << ": " << p->getNome() << std::endl;
-  }
+    int contador = 1; // Inicializa o contador
+    for (Pessoa* pessoa : gerenciamento) {
+        std::cout << contador;
+        contador++; // Incrementa o contador
+        if(pessoa->tipo == 1)
+          std::cout << "Atleta";
+        if(pessoa->tipo == 2)
+          std::cout << "Comissao";
+        if(pessoa->tipo == 3)
+          std::cout << "Torcedor";
+        std::cout << " : " << pessoa->getNome() << std::endl;
+    }
 }
+//   int count = 0;
+//     for(auto p : gerenciamento) {
+//     count++;
+//     std::string imprimir = "-> " + std::to_string(count) + p->getTipo() + ": " + p->getNome();
+//     std::cout << imprimir << std::endl;
+//   }
+// }
 
 int GerenciamentoOlimpiadas::lerDadosPessoa() {
   Pessoa *pessoaAux;

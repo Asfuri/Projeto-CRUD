@@ -23,10 +23,10 @@ public:
   Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade);
   int tipo;
   Data getDataDeNascimento();
-  std::string getNome();
+  virtual std::string getNome();
   std::string getCodigo();
   std::string getNacionalidade();
-  std::string getTipo();
+  virtual std::string getTipo();
   int getIdade();
   void exibir();
   // Setters

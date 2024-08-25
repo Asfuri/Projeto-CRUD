@@ -12,9 +12,9 @@ Torcedor::Torcedor()
   this->tipo = 3;
 };
 
-Torcedor::~Torcedor(){
-  
-};
+Torcedor::~Torcedor() {
+
+}
 
 Torcedor::Torcedor(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, bool statusVIP)
     : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade) {
