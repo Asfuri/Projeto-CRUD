@@ -17,6 +17,7 @@ public:
   // construtor para inicializar
   Data();
   Data(int dia, int mes, int ano);
+  virtual ~Data();
   void exibir();
   int getDia();
   int getMes();
@@ -24,7 +25,6 @@ public:
   void setDia(int dia);
   void setMes(int mes);
   void setAno(int ano);
-  void operation0();
 
 };
 #endif

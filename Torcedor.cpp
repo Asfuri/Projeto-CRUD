@@ -34,7 +34,8 @@ void Torcedor::exibir(){
   std::cout << "Torcedor" << std::endl;
   Pessoa::exibir();
   std::cout << "VIP: ";
-  std::cout << (this->statusVIP) ? "Sim\n" : "Nao\n";
+  std::string resposta = this->statusVIP ? "Sim\n" : "Nao\n";
+  std::cout << resposta;
 };
 
 void Torcedor::setDataDeNascimento(Data DataDeNascimento) {

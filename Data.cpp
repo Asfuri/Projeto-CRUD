@@ -16,7 +16,8 @@ Data::Data(int dia, int mes, int ano) {
   this->ano = ano;
 }
 
-void Data::operation0() {
+Data::~Data() {
+
 }
 
 int Data::getDia() {
