@@ -17,11 +17,11 @@ protected:
 public:
   Atleta();
   virtual ~Atleta();
-  Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int medalha, std::string modalidade);
+  Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int tipo, int medalha, std::string modalidade);
   std::string getModalidade();
   std::string getMedalha();
   int getMedalhaNum();
-  std::string getTipo();
+  std::string getTipoStr();
   void exibir();
   // Setters
   void setDataDeNascimento(Data DataDeNascimento);

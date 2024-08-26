@@ -144,7 +144,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
       arquivo >> auxMedalha;
       arquivo.ignore();
       std::getline(arquivo, auxMod);
-      pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, auxMedalha, auxMod);
+      pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMedalha, auxMod);
       // Instanciando um atleta a partir dos dados do arquivo em PessoaAux
     } else if (tipoPessoa == 2) {
 
@@ -152,7 +152,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
       arquivo.ignore();
       std::getline(arquivo, auxMod);
       std::getline(arquivo, auxEquipResp);
-      pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, auxMod, auxEquipResp);
+      pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMod, auxEquipResp);
 
       // Instanciando um membro da comissao a partir dos dados do arquivo em PessoaAux
     } else if (tipoPessoa == 3) {
@@ -161,6 +161,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
       int bitStatusVip;
       arquivo >> bitStatusVip;
       bool auxStatusVip = (bitStatusVip == 1) ? true : false;
+      pessoaAux = new Torcedor(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxStatusVip);
       // Instanciando um torcedor a partir dos dados do arquivo em PessoaAux
     }
 
@@ -203,11 +204,11 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
 
   // Conta pessoas e os tipos
   for (auto p : gerenciamento) {
-    if (p->tipo == 1)
+    if (p->getTipo() == 1)
       countAtleta++;
-    else if (p->tipo == 2)
+    else if (p->getTipo() == 2)
       countComissao++;
-    else if (p->tipo == 3)
+    else if (p->getTipo() == 3)
       countTorcedor++;
     countTotal++;
   }
@@ -232,11 +233,11 @@ void GerenciamentoOlimpiadas::exibirTodos() {
     for (Pessoa* pessoa : gerenciamento) {
         std::cout << contador;
         contador++; // Incrementa o contador
-        if(pessoa->tipo == 1)
+        if(pessoa->getTipo() == 1)
           std::cout << "Atleta";
-        if(pessoa->tipo == 2)
+        if(pessoa->getTipo() == 2)
           std::cout << "Comissao";
-        if(pessoa->tipo == 3)
+        if(pessoa->getTipo() == 3)
           std::cout << "Torcedor";
         std::cout << " : " << pessoa->getNome() << std::endl;
     }
@@ -290,7 +291,7 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
     std::cout << "Digite a colocacao de " << nome << " em " << modalidade << "\n-> ";
     std::cin >> medalha;
 
-    pessoaAux = new Atleta(dataNasc, nome, codigo, nacionalidade, idade, medalha, modalidade);
+    pessoaAux = new Atleta(dataNasc, nome, codigo, nacionalidade, idade, tipoPessoa, medalha, modalidade);
 
   } else if (tipoPessoa == 2) {
 
@@ -301,7 +302,7 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
     std::cout << "Dentro de " << modalidade << ", digite a equipe de atuacao de " << nome << "\n-> ";
     std::getline(std::cin, equipeResponsavel);
 
-    pessoaAux = new Comissao(dataNasc, nome, codigo, nacionalidade, idade, modalidade, equipeResponsavel);
+    pessoaAux = new Comissao(dataNasc, nome, codigo, nacionalidade, idade, tipoPessoa, modalidade, equipeResponsavel);
 
   } else if (tipoPessoa == 3) {
 
@@ -317,7 +318,7 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
     else
       vipBool = false;
 
-    pessoaAux = new Torcedor(dataNasc, nome, codigo, nacionalidade, idade, vipBool);
+    pessoaAux = new Torcedor(dataNasc, nome, codigo, nacionalidade, idade, tipoPessoa, vipBool);
   } else {
     delete pessoaAux;
   }
@@ -349,17 +350,17 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   std::cout << "-> 4 Nacionalidade" << std::endl;
   std::cout << "-> 5 idade" << std::endl;
 
-  if (p->tipo == 1) {
+  if (p->getTipo() == 1) {
     std::cout << "-> 6 Medalha" << std::endl;
     std::cout << "-> 7 Modalidade" << std::endl;
     std::cout << "\n-> ";
 
-  } else if (p->tipo == 2) {
+  } else if (p->getTipo() == 2) {
     std::cout << "-> 6 Modalidade" << std::endl;
     std::cout << "-> 7 Equipe de atuacao" << std::endl;
     std::cout << "\n-> ";
 
-  } else if (p->tipo == 3) {
+  } else if (p->getTipo() == 3) {
     std::cout << "-> 6 Status VIP" << std::endl;
     std::cout << "\n-> ";
   }
@@ -433,7 +434,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     break;
   }
 
-  if (p->tipo == 1 && escolha == 6) {
+  if (p->getTipo() == 1 && escolha == 6) {
     // alterar a medalha do atleta
 
     int medalha;
@@ -443,7 +444,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     dynamic_cast<Atleta *>(gerenciamento[indice])->setMedalha(medalha);
     std::cout << "Nova medalha de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
-  } else if (p->tipo == 2 && escolha == 7) {
+  } else if (p->getTipo() == 2 && escolha == 7) {
     // alterar a modalidade do atleta
 
     std::cout << "Digite a nova modalidade para " << gerenciamento[indice]->getNome() << std::endl;
@@ -456,7 +457,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     return 0;
   }
 
-  if (p->tipo == 2 && escolha == 6) {
+  if (p->getTipo() == 2 && escolha == 6) {
     // alterar a modalidade do membro da comissao
 
     std::cout << "Digite a nova modalidade para " << gerenciamento[indice]->getNome() << std::endl;
@@ -467,7 +468,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     dynamic_cast<Comissao *>(gerenciamento[indice])->setModalidade(novaModalidade);
     std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
-  } else if (p->tipo == 2 && escolha == 7) {
+  } else if (p->getTipo() == 2 && escolha == 7) {
     // alterar a equipe do membro da comissao
 
     std::cout << "Digite a nova equipe da comissao para " << gerenciamento[indice]->getNome() << std::endl;
@@ -480,7 +481,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     return 0;
   }
 
-  if (p->tipo == 3 && escolha == 6) {
+  if (p->getTipo() == 3 && escolha == 6) {
     // alterar o statusVip do torcedor
 
     std::string vip;
@@ -540,7 +541,7 @@ int GerenciamentoOlimpiadas::menu() {
   };
   case 3: {
     Pessoa *p = buscar();
-    switch (p->tipo) {
+    switch (p->getTipo()) {
       case 1:
         dynamic_cast<Atleta *>(p)->exibir();
         break;
@@ -592,7 +593,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
     if (gerenciamento[i]->getNome() == nome) {
       std::cout << "Pessoa encontrada!\n"
                 << gerenciamento[i]->getNome() << " - ";
-      switch (gerenciamento[i]->tipo) {
+      switch (gerenciamento[i]->getTipo()) {
       case 1:
         std::cout << "Atleta\n";
         break;

@@ -10,7 +10,6 @@ Atleta::Atleta()
    : Pessoa() { 
   this->medalha = 0;
   this->modalidade = "";
-  this->tipo = 1;
   
 }
 
@@ -18,12 +17,11 @@ Atleta::~Atleta() {
 
 }
 
-Atleta::Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int medalha, std::string modalidade)
-    : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade) {
+Atleta::Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int tipo, int medalha, std::string modalidade)
+    : Pessoa(DataDeNascimento, Nome, Codigo, Nacionalidade, idade, tipo) {
 
   this->medalha = medalha;
   this->modalidade = modalidade;
-  this->tipo = 1;
 
 };
 
@@ -48,7 +46,7 @@ int Atleta::getMedalhaNum() {
   return medalha;
 };
 
-std::string Atleta::getTipo() {
+std::string Atleta::getTipoStr() {
   return "Atleta";
 };
 

@@ -18,10 +18,10 @@ protected:
 public:
   Comissao();
   virtual ~Comissao();
-  Comissao(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, std::string modalidade, std::string equipeResponsavel);
+  Comissao(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int tipo, std::string modalidade, std::string equipeResponsavel);
   std::string getModalidade();
   std::string getEquipe();
-  std::string getTipo();
+  std::string getTipoStr();
   void exibir();
   // Setters
   void setDataDeNascimento(Data DataDeNascimento);

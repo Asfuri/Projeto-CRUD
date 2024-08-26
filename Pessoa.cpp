@@ -19,13 +19,13 @@ Pessoa::~Pessoa() {
 
 }
 
-Pessoa::Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade) {
+Pessoa::Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int tipo) {
   this->DataDeNascimento = DataDeNascimento;
   this->Nome = Nome;
   this->Codigo = Codigo;
   this->Nacionalidade = Nacionalidade;
   this->idade = idade;
-  this->tipo = 0;
+  this->tipo = tipo;
 };
 
 Data Pessoa::getDataDeNascimento() {
@@ -48,8 +48,8 @@ int Pessoa::getIdade() {
   return this->idade;
 };
 
-std::string Pessoa::getTipo() {
-  return "Pessoa"; // não usado
+int Pessoa::getTipo() {
+  return this->tipo; 
 };
 
 void Pessoa::exibir() {
