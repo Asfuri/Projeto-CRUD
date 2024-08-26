@@ -181,15 +181,38 @@ void GerenciamentoOlimpiadas::salvarArquivo() {
     std::cout << "Erro na abertura do arquivo para escrita!" << std::endl;
 
   for (auto pessoa : gerenciamento) {
-    int tipoPessoa, diaAux, mesAux, anoAux, idadeAux;
+    int tipoPessoa = pessoa->getTipo(), diaAux, mesAux, anoAux, idadeAux;
 
-    std::string pessoaNome, pessoaCodigo, pessoaNac;
-    arquivo << diaAux << "\n" << mesAux << "\n" << anoAux << "\n";
+    arquivo << tipoPessoa;
+    arquivo << pessoa->getDataDeNascimento().getDia() << std::endl;
+    arquivo << pessoa->getDataDeNascimento().getMes() << std::endl;
+    arquivo << pessoa->getDataDeNascimento().getAno() << std::endl;
     arquivo.ignore();
-    arquivo << pessoaNome << std::endl;
-    arquivo << pessoaCodigo << std::endl;
-    arquivo << pessoaNac << std::endl;
-    arquivo << idadeAux << std::endl;
+    arquivo << pessoa->getNome() << std::endl;
+    arquivo << pessoa->getCodigo() << std::endl;
+    arquivo << pessoa->getNacionalidade() << std::endl;
+    arquivo << pessoa->getIdade() << std::endl;
+
+    switch (tipoPessoa) {
+    case 1:
+      arquivo << dynamic_cast<Atleta *>(pessoa)->getMedalhaNum() << std::endl;
+      arquivo << dynamic_cast<Atleta *>(pessoa)->getModalidade() << std::endl;
+      break;
+    
+    case 2:
+      arquivo << dynamic_cast<Comissao *>(pessoa)->getModalidade() << std::endl;
+      arquivo << dynamic_cast<Comissao *>(pessoa)->getEquipe() << std::endl;
+      break;
+
+    case 3:
+      if(arquivo << dynamic_cast<Torcedor *>(pessoa)->getStatusVIP())
+        arquivo << 1 << std::endl;
+      else
+        arquivo << 0 << std::endl;
+      break;
+    default:
+      break;
+    }
   }
 }
 
@@ -230,16 +253,16 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
 
 void GerenciamentoOlimpiadas::exibirTodos() {
     int contador = 1; // Inicializa o contador
-    for (Pessoa* pessoa : gerenciamento) {
+    for (int i = 0; i < gerenciamento.size(); i++) {
         std::cout << contador;
         contador++; // Incrementa o contador
-        if(pessoa->getTipo() == 1)
+        if(gerenciamento[i]->getTipo() == 1)
           std::cout << "Atleta";
-        if(pessoa->getTipo() == 2)
+        if(gerenciamento[i]->getTipo() == 2)
           std::cout << "Comissao";
-        if(pessoa->getTipo() == 3)
+        if(gerenciamento[i]->getTipo() == 3)
           std::cout << "Torcedor";
-        std::cout << " : " << pessoa->getNome() << std::endl;
+        std::cout << " : " << gerenciamento[i]->getNome() << std::endl;
     }
 }
 //   int count = 0;
