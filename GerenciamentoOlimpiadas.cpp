@@ -615,45 +615,45 @@ int GerenciamentoOlimpiadas::menu() {
 
 void GerenciamentoOlimpiadas::salvarArquivo() {
   // FALTA ATUALIZAR ESSE METODO, FALTA IMPRIMIR O TIPO E OS ATRIBUTOS DO TIPO
-  // std::fstream arquivo;
-  // arquivo.open("dadosPessoas.txt", std::ios_base::out);
+  std::fstream arquivo;
+  arquivo.open("dadosPessoas.txt", std::ios_base::out);
 
-  // if (!arquivo.is_open())
-  //   std::cout << "Erro na abertura do arquivo para escrita!" << std::endl;
+  if (!arquivo.is_open())
+    std::cout << "Erro na abertura do arquivo para escrita!" << std::endl;
 
-  // for (auto pessoa : gerenciamento) {
-  //   std::cout << pessoa << " -> Pessoa" << std::endl;
-  //   int tipoPessoa = pessoa->getTipo(), diaAux, mesAux, anoAux, idadeAux;
+  for (auto pessoa : gerenciamento) {
+    std::cout << pessoa << " -> Pessoa" << std::endl;
+    int tipoPessoa = pessoa->getTipo(), diaAux, mesAux, anoAux, idadeAux;
 
-  //   arquivo << tipoPessoa << std::endl;
-  //   arquivo << pessoa->getDataDeNascimento().getDia() << std::endl;
-  //   arquivo << pessoa->getDataDeNascimento().getMes() << std::endl;
-  //   arquivo << pessoa->getDataDeNascimento().getAno() << std::endl;
-  //   arquivo << pessoa->getNome() << std::endl;
-  //   arquivo << pessoa->getCodigo() << std::endl;
-  //   arquivo << pessoa->getNacionalidade() << std::endl;
-  //   arquivo << pessoa->getIdade() << std::endl;
+    arquivo << tipoPessoa << std::endl;
+    arquivo << pessoa->getDataDeNascimento().getDia() << std::endl;
+    arquivo << pessoa->getDataDeNascimento().getMes() << std::endl;
+    arquivo << pessoa->getDataDeNascimento().getAno() << std::endl;
+    arquivo << pessoa->getNome() << std::endl;
+    arquivo << pessoa->getCodigo() << std::endl;
+    arquivo << pessoa->getNacionalidade() << std::endl;
+    arquivo << pessoa->getIdade() << std::endl;
 
-  //   switch (tipoPessoa) {
-  //   case 1:
-  //     arquivo << dynamic_cast<Atleta *>(pessoa)->getMedalhaNum() << std::endl;
-  //     arquivo << dynamic_cast<Atleta *>(pessoa)->getModalidade() << std::endl;
-  //     break;
+    switch (tipoPessoa) {
+    case 1:
+      arquivo << dynamic_cast<Atleta *>(pessoa)->getMedalhaNum() << std::endl;
+      arquivo << dynamic_cast<Atleta *>(pessoa)->getModalidade() << std::endl;
+      break;
     
-  //   case 2:
-  //     arquivo << dynamic_cast<Comissao *>(pessoa)->getModalidade() << std::endl;
-  //     arquivo << dynamic_cast<Comissao *>(pessoa)->getEquipe() << std::endl;
-  //     break;
+    case 2:
+      arquivo << dynamic_cast<Comissao *>(pessoa)->getModalidade() << std::endl;
+      arquivo << dynamic_cast<Comissao *>(pessoa)->getEquipe() << std::endl;
+      break;
 
-  //   case 3:
-  //     if(arquivo << dynamic_cast<Torcedor *>(pessoa)->getStatusVIP())
-  //       arquivo << 1 << std::endl;
-  //     else
-  //       arquivo << 0 << std::endl;
-  //     break;
-  //   default:
-  //     break;
-  //   }
-  // }
-  std::cout << "finge que ta salvo vlw\n";
+    case 3:
+      if(arquivo << dynamic_cast<Torcedor *>(pessoa)->getStatusVIP())
+        arquivo << 1 << std::endl;
+      else
+        arquivo << 0 << std::endl;
+      break;
+    default:
+      break;
+    }
+  }
+  
 }
