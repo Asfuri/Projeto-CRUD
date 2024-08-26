@@ -183,11 +183,10 @@ void GerenciamentoOlimpiadas::salvarArquivo() {
   for (auto pessoa : gerenciamento) {
     int tipoPessoa = pessoa->getTipo(), diaAux, mesAux, anoAux, idadeAux;
 
-    arquivo << tipoPessoa;
+    arquivo << tipoPessoa << std::endl;
     arquivo << pessoa->getDataDeNascimento().getDia() << std::endl;
     arquivo << pessoa->getDataDeNascimento().getMes() << std::endl;
     arquivo << pessoa->getDataDeNascimento().getAno() << std::endl;
-    arquivo.ignore();
     arquivo << pessoa->getNome() << std::endl;
     arquivo << pessoa->getCodigo() << std::endl;
     arquivo << pessoa->getNacionalidade() << std::endl;
