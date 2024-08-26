@@ -21,7 +21,6 @@ private:
   Data DataFinal;
   std::vector<Pessoa*> gerenciamento;
   std::string mascote;
-  int posicao;
 
   // Metodos privados
   void setOlimpiada(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote);

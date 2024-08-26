@@ -12,7 +12,6 @@ GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
   this->Cidade = "";
   this->DataFinal = Data();
   this->mascote = "";
-  this->posicao = 0;
 }
 
 void GerenciamentoOlimpiadas::setOlimpiada(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote) {
@@ -20,14 +19,6 @@ void GerenciamentoOlimpiadas::setOlimpiada(Data DatadeInicio, std::string Cidade
   this->Cidade = Cidade;
   this->DataFinal = DataFinal;
   this->mascote = mascote;
-  this->posicao = 0;
-}
-
-void GerenciamentoOlimpiadas::iniciarOlimpiada() {
-
-  lerArquivoOlimpiadas();
-  // Read Pessoas
-  lerArquivoPessoas();
 }
 
 void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
@@ -117,111 +108,117 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
 };
 
 void GerenciamentoOlimpiadas::lerArquivoPessoas() {
-  std::fstream arquivo;
-  arquivo.open("dadosPessoas.txt", std::ios_base::in);
-  if (!arquivo.is_open())
-    return;
+  // std::fstream arquivo;
+  // arquivo.open("dadosPessoas.txt", std::ios_base::in);
+  // if (!arquivo.is_open())
+  //   return;
 
-  while (!arquivo.eof()) {
-    // Ler pessoa por pessoa do arquivo
-    // Alocando ao vector de pessoas da superclasse
-    Pessoa *pessoaAux;
-    int tipoPessoa, diaAux, mesAux, anoAux, idadeAux;
-    std::string pessoaNome, pessoaCodigo, pessoaNac;
-    arquivo >> tipoPessoa >> diaAux >> mesAux >> anoAux;
+  // while (!arquivo.eof()) {
+  //   // Ler pessoa por pessoa do arquivo
+  //   // Alocando ao vector de pessoas da superclasse
+  //   Pessoa *pessoaAux;
+  //   int tipoPessoa, diaAux, mesAux, anoAux, idadeAux;
+  //   std::string pessoaNome, pessoaCodigo, pessoaNac;
+  //   arquivo >> tipoPessoa >> diaAux >> mesAux >> anoAux;
 
-    Data dataAux = Data(diaAux, mesAux, anoAux);
-    arquivo.ignore();
-    std::getline(arquivo, pessoaNome);
-    std::getline(arquivo, pessoaCodigo);
-    std::getline(arquivo, pessoaNac);
-    arquivo >> idadeAux;
+  //   Data dataAux = Data(diaAux, mesAux, anoAux);
+  //   arquivo.ignore();
+  //   std::getline(arquivo, pessoaNome);
+  //   std::getline(arquivo, pessoaCodigo);
+  //   std::getline(arquivo, pessoaNac);
+  //   arquivo >> idadeAux;
 
-    if (tipoPessoa == 1) {
+  //   if (tipoPessoa == 1) {
 
-      int auxMedalha;
-      std::string auxMod;
-      arquivo >> auxMedalha;
-      arquivo.ignore();
-      std::getline(arquivo, auxMod);
-      pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMedalha, auxMod);
-      // Instanciando um atleta a partir dos dados do arquivo em PessoaAux
-    } else if (tipoPessoa == 2) {
+  //     int auxMedalha;
+  //     std::string auxMod;
+  //     arquivo >> auxMedalha;
+  //     arquivo.ignore();
+  //     std::getline(arquivo, auxMod);
+  //     pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMedalha, auxMod);
+  //     // Instanciando um atleta a partir dos dados do arquivo em PessoaAux
+  //   } else if (tipoPessoa == 2) {
 
-      std::string auxMod, auxEquipResp;
-      arquivo.ignore();
-      std::getline(arquivo, auxMod);
-      std::getline(arquivo, auxEquipResp);
-      pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMod, auxEquipResp);
+  //     std::string auxMod, auxEquipResp;
+  //     arquivo.ignore();
+  //     std::getline(arquivo, auxMod);
+  //     std::getline(arquivo, auxEquipResp);
+  //     pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMod, auxEquipResp);
 
-      // Instanciando um membro da comissao a partir dos dados do arquivo em PessoaAux
-    } else if (tipoPessoa == 3) {
+  //     // Instanciando um membro da comissao a partir dos dados do arquivo em PessoaAux
+  //   } else if (tipoPessoa == 3) {
 
-      arquivo.ignore();
-      int bitStatusVip;
-      arquivo >> bitStatusVip;
-      bool auxStatusVip = (bitStatusVip == 1) ? true : false;
-      pessoaAux = new Torcedor(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxStatusVip);
-      // Instanciando um torcedor a partir dos dados do arquivo em PessoaAux
-    }
+  //     arquivo.ignore();
+  //     int bitStatusVip;
+  //     arquivo >> bitStatusVip;
+  //     bool auxStatusVip = (bitStatusVip == 1) ? true : false;
+  //     pessoaAux = new Torcedor(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxStatusVip);
+  //     // Instanciando um torcedor a partir dos dados do arquivo em PessoaAux
+  //   }
 
-    // Alocando pessoa auxiliar no vector
-    AdicionarPessoa(pessoaAux);
-  };
+  //   // Alocando pessoa auxiliar no vector
+  //   AdicionarPessoa(pessoaAux);
+  // };
 
-  arquivo.close();
+  // arquivo.close();
+  std::cout << "Aqui a gente leu o arquivo vlw meu chapa" <<std::endl;
 };
 
-void GerenciamentoOlimpiadas::salvarArquivo() {
-  // FALTA ATUALIZAR ESSE METODO, FALTA IMPRIMIR O TIPO E OS ATRIBUTOS DO TIPO
-  std::fstream arquivo;
-  arquivo.open("dadosPessoas.txt", std::ios_base::out);
+void GerenciamentoOlimpiadas::iniciarOlimpiada() {
 
-  if (!arquivo.is_open())
-    std::cout << "Erro na abertura do arquivo para escrita!" << std::endl;
-
-  for (auto pessoa : gerenciamento) {
-    int tipoPessoa = pessoa->getTipo(), diaAux, mesAux, anoAux, idadeAux;
-
-    arquivo << tipoPessoa << std::endl;
-    arquivo << pessoa->getDataDeNascimento().getDia() << std::endl;
-    arquivo << pessoa->getDataDeNascimento().getMes() << std::endl;
-    arquivo << pessoa->getDataDeNascimento().getAno() << std::endl;
-    arquivo << pessoa->getNome() << std::endl;
-    arquivo << pessoa->getCodigo() << std::endl;
-    arquivo << pessoa->getNacionalidade() << std::endl;
-    arquivo << pessoa->getIdade() << std::endl;
-
-    switch (tipoPessoa) {
-    case 1:
-      arquivo << dynamic_cast<Atleta *>(pessoa)->getMedalhaNum() << std::endl;
-      arquivo << dynamic_cast<Atleta *>(pessoa)->getModalidade() << std::endl;
-      break;
-    
-    case 2:
-      arquivo << dynamic_cast<Comissao *>(pessoa)->getModalidade() << std::endl;
-      arquivo << dynamic_cast<Comissao *>(pessoa)->getEquipe() << std::endl;
-      break;
-
-    case 3:
-      if(arquivo << dynamic_cast<Torcedor *>(pessoa)->getStatusVIP())
-        arquivo << 1 << std::endl;
-      else
-        arquivo << 0 << std::endl;
-      break;
-    default:
-      break;
-    }
-  }
+  lerArquivoOlimpiadas();
+  // Read Pessoas
+  lerArquivoPessoas();
 }
 
 void GerenciamentoOlimpiadas::AdicionarPessoa(Pessoa *p) { // Create
   gerenciamento.push_back(p);
 }
 
+Pessoa *GerenciamentoOlimpiadas::buscar() {
+
+  int count = 0;
+  exibirTodos();
+
+  std::cout << "\n\nEscolha o nome\n->";
+  std::string nome;
+  std::cin >> std::ws;
+  getline(std::cin, nome);
+  for (int i = 0; i < gerenciamento.size(); i++) {
+    if (gerenciamento[i]->getNome() == nome) {
+      std::cout << "Pessoa encontrada!\n"
+                << gerenciamento[i]->getNome() << " - ";
+      switch (gerenciamento[i]->getTipo()) {
+      case 1:
+        std::cout << "Atleta\n";
+        break;
+      case 2:
+        std::cout << "Comissao\n";
+        break;
+      case 3:
+        std::cout << "Torcedor\n";
+        break;
+      }
+      return gerenciamento[i];
+    }
+  }
+  // Adicionei o retorno nulo caso nao encontre nenhuma pessoa, alem de exibir uma mensagem
+  std::cout << "Pessoa nao encontrada!" << std::endl;
+  return nullptr;
+}
+
 void GerenciamentoOlimpiadas::gerarRelatorio() {
   // deve mostrar a quantidade de pessoas no geral, e a quantidade de cada subclasse
   // exibir relatorio
+  std::cout << "\n\n";
+  std::cout << "Olimpiadas de " << Cidade << " " << DatadeInicio.getAno() << std::endl;
+  std::cout << "Data de Inicio: ";
+  DatadeInicio.exibir();
+  std::cout << "Data Final: ";
+  DataFinal.exibir();
+  std::cout << "Mascote dos jogos: " << mascote << "\n\n";
+
+
   int countTotal = 0, countTorcedor = 0, countComissao = 0, countAtleta = 0;
 
   // Conta pessoas e os tipos
@@ -256,11 +253,11 @@ void GerenciamentoOlimpiadas::exibirTodos() {
         std::cout << contador;
         contador++; // Incrementa o contador
         if(gerenciamento[i]->getTipo() == 1)
-          std::cout << "Atleta";
+          std::cout << " Atleta";
         if(gerenciamento[i]->getTipo() == 2)
-          std::cout << "Comissao";
+          std::cout << " Comissao";
         if(gerenciamento[i]->getTipo() == 3)
-          std::cout << "Torcedor";
+          std::cout << " Torcedor";
         std::cout << " : " << gerenciamento[i]->getNome() << std::endl;
     }
 }
@@ -342,10 +339,10 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
 
     pessoaAux = new Torcedor(dataNasc, nome, codigo, nacionalidade, idade, tipoPessoa, vipBool);
   } else {
-    delete pessoaAux;
+    // delete pessoaAux;
   }
   AdicionarPessoa(pessoaAux);
-  delete pessoaAux;
+  // delete pessoaAux;
   return 0;
 }
 
@@ -388,7 +385,6 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   }
 
   std::cin >> escolha;
-  std::cin.ignore();
 
   switch (escolha) {
   case 1: {
@@ -557,11 +553,19 @@ int GerenciamentoOlimpiadas::menu() {
     return 0;
   };
   case 2: {
+    if(gerenciamento.size() == 0){
+      std::cout << "Não possui pessoas registradas" << std::endl;
+      break;
+    }
     exibirTodos();
     break;
     // listar
   };
   case 3: {
+    if(gerenciamento.size() == 0){
+      std::cout << "Não possui pessoas registradas" << std::endl;
+      break;
+    }
     Pessoa *p = buscar();
     switch (p->getTipo()) {
       case 1:
@@ -578,13 +582,20 @@ int GerenciamentoOlimpiadas::menu() {
   };
   case 4: {
     // alterar
-    // falta tratar o retorno e acabar o metodo
+    if(gerenciamento.size() == 0){
+      std::cout << "Não possui pessoas registradas" << std::endl;
+      break;
+    }
     int erro = alterarPessoa();
     if (erro == 1)
       return 1;
     return 0;
   };
   case 5: {
+    if(gerenciamento.size() == 0){
+      std::cout << "Não possui pessoas registradas" << std::endl;
+      break;
+    }
     removerPessoa();
     return 0;
   };
@@ -602,34 +613,47 @@ int GerenciamentoOlimpiadas::menu() {
   return 0;
 };
 
-Pessoa *GerenciamentoOlimpiadas::buscar() {
+void GerenciamentoOlimpiadas::salvarArquivo() {
+  // FALTA ATUALIZAR ESSE METODO, FALTA IMPRIMIR O TIPO E OS ATRIBUTOS DO TIPO
+  // std::fstream arquivo;
+  // arquivo.open("dadosPessoas.txt", std::ios_base::out);
 
-  int count = 0;
-  exibirTodos();
+  // if (!arquivo.is_open())
+  //   std::cout << "Erro na abertura do arquivo para escrita!" << std::endl;
 
-  std::cout << "\n\nEscolha o nome\n->";
-  std::string nome;
-  std::cin >> std::ws;
-  getline(std::cin, nome);
-  for (int i = 0; i < gerenciamento.size(); i++) {
-    if (gerenciamento[i]->getNome() == nome) {
-      std::cout << "Pessoa encontrada!\n"
-                << gerenciamento[i]->getNome() << " - ";
-      switch (gerenciamento[i]->getTipo()) {
-      case 1:
-        std::cout << "Atleta\n";
-        break;
-      case 2:
-        std::cout << "Comissao\n";
-        break;
-      case 3:
-        std::cout << "Torcedor\n";
-        break;
-      }
-      return gerenciamento[i];
-    }
-  }
-  // Adicionei o retorno nulo caso nao encontre nenhuma pessoa, alem de exibir uma mensagem
-  std::cout << "Pessoa nao encontrada!" << std::endl;
-  return nullptr;
+  // for (auto pessoa : gerenciamento) {
+  //   std::cout << pessoa << " -> Pessoa" << std::endl;
+  //   int tipoPessoa = pessoa->getTipo(), diaAux, mesAux, anoAux, idadeAux;
+
+  //   arquivo << tipoPessoa << std::endl;
+  //   arquivo << pessoa->getDataDeNascimento().getDia() << std::endl;
+  //   arquivo << pessoa->getDataDeNascimento().getMes() << std::endl;
+  //   arquivo << pessoa->getDataDeNascimento().getAno() << std::endl;
+  //   arquivo << pessoa->getNome() << std::endl;
+  //   arquivo << pessoa->getCodigo() << std::endl;
+  //   arquivo << pessoa->getNacionalidade() << std::endl;
+  //   arquivo << pessoa->getIdade() << std::endl;
+
+  //   switch (tipoPessoa) {
+  //   case 1:
+  //     arquivo << dynamic_cast<Atleta *>(pessoa)->getMedalhaNum() << std::endl;
+  //     arquivo << dynamic_cast<Atleta *>(pessoa)->getModalidade() << std::endl;
+  //     break;
+    
+  //   case 2:
+  //     arquivo << dynamic_cast<Comissao *>(pessoa)->getModalidade() << std::endl;
+  //     arquivo << dynamic_cast<Comissao *>(pessoa)->getEquipe() << std::endl;
+  //     break;
+
+  //   case 3:
+  //     if(arquivo << dynamic_cast<Torcedor *>(pessoa)->getStatusVIP())
+  //       arquivo << 1 << std::endl;
+  //     else
+  //       arquivo << 0 << std::endl;
+  //     break;
+  //   default:
+  //     break;
+  //   }
+  // }
+  std::cout << "finge que ta salvo vlw\n";
 }
