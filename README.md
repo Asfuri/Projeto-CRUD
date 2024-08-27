@@ -13,5 +13,10 @@
 
 -  	:skateboard: *[Derzu Omaia (derzu@ci.ufpb.br)](https://github.com/derzu)*
 
+![](https://github.com/Projeto-CRUD/gifRepositorio.gif)
+
 ## Objetivo:
 
+## Dependencias
+
+## Como rodar
