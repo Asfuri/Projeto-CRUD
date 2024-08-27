@@ -714,7 +714,7 @@ int GerenciamentoOlimpiadas::menu() {
   std::cout << "\n";
   
   // Testar se a entrada é de fato um inteiro
-  while(std::stoi(opcaoStr) < 1 || stoi(opcaoStr) > 7) {
+  while(std::stoi(opcaoStr) < 1 || std::stoi(opcaoStr) > 7) {
     std::cout << "-> Valor não válido, tente outro" << std::endl;
     std::cout << "\n-> ";
     getline(std::cin, opcaoStr);
