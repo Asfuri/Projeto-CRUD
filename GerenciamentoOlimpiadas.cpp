@@ -86,34 +86,48 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::string Cidade, mascote;
     std::cout << "Digite a cidade sede " << std::endl;
     std::cout << "\n-> ";
-
     getline(std::cin, Cidade);
+    std::cout << "\n";
+
     std::cout << "Digite o ano das olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> anoAux;
+    std::cout << "\n";
+
     std::cout << "Digite o mes de " << anoAux << " que comecam as olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> mesAux;
+    std::cout << "\n";
+
     std::cout << "Digite dia do mes de " << mesAux << "/" << anoAux << " que comecam as olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> diaAux;
+    std::cout << "\n";
+
     Data dataInicioAux(diaAux, mesAux, anoAux);
 
     std::cout << "Digite o ano que acabam as olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> anoFinal;
+    std::cout << "\n";
+
     std::cout << "Digite o mes de " << anoAux << " que acabam as olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> mesAux;
+    std::cout << "\n";
+
     std::cout << "Digite dia do mes de " << mesAux << "/" << anoAux << " que acabam as olimpiadas de " << Cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> diaAux;
+    std::cout << "\n";
+
     Data dataFinalAux(diaAux, mesAux, anoFinal);
 
     std::cout << "Digite o nome do mascote das olimpiadas de " << Cidade << " " << anoAux << std::endl;
     std::cout << "\n-> ";
     std::cin.ignore();
     getline(std::cin, mascote);
+    std::cout << "\n";
 
     setOlimpiada(dataInicioAux, Cidade, dataFinalAux, mascote);
 
@@ -249,28 +263,36 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
   std::cin.ignore();
   std::cout << "Digite o nome da pessoa a ser adicionada" << "\n-> ";
   std::getline(std::cin, nome);
+  std::cout << "\n";
 
   std::cout << "Digite o dia do nascimento de " << nome << "\n-> ";
   std::cin >> dia;
+  std::cout << "\n";
   std::cout << "Digite o mes do nascimento de " << nome << "\n-> ";
   std::cin >> mes;
+  std::cout << "\n";
   std::cout << "Digite o ano do nascimento de " << nome << "\n-> ";
   std::cin >> ano;
+  std::cout << "\n";
   Data dataNasc(dia, mes, ano);
 
   std::cout << "Digite o codigo de " << nome << "\n-> ";
   std::cin >> codigo;
-
+  std::cout << "\n";
   std::cin.ignore();
+
   std::cout << "Digite a nacionalidade de " << nome << "\n-> ";
   std::getline(std::cin, nacionalidade);
+  std::cout << "\n";
 
   std::cout << "Digite a idade de " << nome << "\n-> ";
   std::cin >> idade;
+  std::cout << "\n";
 
   std::cout << "Digite o tipo" << std::endl;
   std::cout << "-> 1 Atleta\t-> 2 Membro da comissao\n-> 3 Torcedor\t-> 4 Cancelar operacao\n-> ";
   std::cin >> tipoPessoa;
+  std::cout << "\n";
 
   if (tipoPessoa == 1) {
 
@@ -279,8 +301,10 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
     std::string modalidade;
     std::cout << "Digite a modalidade do atleta\n-> ";
     std::getline(std::cin, modalidade);
+    std::cout << "\n";
     std::cout << "Digite a colocacao de " << nome << " em " << modalidade << "\n-> ";
     std::cin >> medalha;
+    std::cout << "\n";
 
     pessoaAux = new Atleta(dataNasc, nome, codigo, nacionalidade, idade, tipoPessoa, medalha, modalidade);
 
@@ -290,8 +314,10 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
     std::string modalidade, equipeResponsavel;
     std::cout << "Digite a modalidade de atuacao do membro da comissao:\n-> ";
     std::getline(std::cin, modalidade);
+    std::cout << "\n";
     std::cout << "Dentro de " << modalidade << ", digite a equipe de atuacao de " << nome << "\n-> ";
     std::getline(std::cin, equipeResponsavel);
+    std::cout << "\n";
 
     pessoaAux = new Comissao(dataNasc, nome, codigo, nacionalidade, idade, tipoPessoa, modalidade, equipeResponsavel);
 
@@ -302,6 +328,7 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
     std::string vip;
     std::cout << "O torcedor " << nome << " possui acesso vip? (Sim/Nao)\n-> ";
     std::getline(std::cin, vip);
+    std::cout << "\n";
 
     if ((vip.find("s") != -1) || (vip.find("S") != -1) ||
         (vip.find("y") != -1) || (vip.find("y") != -1))
@@ -352,6 +379,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   std::string nome;
   std::cin >> std::ws;
   getline(std::cin, nome);
+  std::cout << "\n";
   for (int i = 0; i < gerenciamento.size(); i++) {
     if (gerenciamento[i]->getNome() == nome) {
       std::cout << "Pessoa encontrada!\n"
@@ -464,6 +492,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   }
 
   std::cin >> escolha;
+  std::cout << "\n";
 
   switch (escolha) {
   case 1: {
@@ -472,12 +501,15 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "Digite o dia da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
     std::cin >> diaAux;
+    std::cout << "\n";
     std::cout << "Digite o mes da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
     std::cin >> mesAux;
+    std::cout << "\n";
     std::cout << "Digite o ano da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
     std::cin >> anoAux;
+    std::cout << "\n";
     Data novaDataDeNascimento(diaAux, mesAux, anoAux);
     gerenciamento[indice]->setDataDeNascimento(novaDataDeNascimento);
     std::cout << "Nova data de nascimento de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
@@ -490,6 +522,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::string novoNome;
     std::cin.ignore();
     getline(std::cin, novoNome);
+    std::cout << "\n";
     gerenciamento[indice]->setNome(novoNome);
     std::cout << "Novo nome definido com sucesso!" << std::endl;
     return 0;
@@ -501,6 +534,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::string novoCodigo;
     std::cin.ignore();
     getline(std::cin, novoCodigo);
+    std::cout << "\n";
     gerenciamento[indice]->setCodigo(novoCodigo);
     std::cout << "Novo codigo de " << gerenciamento[indice]->getNome() << " definido com sucesso!" << std::endl;
     return 0;
@@ -512,6 +546,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::string novaNacionalidade;
     std::cin.ignore();
     getline(std::cin, novaNacionalidade);
+    std::cout << "\n";
     gerenciamento[indice]->setNacionalidade(novaNacionalidade);
     std::cout << "Nova nacionalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
@@ -522,6 +557,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "\n-> ";
     int idade;
     std::cin >> idade;
+    std::cout << "\n";
     gerenciamento[indice]->setIdade(idade);
     std::cout << "Nova idade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
@@ -538,6 +574,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "Digite a nova colocacao de " << gerenciamento[indice]->getNome() << " em " << dynamic_cast<Atleta *>(gerenciamento[indice])->getModalidade() << std::endl;
     std::cout << "\n-> ";
     std::cin >> medalha;
+    std::cout << "\n";
     dynamic_cast<Atleta *>(gerenciamento[indice])->setMedalha(medalha);
     std::cout << "Nova medalha de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
@@ -549,6 +586,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::string novaModalidade;
     std::cin.ignore();
     getline(std::cin, novaModalidade);
+    std::cout << "\n";
     dynamic_cast<Atleta *>(gerenciamento[indice])->setModalidade(novaModalidade);
     std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
@@ -562,6 +600,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::string novaModalidade;
     std::cin.ignore();
     getline(std::cin, novaModalidade);
+    std::cout << "\n";
     dynamic_cast<Comissao *>(gerenciamento[indice])->setModalidade(novaModalidade);
     std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
@@ -573,6 +612,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::string novaEquipeResponsavel;
     std::cin.ignore();
     getline(std::cin, novaEquipeResponsavel);
+    std::cout << "\n";
     dynamic_cast<Comissao *>(gerenciamento[indice])->setEquipeResponsavel(novaEquipeResponsavel);
     std::cout << "Nova equipe de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
@@ -587,6 +627,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << retornoStatus;
     std::cout << "\nGostaria de alterar?\n\n->";
     std::getline(std::cin, vip);
+    std::cout << "\n";
 
     if ((vip.find("s") != -1) || (vip.find("S") != -1) ||
         (vip.find("y") != -1) || (vip.find("y") != -1)) {
@@ -614,6 +655,7 @@ void GerenciamentoOlimpiadas::removerPessoa() {
 }
 
 int GerenciamentoOlimpiadas::menu() {
+  std::cout << "\n\n";
   std::cout << "1. Inserir pessoa" << std::endl;
   std::cout << "2. Listar pessoas" << std::endl;
   std::cout << "3. Exibir pessoa" << std::endl;
@@ -624,6 +666,7 @@ int GerenciamentoOlimpiadas::menu() {
 
   int opcao;
   std::cin >> opcao;
+  std::cout << "\n";
   switch (opcao) {
   case 1: {
     int erro = lerDadosPessoa();
@@ -701,7 +744,6 @@ void GerenciamentoOlimpiadas::salvarArquivo() {
     std::cout << "Erro na abertura do arquivo para escrita!" << std::endl;
 
   for (auto pessoa : gerenciamento) {
-    std::cout << pessoa << " -> Pessoa" << std::endl;
     int tipoPessoa = pessoa->getTipo(), diaAux, mesAux, anoAux, idadeAux;
 
     arquivo << tipoPessoa << std::endl;
