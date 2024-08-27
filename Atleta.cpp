@@ -46,10 +46,6 @@ int Atleta::getMedalhaNum() {
   return medalha;
 };
 
-std::string Atleta::getTipoStr() {
-  return "Atleta";
-};
-
 void Atleta::exibir() {
   std::cout << "Atleta" << std::endl;
   Pessoa::exibir();

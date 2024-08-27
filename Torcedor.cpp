@@ -24,10 +24,6 @@ bool Torcedor::getStatusVIP() {
   return this->statusVIP;
 };
 
-std::string Torcedor::getTipoStr() {
-  return "Torcedor";
-};
-
 void Torcedor::exibir(){
   std::cout << "Torcedor" << std::endl;
   Pessoa::exibir();

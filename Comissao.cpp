@@ -30,10 +30,6 @@ std::string Comissao::getEquipe() {
   return this->equipeResponsavel;
 };
 
-std::string Comissao::getTipoStr() {
-  return "Membro da comissao";
-};
-
 void Comissao::exibir() {
   std::cout << "Membro da Comissao" << std::endl;
   Pessoa::exibir();

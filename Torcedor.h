@@ -18,7 +18,6 @@ public:
   virtual ~Torcedor();
   Torcedor(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int tipo, bool statusVIP);
   bool getStatusVIP();
-  std::string getTipoStr();
   void exibir();
   // Setters
   void setDataDeNascimento(Data DataDeNascimento);

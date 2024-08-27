@@ -7,7 +7,13 @@
 #include "GerenciamentoOlimpiadas.h"
 
 GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
-
+  /*
+  Contrutor padrão -> Será utilizado na inicialização do programa,
+  a única instância dessa classe deverá ser inicializada sem os dados armazenados,
+  para então serem 'settados' todos os seus dados com "setOlimpiadas", método esse que
+  é chamado no momento de leitura dos dados das olimpíadas, seja do arquivo, seja diretamente 
+  do terminal
+  */
   this->DatadeInicio = Data();
   this->Cidade = "";
   this->DataFinal = Data();
@@ -15,13 +21,42 @@ GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
 }
 
 void GerenciamentoOlimpiadas::setOlimpiada(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote) {
+  /*
+    Método para atribuir os dados das olimpíadas na instância da classe, é chamado após
+    a leitura de dados, ou do arquivo ou do terminal
+  */
   this->DatadeInicio = DatadeInicio;
   this->Cidade = Cidade;
   this->DataFinal = DataFinal;
   this->mascote = mascote;
 }
 
+void GerenciamentoOlimpiadas::AdicionarPessoa(Pessoa *p) {
+  /*
+    Esse método é responsável por acrescentar um ponteiro de Pessoa ao vector "gerenciamento"
+    Esse método é chamado diversas vezes por outros métodos, tendo em vista que ele é método responsável por inserir Pessoas no vector (interação direta), sendo a chave do CREATE do sistema 
+  */
+  gerenciamento.push_back(p);
+}
+
 void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
+  /*
+    Esse método é responsável por fazer a leitura dos dados das Olimpiadas, que filtra,
+    de acordo com o êxito da abertura do arquivo .txt, "dadosOlimpiadas", se os dados devem
+    ser lidos do próprio .txt, caso esse exista, ou do terminal.
+
+    -> Utiliza do setter da classe
+    
+    Execução ideal:
+      -> Primeira execução:
+        Os dados devem ser lidos do terminal e salvos no .txt para as próximas execuções
+      -> As sucessivas execuções:
+        Os dados devem ser lidos diretamente do arquivo, podendo ser consultado pelo usuário 
+        utilizando da opção 6 do menu
+
+    OBS.: Para alteração dos dados, o usuário deverá apagar o .txt do ambiente em que o 
+    programa está sendo executado
+  */
   std::fstream arqOlimpiada;
   arqOlimpiada.open("dadosOlimpiadas.txt", std::ios_base::in);
 
@@ -108,6 +143,28 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
 };
 
 void GerenciamentoOlimpiadas::lerArquivoPessoas() {
+  /*
+    Esse método é responsável pela leitura do .txt "dadosPessoas", que deverá armazenar todas 
+    as pessoas da última execução (respeitando a decisão do usuário de inserir, alterar, e remover)
+    Para articular a leitura de acordo com a subclasse de pessoa, o código deverá ler na seguinte ordem:
+      - 1 . Tipo
+      - 2 . Dia da data de nascimento
+      - 3 . Mês da data de nascimento
+      - 4 . Ano da data de nascimento
+      - 5 . Nome
+      - 6 . Código
+      - 7 . Nacionalidade
+      - 8 . Medalha     ||  Modalidade          ||  StatusVip
+      - 9 . Modalidade  ||  Equipe Responsavel  ||
+
+    OBS.: Na primeira execução do código, o arquivo não deverá existir, tendo isso em vista, o mesmo não será lido e o método retorna
+
+    -> Responsável por iniciar índices do vector "gerenciamento", ou seja, iniciando ponteiros de Pessoa com os construtores das subclasses (realizando polimorfismo)
+    -> Também chama o método de inserir Pessoas no vector (AdicionarPessoa())
+  */
+
+  // ->> METODO COM PROBLEMA
+
   // std::fstream arquivo;
   // arquivo.open("dadosPessoas.txt", std::ios_base::in);
   // if (!arquivo.is_open())
@@ -165,109 +222,14 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
 };
 
 void GerenciamentoOlimpiadas::iniciarOlimpiada() {
+  /*
+    Esse método é responsável por chamar os métodos responsáveis pelo funcionamento sequencial
+    das execuções do programa, sendo os mesmos responsáveis pelo READ do sistema.
+  */
 
   lerArquivoOlimpiadas();
-  // Read Pessoas
   lerArquivoPessoas();
 }
-
-void GerenciamentoOlimpiadas::AdicionarPessoa(Pessoa *p) { // Create
-  gerenciamento.push_back(p);
-}
-
-Pessoa *GerenciamentoOlimpiadas::buscar() {
-
-  int count = 0;
-  exibirTodos();
-
-  std::cout << "\n\nEscolha o nome\n->";
-  std::string nome;
-  std::cin >> std::ws;
-  getline(std::cin, nome);
-  for (int i = 0; i < gerenciamento.size(); i++) {
-    if (gerenciamento[i]->getNome() == nome) {
-      std::cout << "Pessoa encontrada!\n"
-                << gerenciamento[i]->getNome() << " - ";
-      switch (gerenciamento[i]->getTipo()) {
-      case 1:
-        std::cout << "Atleta\n";
-        break;
-      case 2:
-        std::cout << "Comissao\n";
-        break;
-      case 3:
-        std::cout << "Torcedor\n";
-        break;
-      }
-      return gerenciamento[i];
-    }
-  }
-  // Adicionei o retorno nulo caso nao encontre nenhuma pessoa, alem de exibir uma mensagem
-  std::cout << "Pessoa nao encontrada!" << std::endl;
-  return nullptr;
-}
-
-void GerenciamentoOlimpiadas::gerarRelatorio() {
-  // deve mostrar a quantidade de pessoas no geral, e a quantidade de cada subclasse
-  // exibir relatorio
-  std::cout << "\n\n";
-  std::cout << "Olimpiadas de " << Cidade << " " << DatadeInicio.getAno() << std::endl;
-  std::cout << "Data de Inicio: ";
-  DatadeInicio.exibir();
-  std::cout << "Data Final: ";
-  DataFinal.exibir();
-  std::cout << "Mascote dos jogos: " << mascote << "\n\n";
-
-
-  int countTotal = 0, countTorcedor = 0, countComissao = 0, countAtleta = 0;
-
-  // Conta pessoas e os tipos
-  for (auto p : gerenciamento) {
-    if (p->getTipo() == 1)
-      countAtleta++;
-    else if (p->getTipo() == 2)
-      countComissao++;
-    else if (p->getTipo() == 3)
-      countTorcedor++;
-    countTotal++;
-  }
-
-  if (countTotal == 0) {
-    std::cout << "Nao ha pessoas cadastradas" << std::endl;
-    return;
-  } else {
-    float porcAtleta = 100 * (float)countAtleta / (float)countTotal;
-    float porcComissao = 100 * (float)countComissao / (float)countTotal;
-    float porcTorcedor = 100 * (float)countTorcedor / (float)countTotal;
-
-    std::cout << "Quantidade total de pessoas: " << countTotal << std::endl;
-    std::cout << "Quantidade total de Atletas: " << countAtleta << " (" << porcAtleta << "%)" << std::endl;
-    std::cout << "Quantidade total de Membros da Comissao: " << countComissao << " (" << porcComissao << "%)" << std::endl;
-    std::cout << "Quantidade total de Torcedores: " << countTorcedor << " (" << porcTorcedor << "%)" << std::endl;
-  }
-}
-
-void GerenciamentoOlimpiadas::exibirTodos() {
-    int contador = 1; // Inicializa o contador
-    for (int i = 0; i < gerenciamento.size(); i++) {
-        std::cout << contador;
-        contador++; // Incrementa o contador
-        if(gerenciamento[i]->getTipo() == 1)
-          std::cout << " Atleta";
-        if(gerenciamento[i]->getTipo() == 2)
-          std::cout << " Comissao";
-        if(gerenciamento[i]->getTipo() == 3)
-          std::cout << " Torcedor";
-        std::cout << " : " << gerenciamento[i]->getNome() << std::endl;
-    }
-}
-//   int count = 0;
-//     for(auto p : gerenciamento) {
-//     count++;
-//     std::string imprimir = "-> " + std::to_string(count) + p->getTipo() + ": " + p->getNome();
-//     std::cout << imprimir << std::endl;
-//   }
-// }
 
 int GerenciamentoOlimpiadas::lerDadosPessoa() {
   Pessoa *pessoaAux;
@@ -344,6 +306,113 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
   AdicionarPessoa(pessoaAux);
   // delete pessoaAux;
   return 0;
+}
+
+void GerenciamentoOlimpiadas::exibirTodos() {
+  /*
+    Esse método é responsável por exibir no terminal todos os índices do vector "gerenciamento" de maneira otimizada, imprimindo o valor ordinal do elemento no vector, o tipo da Pessoa (de qual subclasse é uma instância), seguido do nome. Ex.:
+
+    1o - Atleta : Michael Phelps 
+    2o - Comissao : Bernardo Rocha
+  */
+    int contador = 1;
+    for (int i = 0; i < gerenciamento.size(); i++) {
+        std::cout << contador;
+        contador++;
+        if(gerenciamento[i]->getTipo() == 1)
+          std::cout << "o - Atleta\t";
+        if(gerenciamento[i]->getTipo() == 2)
+          std::cout << "o - Comissao\t";
+        if(gerenciamento[i]->getTipo() == 3)
+          std::cout << "o - Torcedor\t";
+        std::cout << " : " << gerenciamento[i]->getNome() << std::endl;
+    }
+}
+
+Pessoa *GerenciamentoOlimpiadas::buscar() {
+  /*
+    Esse método é responsável por realizar a busca por determinada Pessoa no vector, chamando primeiramente o método de exibição dos índices (exibirTodos()) e após isso tratando da escolha do usuário a partir do nome (que deverá coincidir com um dos nomes exibidos no terminal)
+    -> Esse método retorna a Pessoa encontrada (que é um ponteiro), retorno esse que deve ser tratado na chamada
+    -> Esse método é chamado nos métodos de exibir (exibir com detalhe apenas uma Pessoa), alterar e remover
+  */
+  int count = 0;
+  exibirTodos();
+
+  std::cout << "\n\nEscolha o nome\n->";
+  std::string nome;
+  std::cin >> std::ws;
+  getline(std::cin, nome);
+  for (int i = 0; i < gerenciamento.size(); i++) {
+    if (gerenciamento[i]->getNome() == nome) {
+      std::cout << "Pessoa encontrada!\n"
+                << gerenciamento[i]->getNome() << " - ";
+      switch (gerenciamento[i]->getTipo()) {
+      case 1:
+        std::cout << "Atleta\n";
+        break;
+      case 2:
+        std::cout << "Comissao\n";
+        break;
+      case 3:
+        std::cout << "Torcedor\n";
+        break;
+      }
+      return gerenciamento[i];
+    }
+  }
+  // No caso do nome ser incompatível com pelo menos um dos nomes no vector, o retorno será 
+  // um nullptr (ponteiro vazio), esse retorno deverá ser tratado no local de chamada
+  std::cout << "Pessoa nao encontrada!" << std::endl;
+  return nullptr;
+}
+
+void GerenciamentoOlimpiadas::gerarRelatorio() {
+  /*
+    -> Esse método é responsável por imprimir no terminal as informações gerais das Olimpíadas, sendo elas:
+      - Cidade e ano
+      - Data de Inicio
+      - Data Final
+      - Nome do Mascote
+
+    -> E é responsável também por imprimir no terminal as informações das Pessoas que estão cadastradas no sistema, sendo esses dados brutos e comparativos. Caso não haja Pessoas cadastradas, ele irá imprimir e retornar
+  */
+  std::cout << "\n\n";
+  std::cout << "Olimpiadas de " << Cidade << " " << DatadeInicio.getAno() << std::endl;
+  std::cout << "Data de Inicio: ";
+  DatadeInicio.exibir();
+  std::cout << "Data Final: ";
+  DataFinal.exibir();
+  std::cout << "Mascote dos jogos: " << mascote << "\n\n";
+
+
+  int countTotal = 0, countTorcedor = 0, countComissao = 0, countAtleta = 0;
+
+  // Conta pessoas e os tipos
+  for (auto p : gerenciamento) {
+    if (p->getTipo() == 1)
+      countAtleta++;
+    else if (p->getTipo() == 2)
+      countComissao++;
+    else if (p->getTipo() == 3)
+      countTorcedor++;
+    countTotal++;
+  }
+
+  if (countTotal == 0) {
+    // Caso o vector seja vazio, ele imprime esse fato e retorna
+    std::cout << "Nao ha pessoas cadastradas" << std::endl;
+    return;
+  } else {
+    // Imprime os dados brutos e comparativos das Pessoas
+    float porcAtleta = 100 * (float)countAtleta / (float)countTotal;
+    float porcComissao = 100 * (float)countComissao / (float)countTotal;
+    float porcTorcedor = 100 * (float)countTorcedor / (float)countTotal;
+
+    std::cout << "Quantidade total de pessoas: " << countTotal << std::endl;
+    std::cout << "Quantidade total de Atletas: " << countAtleta << " (" << porcAtleta << "%)" << std::endl;
+    std::cout << "Quantidade total de Membros da Comissao: " << countComissao << " (" << porcComissao << "%)" << std::endl;
+    std::cout << "Quantidade total de Torcedores: " << countTorcedor << " (" << porcTorcedor << "%)" << std::endl;
+  }
 }
 
 int GerenciamentoOlimpiadas::alterarPessoa() {

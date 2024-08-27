@@ -24,20 +24,20 @@ private:
 
   // Metodos privados
   void setOlimpiada(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote);
+  void AdicionarPessoa(Pessoa *p);
   void lerArquivoOlimpiadas();
   void lerArquivoPessoas();
-  int lerDadosPessoa();
-  int alterarPessoa();
-  void removerPessoa();
-  void AdicionarPessoa(Pessoa *p);
-  void gerarRelatorio();
+  int lerDadosPessoa(); // Falta documentar
   void exibirTodos();
   Pessoa* buscar();
+  void gerarRelatorio();
+  int alterarPessoa(); // Falta documentar
+  void removerPessoa(); // Falta documentar
 
 public:
   void iniciarOlimpiada();
-  int menu();
-  void salvarArquivo();
+  int menu(); // Falta documentar
+  void salvarArquivo(); // Falta documentar
   GerenciamentoOlimpiadas();
   
 };

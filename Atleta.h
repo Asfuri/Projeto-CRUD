@@ -21,7 +21,6 @@ public:
   std::string getModalidade();
   std::string getMedalha();
   int getMedalhaNum();
-  std::string getTipoStr();
   void exibir();
   // Setters
   void setDataDeNascimento(Data DataDeNascimento);
