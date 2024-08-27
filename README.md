@@ -3,19 +3,19 @@
 
 Esse foi um projeto desenvolvido por discentes do curso de *Engenharia da Computação da Universidade Federal da Paraíba*, curso este que pertence ao *[Centro de Informática](http://ci.ufpb.br/)*, localizado na *[Rua dos Escoteiros S/N - Mangabeira - João Pessoa - Paraíba - Brasil](https://g.co/kgs/xobLzCE)*. O programa decorrente do desenvolvimentodo código foi empregado, utilizando métodos avaliativos, para que o Docente pudesse calcular e atribuir as respectivas notas dos participiantes do projeto. 
 
-### Autores:
+### :softball: Autores:
 
 -  :martial_arts_uniform:  *[Eduardo Asfuri Carvalho](https://github.com/Asfuri)*
 -  :ping_pong:  *[Lucas Henrique Vieira da Silva](https://github.com/hvslucas)*
 -  :boxing_glove:  *[Marco Antonio de Vasconcelos Souza Filho](https://github.com/MarcoFilho1)*
 
-### Docente:
+###  :volleyball: Docente:
 
 -  	:skateboard: *[Derzu Omaia (derzu@ci.ufpb.br)](https://github.com/derzu)*
 
 - Imagem PNG olimpíadas
 
-## Objetivo:
+## :dart: Objetivo:
 
 O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao usuário, de maneira eficiente, a partir de entradas no terminal e utilizando C++, a possibilidade de gerir dados de uma competição olímpica. O gerenciamento do registro das pessoas completamente autonoma por parte do usuário e o gerenciamento dos dados da competição. O sistema tem requisitos de desenvolvimento estabelecidos pelas especificações determinadas pelo docente, sendo eles[^1][^2]:
 
@@ -34,8 +34,8 @@ O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao u
 
 ![gifRepositorio](https://github.com/user-attachments/assets/18712b30-aedb-4b4c-85d7-bcd5c2435313)
 
-## Diagrama de Classes
+## :handball_person: Diagrama de Classes
 
-## Dependencias
+## :person_fencing: Dependências
 
-## Como rodar
+## :bicyclist: Como rodar
