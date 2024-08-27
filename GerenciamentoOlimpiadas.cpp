@@ -709,7 +709,6 @@ int GerenciamentoOlimpiadas::menu() {
   std::cout << "7. Sair" << std::endl;
 
   std::string opcaoStr;
-  std::cin >> std::ws;
   std::cout << "\n-> ";
   getline(std::cin, opcaoStr);
   std::cout << "\n";
