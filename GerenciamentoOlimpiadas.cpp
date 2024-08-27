@@ -708,19 +708,28 @@ int GerenciamentoOlimpiadas::menu() {
   std::cout << "6. Exibir Relatorio" << std::endl;
   std::cout << "7. Sair" << std::endl;
 
-  std::string opcaoStr;
-  std::cout << "\n-> ";
-  getline(std::cin, opcaoStr);
-  std::cout << "\n";
+
+  // -> Não está funcionando 
+
+  // std::string opcaoStr;
+  // std::cout << "\n-> ";
+  // getline(std::cin, opcaoStr);
+  // std::cout << "\n";
   
   // Testar se a entrada é de fato um inteiro
-  while(!std::stoi(opcaoStr)) {
-    std::cout << "-> Valor não válido, tente outro" << std::endl;
-    std::cout << "\n-> ";
-    getline(std::cin, opcaoStr);
-    std::cout << "\n";
-  }
-  int opcao = std::stoi(opcaoStr);
+  // while(!std::stoi(opcaoStr)) {
+  //   std::cout << "-> Valor não válido, tente outro" << std::endl;
+  //   std::cout << "\n-> ";
+  //   getline(std::cin, opcaoStr);
+  //   std::cout << "\n";
+  // }
+  // int opcao = std::stoi(opcaoStr);
+
+  std::cout << "\n-> ";
+
+  int opcao;
+  std::cin >> opcao;
+  std::cout << "\n";
   
   switch (opcao) {
   case 1: {
