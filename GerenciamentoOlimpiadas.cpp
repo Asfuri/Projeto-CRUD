@@ -352,17 +352,23 @@ void GerenciamentoOlimpiadas::exibirTodos() {
     1o - Atleta : Michael Phelps 
     2o - Comissao : Bernardo Rocha
   */
-    int contador = 1;
-    for (int i = 0; i < gerenciamento.size(); i++) {
-        std::cout << contador;
-        contador++;
-        if(gerenciamento[i]->getTipo() == 1)
-          std::cout << "o - Atleta\t";
-        if(gerenciamento[i]->getTipo() == 2)
-          std::cout << "o - Comissao\t";
-        if(gerenciamento[i]->getTipo() == 3)
-          std::cout << "o - Torcedor\t";
-        std::cout << " : " << gerenciamento[i]->getNome() << std::endl;
+    if(gerenciamento.size() == 0){
+      std::cout << "Não há pessoas registradas" << std::endl;
+      return;
+    } else {
+      std::cout << "Pessoas registradas:" << std::endl;
+      int contador = 1;
+      for (int i = 0; i < gerenciamento.size(); i++) {
+          std::cout << contador;
+          contador++;
+          if(gerenciamento[i]->getTipo() == 1)
+            std::cout << "o - Atleta\t";
+          if(gerenciamento[i]->getTipo() == 2)
+            std::cout << "o - Comissao\t";
+          if(gerenciamento[i]->getTipo() == 3)
+            std::cout << "o - Torcedor\t";
+          std::cout << " : " << gerenciamento[i]->getNome() << std::endl;
+        }
     }
 }
 
