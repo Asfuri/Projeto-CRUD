@@ -9,6 +9,7 @@ int main() {
   Olimpiada.iniciarOlimpiada();
   
   while (1) {
+    // Abrir o menu principal do gerenciamento
     int error = Olimpiada.menu();
     if (error == 1)
       break;
@@ -17,3 +18,9 @@ int main() {
   Olimpiada.salvarArquivo(); 
   std::cout << "\n\nAte a proxima!";
 }
+
+// -> Faltando...
+
+// - Arrumar a estética 
+// - Tratar as entradas (opcional)
+// - Terminar de organizar o github

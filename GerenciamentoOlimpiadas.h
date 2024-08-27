@@ -27,17 +27,17 @@ private:
   void AdicionarPessoa(Pessoa *p);
   void lerArquivoOlimpiadas();
   void lerArquivoPessoas();
-  int lerDadosPessoa(); // Falta documentar
+  int lerDadosPessoa(); 
   void exibirTodos();
   Pessoa* buscar();
   void gerarRelatorio();
-  int alterarPessoa(); // Falta documentar
-  void removerPessoa(); // Falta documentar
+  int alterarPessoa(); 
+  void removerPessoa();
 
 public:
   void iniciarOlimpiada();
-  int menu(); // Falta documentar
-  void salvarArquivo(); // Falta documentar
+  int menu();
+  void salvarArquivo(); 
   GerenciamentoOlimpiadas();
   
 };
