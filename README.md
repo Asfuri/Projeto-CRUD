@@ -11,7 +11,7 @@ Esse foi um projeto desenvolvido por discentes do curso de *Engenharia da Comput
 
 ###  :volleyball: Docente:
 
--  	:skateboard: *[Derzu Omaia (derzu@ci.ufpb.br)](https://github.com/derzu)*
+-  	:skateboard: *[Derzu Omaia](https://github.com/derzu)*
 
 - Imagem PNG olimpíadas
 
