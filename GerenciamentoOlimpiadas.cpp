@@ -165,60 +165,70 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
 
   // ->> METODO COM PROBLEMA
 
-  // std::fstream arquivo;
-  // arquivo.open("dadosPessoas.txt", std::ios_base::in);
-  // if (!arquivo.is_open())
-  //   return;
+  std::fstream arquivo;
+  arquivo.open("dadosPessoas.txt", std::ios_base::in);
+  if (!arquivo.is_open()) // Retorna caso o arquivo não seja aberto
+    return;
 
-  // while (!arquivo.eof()) {
-  //   // Ler pessoa por pessoa do arquivo
-  //   // Alocando ao vector de pessoas da superclasse
-  //   Pessoa *pessoaAux;
-  //   int tipoPessoa, diaAux, mesAux, anoAux, idadeAux;
-  //   std::string pessoaNome, pessoaCodigo, pessoaNac;
-  //   arquivo >> tipoPessoa >> diaAux >> mesAux >> anoAux;
+  // Ler pessoa por pessoa do arquivo
+  // Alocando ao vector de pessoas da superclasse
+  
+  // Declaração de variáveis auxiliares para receberem os valores salvos
+  int tipoPessoa, diaAux, mesAux, anoAux;
+  std::string pessoaNome, pessoaCodigo, pessoaNac;
+  int idadeAux;
 
-  //   Data dataAux = Data(diaAux, mesAux, anoAux);
-  //   arquivo.ignore();
-  //   std::getline(arquivo, pessoaNome);
-  //   std::getline(arquivo, pessoaCodigo);
-  //   std::getline(arquivo, pessoaNac);
-  //   arquivo >> idadeAux;
+  while(arquivo >> tipoPessoa >> diaAux >> mesAux >> anoAux) {
+    arquivo.ignore();
+    Data dataAux = Data(diaAux, mesAux, anoAux);
 
-  //   if (tipoPessoa == 1) {
+    std::getline(arquivo, pessoaNome);
+    std::getline(arquivo, pessoaCodigo);
+    std::getline(arquivo, pessoaNac);
+    arquivo >> idadeAux;
 
-  //     int auxMedalha;
-  //     std::string auxMod;
-  //     arquivo >> auxMedalha;
-  //     arquivo.ignore();
-  //     std::getline(arquivo, auxMod);
-  //     pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMedalha, auxMod);
-  //     // Instanciando um atleta a partir dos dados do arquivo em PessoaAux
-  //   } else if (tipoPessoa == 2) {
+    if (tipoPessoa == 1) { // Atleta
 
-  //     std::string auxMod, auxEquipResp;
-  //     arquivo.ignore();
-  //     std::getline(arquivo, auxMod);
-  //     std::getline(arquivo, auxEquipResp);
-  //     pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMod, auxEquipResp);
+      int auxMedalha;
+      std::string auxMod;
+      arquivo >> auxMedalha;
+      arquivo.ignore();
+      std::getline(arquivo, auxMod);
+      Pessoa *pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMedalha, auxMod);
+      // Instanciando um atleta a partir dos dados do arquivo em PessoaAux
 
-  //     // Instanciando um membro da comissao a partir dos dados do arquivo em PessoaAux
-  //   } else if (tipoPessoa == 3) {
+      // Alocando pessoa auxiliar no vector
+      AdicionarPessoa(pessoaAux);
 
-  //     arquivo.ignore();
-  //     int bitStatusVip;
-  //     arquivo >> bitStatusVip;
-  //     bool auxStatusVip = (bitStatusVip == 1) ? true : false;
-  //     pessoaAux = new Torcedor(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxStatusVip);
-  //     // Instanciando um torcedor a partir dos dados do arquivo em PessoaAux
-  //   }
+    } else if (tipoPessoa == 2) { // Membro da Comissao
 
-  //   // Alocando pessoa auxiliar no vector
-  //   AdicionarPessoa(pessoaAux);
-  // };
+      std::string auxMod, auxEquipResp;
+      arquivo.ignore();
+      std::getline(arquivo, auxMod);
+      std::getline(arquivo, auxEquipResp);
+      Pessoa *pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMod, auxEquipResp);
 
-  // arquivo.close();
-  std::cout << "Aqui a gente leu o arquivo vlw meu chapa" <<std::endl;
+      // Instanciando um membro da comissao a partir dos dados do arquivo em PessoaAux
+
+      // Alocando pessoa auxiliar no vector
+      AdicionarPessoa(pessoaAux);
+
+    } else if (tipoPessoa == 3) { // Torcedor
+
+      arquivo.ignore();
+      int bitStatusVip;
+      arquivo >> bitStatusVip;
+      bool auxStatusVip = (bitStatusVip == 1) ? true : false;
+      Pessoa *pessoaAux = new Torcedor(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxStatusVip);
+
+      // Instanciando um torcedor a partir dos dados do arquivo em PessoaAux
+
+      // Alocando pessoa auxiliar no vector
+      AdicionarPessoa(pessoaAux);
+    }
+  };
+
+  arquivo.close();
 };
 
 void GerenciamentoOlimpiadas::iniciarOlimpiada() {
