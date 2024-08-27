@@ -13,7 +13,7 @@
 
 -  	:skateboard: *[Derzu Omaia (derzu@ci.ufpb.br)](https://github.com/derzu)*
 
-![](https://github.com/Projeto-CRUD/gifRepositorio.gif)
+![gifRepositorio](https://github.com/user-attachments/assets/18712b30-aedb-4b4c-85d7-bcd5c2435313)
 
 ## Objetivo:
 
