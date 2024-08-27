@@ -256,6 +256,14 @@ void GerenciamentoOlimpiadas::iniciarOlimpiada() {
 }
 
 int GerenciamentoOlimpiadas::lerDadosPessoa() {
+  /*
+    Esse método é responsável por ler diretamente do terminal todos os dados de uma determinada Pessoa
+    que o usuário desejar inserir, ele vai iniciar um ponteiro de Pessoa com as informações utilizando
+    o construtor da subclasse escolhida pelo usuário (tipo) e ao final do método irá chamar o método
+    de adicionar a pessoa no vector "gerenciamento"
+    
+    -> A partir desse método possuímos o  CREATE do sistema
+  */
   Pessoa *pessoaAux;
   std::string nome, codigo, nacionalidade;
   int dia, mes, ano, idade, tipoPessoa;
@@ -460,9 +468,23 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
 }
 
 int GerenciamentoOlimpiadas::alterarPessoa() {
-  // Pessoa *p = &buscar();
-  Pessoa *pessoaAlterar;
+  /*
+    Esse método é responsável por alterar as informações de uma determinada Pessoa que já está registrada,
+    alterando o elemento do vector, sendo o método de salvar o arquivo ao final da execução responsável por alterar no arquivo
+
+    -> Primeiramente permite ao usuário selecionar o elemento do vector, utilizando do método "buscar()"
+    -> Após o êxito em selecionar a Pessoa a ser alterada, o método irá ler qual propriedade, de acordo com o tipo, o usuário quer alterar
+    -> Considerando as propriedades de Pessoa, que são comuns entre as subclassses, essas podem ser
+    alterados diretamente sem precisar consultar o tipo
+
+    OBS -> Esse método não irá interagir com o 
+
+    -> Esse método é responsável pelo EDIT do sistema
+
+  */
   Pessoa *p = buscar();
+  if(!p)
+    return 1;
   int indice = 0;
   for (auto busca : gerenciamento) {
     if (busca->getCodigo() == p->getCodigo()) {
@@ -645,6 +667,14 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
 }
 
 void GerenciamentoOlimpiadas::removerPessoa() {
+  /*
+    Esse método é responsável por remover o registro de uma Pessoa, tendo em vista que o arquivo só será salvo ao final da execução, ele exclui diretamente do registro do vector "gerenciamento", deixando a alteração no arquivo, caso já tenha dados salvos dessa instância, por responsabilidade do método de salvar o arquivo
+
+    -> Primeiramente permite ao usuário selecionar o elemento do vector, utilizando do método "buscar()"
+    -> Após o êxito em selecionar a Pessoa a ser removida, o método irá remover e comunicar no terminal se a operação foi bem sucedida
+
+    -> Esse método é responsável pelo DELETE do sistema
+  */
   Pessoa *pessoaRemov = buscar();
   int indice = 0;
   if (pessoaRemov == nullptr) {
@@ -657,10 +687,18 @@ void GerenciamentoOlimpiadas::removerPessoa() {
     indice++;
   }
   gerenciamento.erase(gerenciamento.begin() + indice);
+  std::cout << "Pessoa removida com sucesso!" << std::endl;
   // remover
 }
 
 int GerenciamentoOlimpiadas::menu() {
+  /*
+    Esse método é responsável pela principal exibição no terminal, mostrando ao usuário suas opções de gerenciamento do registro das Pessoas.
+
+    -> Responsável por dar nível de autonomia ao usuário, já que, a partir desse método, o próprio usuário irá coordenar o fluxo da execução do programa
+
+    -> Responsável por chamar os principais grandes métodos a partir da escolha do usuário
+  */
   std::cout << "\n\n";
   std::cout << "1. Inserir pessoa" << std::endl;
   std::cout << "2. Listar pessoas" << std::endl;
@@ -668,11 +706,23 @@ int GerenciamentoOlimpiadas::menu() {
   std::cout << "4. Alterar pessoa" << std::endl;
   std::cout << "5. Remover pessoa" << std::endl;
   std::cout << "6. Exibir Relatorio" << std::endl;
-  std::cout << "7. Sair" << "\n\n-> ";
+  std::cout << "7. Sair" << std::endl;
 
-  int opcao;
-  std::cin >> opcao;
+  std::string opcaoStr;
+  std::cin >> std::ws;
+  std::cout << "\n-> ";
+  getline(std::cin, opcaoStr);
   std::cout << "\n";
+  
+  // Testar se a entrada é de fato um inteiro
+  while(std::stoi(opcaoStr) < 1 || stoi(opcaoStr) > 7) {
+    std::cout << "-> Valor não válido, tente outro" << std::endl;
+    std::cout << "\n-> ";
+    getline(std::cin, opcaoStr);
+    std::cout << "\n";
+  }
+  int opcao = std::stoi(opcaoStr);
+  
   switch (opcao) {
   case 1: {
     int erro = lerDadosPessoa();
@@ -742,7 +792,23 @@ int GerenciamentoOlimpiadas::menu() {
 };
 
 void GerenciamentoOlimpiadas::salvarArquivo() {
-  // FALTA ATUALIZAR ESSE METODO, FALTA IMPRIMIR O TIPO E OS ATRIBUTOS DO TIPO
+  /*
+    Esse método é responsável por salvar todos os dados do vector "gerenciamento" no arquivo "dadosPessoas.txt", salvando, em ordem, as Pessoas salvas no vector. O salvamento dos dados devem ser feitos na mesma ordem de que são lidos, que é:
+      - 1 . Tipo
+      - 2 . Dia da data de nascimento
+      - 3 . Mês da data de nascimento
+      - 4 . Ano da data de nascimento
+      - 5 . Nome
+      - 6 . Código
+      - 7 . Nacionalidade
+      - 8 . Medalha     ||  Modalidade          ||  StatusVip
+      - 9 . Modalidade  ||  Equipe Responsavel  ||
+
+    -> Esse método é responsável por manter todos os dados da execução na memória rígida da máquina, permitindo a execução sequencial do programa, tendo em vista que para os dados serem lidos, elem precisam ser salvos.
+
+    -> Esse método é chamado apenas no final da execução do programa, permitindo que as modificações só sejam "carimbadas" ao final da execução
+  */
+
   std::fstream arquivo;
   arquivo.open("dadosPessoas.txt", std::ios_base::out);
 
