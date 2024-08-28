@@ -389,33 +389,55 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   int count = 0;
   exibirTodos();
 
-  std::cout << "\n\nEscolha o nome\n->";
+  std::cout << "\n\nEscolha o nome\n-> ";
   std::string nome;
   std::cin >> std::ws;
   getline(std::cin, nome);
   std::cout << "\n";
+  int contador = 0, indice;
+
+  // Testar quantas pessoas tem com o nome digitado
   for (int i = 0; i < gerenciamento.size(); i++) {
-    if (gerenciamento[i]->getNome() == nome) {
-      std::cout << "Pessoa encontrada!\n"
-                << gerenciamento[i]->getNome() << " - ";
-      switch (gerenciamento[i]->getTipo()) {
-      case 1:
-        std::cout << "Atleta\n";
-        break;
-      case 2:
-        std::cout << "Comissao\n";
-        break;
-      case 3:
-        std::cout << "Torcedor\n";
-        break;
-      }
-      return gerenciamento[i];
+    if (gerenciamento[i]->getNome().find(nome) != -1) {
+      contador++;
+      indice = i;
     }
   }
+
   // No caso do nome ser incompatível com pelo menos um dos nomes no vector, o retorno será 
   // um nullptr (ponteiro vazio), esse retorno deverá ser tratado no local de chamada
-  std::cout << "Pessoa nao encontrada!" << std::endl;
-  return nullptr;
+  if(contador == 0) {
+    std::cout << "Pessoa nao encontrada!" << std::endl;
+    return nullptr;
+  }
+
+  if(contador == 1) 
+    return gerenciamento[indice];
+
+  int indiceEscolha;
+  for (int i = 0; i < gerenciamento.size(); i++) {
+      if(gerenciamento[i]->getNome().find(nome) != -1){
+
+        std::cout << i;
+
+        if(gerenciamento[i]->getTipo() == 1)
+          std::cout << " - Atleta\t";
+
+        if(gerenciamento[i]->getTipo() == 2)
+          std::cout << " - Comissao\t";
+
+        if(gerenciamento[i]->getTipo() == 3)
+          std::cout << " - Torcedor\t";
+
+        std::cout << gerenciamento[i]->getNome() << std::endl;
+      }
+    }
+    
+  std::cout << "Escolha o índice" << std::endl;
+  std::cout << "\n-> ";
+  std::cin >> indiceEscolha;
+  std::cout << "\n";
+  return gerenciamento[indiceEscolha];
 }
 
 void GerenciamentoOlimpiadas::gerarRelatorio() {
@@ -708,23 +730,6 @@ int GerenciamentoOlimpiadas::menu() {
   std::cout << "6. Exibir Relatorio" << std::endl;
   std::cout << "7. Sair" << std::endl;
 
-
-  // -> Não está funcionando 
-
-  // std::string opcaoStr;
-  // std::cout << "\n-> ";
-  // getline(std::cin, opcaoStr);
-  // std::cout << "\n";
-  
-  // Testar se a entrada é de fato um inteiro
-  // while(!std::stoi(opcaoStr)) {
-  //   std::cout << "-> Valor não válido, tente outro" << std::endl;
-  //   std::cout << "\n-> ";
-  //   getline(std::cin, opcaoStr);
-  //   std::cout << "\n";
-  // }
-  // int opcao = std::stoi(opcaoStr);
-
   std::cout << "\n-> ";
 
   int opcao;
@@ -750,9 +755,12 @@ int GerenciamentoOlimpiadas::menu() {
   case 3: {
     if(gerenciamento.size() == 0){
       std::cout << "Não possui pessoas registradas" << std::endl;
-      break;
+      return 0;
     }
     Pessoa *p = buscar();
+    if(!p){
+      return 0;
+    };
     switch (p->getTipo()) {
       case 1:
         dynamic_cast<Atleta *>(p)->exibir();
