@@ -437,7 +437,12 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   std::cout << "\n-> ";
   std::cin >> indiceEscolha;
   std::cout << "\n";
-  return gerenciamento[indiceEscolha];
+  if(indiceEscolha < gerenciamento.size()) {
+    return gerenciamento[indiceEscolha];
+  } else {
+    std::cout << "Índice inválido" << std::endl;
+    return nullptr;
+  }
 }
 
 void GerenciamentoOlimpiadas::gerarRelatorio() {
@@ -450,7 +455,7 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
 
     -> E é responsável também por imprimir no terminal as informações das Pessoas que estão cadastradas no sistema, sendo esses dados brutos e comparativos. Caso não haja Pessoas cadastradas, ele irá imprimir e retornar
   */
-  std::cout << "\n\n";
+  std::cout << "\n";
   std::cout << "Olimpiadas de " << Cidade << " " << DatadeInicio.getAno() << std::endl;
   std::cout << "Data de Inicio: ";
   DatadeInicio.exibir();
