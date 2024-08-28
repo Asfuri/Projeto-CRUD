@@ -11,7 +11,6 @@
 
 class Comissao : public Pessoa {
 protected:
-
   std::string modalidade;
   std::string equipeResponsavel;
 
@@ -20,7 +19,7 @@ public:
   virtual ~Comissao();
   Comissao(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int tipo, std::string modalidade, std::string equipeResponsavel);
   std::string getModalidade();
-  std::string getEquipe();
+  std::string getEquipeResponsavel();
   void exibir();
   // Setters
   void setDataDeNascimento(Data DataDeNascimento);

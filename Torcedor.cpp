@@ -12,7 +12,6 @@ Torcedor::Torcedor()
 };
 
 Torcedor::~Torcedor() {
-
 }
 
 Torcedor::Torcedor(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int tipo, bool statusVIP)
@@ -24,7 +23,7 @@ bool Torcedor::getStatusVIP() {
   return this->statusVIP;
 };
 
-void Torcedor::exibir(){
+void Torcedor::exibir() {
   std::cout << "Torcedor" << std::endl;
   Pessoa::exibir();
   std::cout << "VIP: ";
@@ -52,6 +51,6 @@ void Torcedor::setIdade(int idade) {
   Pessoa::setIdade(idade);
 };
 
-void Torcedor::setStatus(bool statusVIP) {
+void Torcedor::setStatusVIP(bool statusVIP) {
   this->statusVIP = statusVIP;
 };

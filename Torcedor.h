@@ -25,6 +25,6 @@ public:
   void setCodigo(std::string Codigo);
   void setNacionalidade(std::string Nacionalidade);
   void setIdade(int idade);
-  void setStatus(bool statusVIP);
+  void setStatusVIP(bool statusVIP);
 };
 #endif

@@ -32,12 +32,7 @@
 *.app
 
 ### VisualStudioCode ###
-.vscode/*
-.vscode/settings.json
-.vscode/tasks.json
-.vscode/launch.json
-.vscode/extensions.json
-.vscode/*.code-snippets
+.vscode/
 
 # Local History for Visual Studio Code
 .history/
@@ -58,5 +53,6 @@
 # Considerando o uso individual do programa, nos, desenvolvedores, preferimos deixa-los invisiveis
 # no codigo
 *.txt
+*.lock
 
 
