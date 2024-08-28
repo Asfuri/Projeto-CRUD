@@ -744,19 +744,19 @@ int GerenciamentoOlimpiadas::menu() {
 
   std::cout << "\n-> ";
 
-  int opcao;
+  char opcao;
   std::cin >> opcao;
   std::cout << "\n";
 
   switch (opcao) {
-  case 1: {
+  case '1': {
     int erro = lerDadosPessoa();
     if (erro == 1)
       return 1;
     return 0;
   };
-  case 2: {
-    if (gerenciamento.size() == 0) {
+  case '2': {
+    if(gerenciamento.size() == 0){
       std::cout << "Não possui pessoas registradas" << std::endl;
       break;
     }
@@ -764,8 +764,8 @@ int GerenciamentoOlimpiadas::menu() {
     break;
     // listar
   };
-  case 3: {
-    if (gerenciamento.size() == 0) {
+  case '3': {
+    if(gerenciamento.size() == 0){
       std::cout << "Não possui pessoas registradas" << std::endl;
       return 0;
     }
@@ -786,7 +786,7 @@ int GerenciamentoOlimpiadas::menu() {
     }
     break;
   };
-  case 4: {
+  case '4': {
     // alterar
     if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
@@ -797,23 +797,25 @@ int GerenciamentoOlimpiadas::menu() {
       return 1;
     return 0;
   };
-  case 5: {
-    if (gerenciamento.size() == 0) {
+  case '5': {
+    if(gerenciamento.size() == 0){
       std::cout << "Não possui pessoas registradas" << std::endl;
       break;
     }
     removerPessoa();
     return 0;
   };
-  case 6: {
+  case '6': {
     gerarRelatorio();
     break;
   };
-  case 7: {
+  case '7': {
     return 1;
     // sair
   };
   default:
+    std::cout << "Entrada inválida! " << std::endl;
+    return 0;
     break;
   }
   return 0;
