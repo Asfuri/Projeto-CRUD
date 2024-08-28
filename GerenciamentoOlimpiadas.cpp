@@ -1,4 +1,6 @@
 #include <assert.h>
+#include <algorithm>
+#include <cctype>  
 #include <iostream>
 #include <list>
 #include <string>
@@ -379,6 +381,11 @@ void GerenciamentoOlimpiadas::exibirTodos() {
     }
   }
 }
+std::string paraMinusculo(const std::string &stringComMaiusculo) {
+  std::string stringMinuscula = stringComMaiusculo;
+  std::transform(stringMinuscula.begin(), stringMinuscula.end(), stringMinuscula.begin(), ::tolower);
+  return stringMinuscula;
+}
 
 Pessoa *GerenciamentoOlimpiadas::buscar() {
   /*
@@ -393,12 +400,13 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   std::string nome;
   std::cin >> std::ws;
   getline(std::cin, nome);
+  std::transform(nome.begin(), nome.end(), nome.begin(), ::tolower);
   std::cout << "\n";
   int contador = 0, indice;
 
   // Testar quantas pessoas tem com o nome digitado
   for (int i = 0; i < gerenciamento.size(); i++) {
-    if (gerenciamento[i]->getNome().find(nome) != -1) {
+    if (paraMinusculo(gerenciamento[i]->getNome()).find(nome) != -1) {
       contador++;
       indice = i;
     }
