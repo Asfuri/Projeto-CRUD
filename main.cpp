@@ -21,6 +21,6 @@ int main() {
 
 // -> Faltando...
 
-// - Arrumar a estÃ©tica 
+// - Arrumar a estética 
 // - Tratar as entradas (opcional)
 // - Terminar de organizar o github

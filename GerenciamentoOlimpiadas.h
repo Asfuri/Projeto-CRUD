@@ -2,11 +2,11 @@
 #define GERENCIAMENTO_OLIMPIADAS_H
 
 #include <assert.h>
+#include <fstream>
 #include <iostream>
 #include <list>
 #include <string>
 #include <vector>
-#include <fstream>
 
 #include "Atleta.h"
 #include "Comissao.h"
@@ -16,29 +16,28 @@
 
 class GerenciamentoOlimpiadas {
 private:
-  Data DatadeInicio;
-  std::string Cidade;
-  Data DataFinal;
-  std::vector<Pessoa*> gerenciamento;
+  Data dataInicio;
+  std::string cidade;
+  Data dataFinal;
+  std::vector<Pessoa *> gerenciamento;
   std::string mascote;
 
   // Metodos privados
-  void setOlimpiada(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote);
+  void setOlimpiada(Data dataInicio, std::string cidade, Data dataFinal, std::string mascote);
   void AdicionarPessoa(Pessoa *p);
   void lerArquivoOlimpiadas();
   void lerArquivoPessoas();
-  int lerDadosPessoa(); 
+  int lerDadosPessoa();
   void exibirTodos();
-  Pessoa* buscar();
+  Pessoa *buscar();
   void gerarRelatorio();
-  int alterarPessoa(); 
+  int alterarPessoa();
   void removerPessoa();
 
 public:
   void iniciarOlimpiada();
   int menu();
-  void salvarArquivo(); 
+  void salvarArquivo();
   GerenciamentoOlimpiadas();
-  
 };
 #endif

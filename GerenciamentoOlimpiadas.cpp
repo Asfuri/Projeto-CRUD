@@ -11,30 +11,30 @@ GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
   Contrutor padrão -> Será utilizado na inicialização do programa,
   a única instância dessa classe deverá ser inicializada sem os dados armazenados,
   para então serem 'settados' todos os seus dados com "setOlimpiadas", método esse que
-  é chamado no momento de leitura dos dados das olimpíadas, seja do arquivo, seja diretamente 
+  é chamado no momento de leitura dos dados das olimpíadas, seja do arquivo, seja diretamente
   do terminal
   */
-  this->DatadeInicio = Data();
-  this->Cidade = "";
-  this->DataFinal = Data();
+  this->dataInicio = Data();
+  this->cidade = "";
+  this->dataFinal = Data();
   this->mascote = "";
 }
 
-void GerenciamentoOlimpiadas::setOlimpiada(Data DatadeInicio, std::string Cidade, Data DataFinal, std::string mascote) {
+void GerenciamentoOlimpiadas::setOlimpiada(Data dataInicio, std::string cidade, Data dataFinal, std::string mascote) {
   /*
     Método para atribuir os dados das olimpíadas na instância da classe, é chamado após
     a leitura de dados, ou do arquivo ou do terminal
   */
-  this->DatadeInicio = DatadeInicio;
-  this->Cidade = Cidade;
-  this->DataFinal = DataFinal;
+  this->dataInicio = dataInicio;
+  this->cidade = cidade;
+  this->dataFinal = dataFinal;
   this->mascote = mascote;
 }
 
 void GerenciamentoOlimpiadas::AdicionarPessoa(Pessoa *p) {
   /*
     Esse método é responsável por acrescentar um ponteiro de Pessoa ao vector "gerenciamento"
-    Esse método é chamado diversas vezes por outros métodos, tendo em vista que ele é método responsável por inserir Pessoas no vector (interação direta), sendo a chave do CREATE do sistema 
+    Esse método é chamado diversas vezes por outros métodos, tendo em vista que ele é método responsável por inserir Pessoas no vector (interação direta), sendo a chave do CREATE do sistema
   */
   gerenciamento.push_back(p);
 }
@@ -46,15 +46,15 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     ser lidos do próprio .txt, caso esse exista, ou do terminal.
 
     -> Utiliza do setter da classe
-    
+
     Execução ideal:
       -> Primeira execução:
         Os dados devem ser lidos do terminal e salvos no .txt para as próximas execuções
       -> As sucessivas execuções:
-        Os dados devem ser lidos diretamente do arquivo, podendo ser consultado pelo usuário 
+        Os dados devem ser lidos diretamente do arquivo, podendo ser consultado pelo usuário
         utilizando da opção 6 do menu
 
-    OBS.: Para alteração dos dados, o usuário deverá apagar o .txt do ambiente em que o 
+    OBS.: Para alteração dos dados, o usuário deverá apagar o .txt do ambiente em que o
     programa está sendo executado
   */
   std::fstream arqOlimpiada;
@@ -62,13 +62,13 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
 
   if (arqOlimpiada.is_open()) {
     int diaAux, mesAux, anoAux;
-    std::string Cidade, mascote;
+    std::string cidade, mascote;
 
     arqOlimpiada >> diaAux >> mesAux >> anoAux;
     Data dataInicioAux(diaAux, mesAux, anoAux);
     arqOlimpiada.ignore();
 
-    getline(arqOlimpiada, Cidade);
+    getline(arqOlimpiada, cidade);
     arqOlimpiada >> diaAux >> mesAux >> anoAux;
 
     Data dataFinalAux(diaAux, mesAux, anoAux);
@@ -76,60 +76,60 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
 
     getline(arqOlimpiada, mascote);
 
-    setOlimpiada(dataInicioAux, Cidade, dataFinalAux, mascote);
+    setOlimpiada(dataInicioAux, cidade, dataFinalAux, mascote);
     arqOlimpiada.close();
 
   } else {
     arqOlimpiada.close();
     int diaAux, mesAux, anoAux, anoFinal;
 
-    std::string Cidade, mascote;
+    std::string cidade, mascote;
     std::cout << "Digite a cidade sede " << std::endl;
     std::cout << "\n-> ";
-    getline(std::cin, Cidade);
+    getline(std::cin, cidade);
     std::cout << "\n";
 
-    std::cout << "Digite o ano das olimpiadas de " << Cidade << std::endl;
+    std::cout << "Digite o ano das olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> anoAux;
     std::cout << "\n";
 
-    std::cout << "Digite o mes de " << anoAux << " que comecam as olimpiadas de " << Cidade << std::endl;
+    std::cout << "Digite o mes de " << anoAux << " que comecam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> mesAux;
     std::cout << "\n";
 
-    std::cout << "Digite dia do mes de " << mesAux << "/" << anoAux << " que comecam as olimpiadas de " << Cidade << std::endl;
+    std::cout << "Digite dia do mes de " << mesAux << "/" << anoAux << " que comecam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> diaAux;
     std::cout << "\n";
 
     Data dataInicioAux(diaAux, mesAux, anoAux);
 
-    std::cout << "Digite o ano que acabam as olimpiadas de " << Cidade << std::endl;
+    std::cout << "Digite o ano que acabam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> anoFinal;
     std::cout << "\n";
 
-    std::cout << "Digite o mes de " << anoAux << " que acabam as olimpiadas de " << Cidade << std::endl;
+    std::cout << "Digite o mes de " << anoAux << " que acabam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> mesAux;
     std::cout << "\n";
 
-    std::cout << "Digite dia do mes de " << mesAux << "/" << anoAux << " que acabam as olimpiadas de " << Cidade << std::endl;
+    std::cout << "Digite dia do mes de " << mesAux << "/" << anoAux << " que acabam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     std::cin >> diaAux;
     std::cout << "\n";
 
     Data dataFinalAux(diaAux, mesAux, anoFinal);
 
-    std::cout << "Digite o nome do mascote das olimpiadas de " << Cidade << " " << anoAux << std::endl;
+    std::cout << "Digite o nome do mascote das olimpiadas de " << cidade << " " << anoAux << std::endl;
     std::cout << "\n-> ";
     std::cin.ignore();
     getline(std::cin, mascote);
     std::cout << "\n";
 
-    setOlimpiada(dataInicioAux, Cidade, dataFinalAux, mascote);
+    setOlimpiada(dataInicioAux, cidade, dataFinalAux, mascote);
 
     // Comeca a escrever no arquivo as informacoes sobre a olimpiada
     // O usuario so consegue "criar" outra olimpiada se apagar o arquivo olimpiada.txt
@@ -142,7 +142,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     arqOlimpiada << dataInicioAux.getAno() << std::endl;
 
     // Salvando a cidade
-    arqOlimpiada << Cidade << std::endl;
+    arqOlimpiada << cidade << std::endl;
 
     // Salvando a data final
     arqOlimpiada << dataFinalAux.getDia() << std::endl;
@@ -158,7 +158,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
 
 void GerenciamentoOlimpiadas::lerArquivoPessoas() {
   /*
-    Esse método é responsável pela leitura do .txt "dadosPessoas", que deverá armazenar todas 
+    Esse método é responsável pela leitura do .txt "dadosPessoas", que deverá armazenar todas
     as pessoas da última execução (respeitando a decisão do usuário de inserir, alterar, e remover)
     Para articular a leitura de acordo com a subclasse de pessoa, o código deverá ler na seguinte ordem:
       - 1 . Tipo
@@ -186,13 +186,13 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
 
   // Ler pessoa por pessoa do arquivo
   // Alocando ao vector de pessoas da superclasse
-  
+
   // Declaração de variáveis auxiliares para receberem os valores salvos
   int tipoPessoa, diaAux, mesAux, anoAux;
   std::string pessoaNome, pessoaCodigo, pessoaNac;
   int idadeAux;
 
-  while(arquivo >> tipoPessoa >> diaAux >> mesAux >> anoAux) {
+  while (arquivo >> tipoPessoa >> diaAux >> mesAux >> anoAux) {
     arquivo.ignore();
     Data dataAux = Data(diaAux, mesAux, anoAux);
 
@@ -261,7 +261,7 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
     que o usuário desejar inserir, ele vai iniciar um ponteiro de Pessoa com as informações utilizando
     o construtor da subclasse escolhida pelo usuário (tipo) e ao final do método irá chamar o método
     de adicionar a pessoa no vector "gerenciamento"
-    
+
     -> A partir desse método possuímos o  CREATE do sistema
   */
   Pessoa *pessoaAux;
@@ -357,27 +357,27 @@ void GerenciamentoOlimpiadas::exibirTodos() {
   /*
     Esse método é responsável por exibir no terminal todos os índices do vector "gerenciamento" de maneira otimizada, imprimindo o valor ordinal do elemento no vector, o tipo da Pessoa (de qual subclasse é uma instância), seguido do nome. Ex.:
 
-    1o - Atleta : Michael Phelps 
+    1o - Atleta : Michael Phelps
     2o - Comissao : Bernardo Rocha
   */
-    if(gerenciamento.size() == 0){
-      std::cout << "Não há pessoas registradas" << std::endl;
-      return;
-    } else {
-      std::cout << "Pessoas registradas:" << std::endl;
-      int contador = 1;
-      for (int i = 0; i < gerenciamento.size(); i++) {
-          std::cout << contador;
-          contador++;
-          if(gerenciamento[i]->getTipo() == 1)
-            std::cout << "o - Atleta\t";
-          if(gerenciamento[i]->getTipo() == 2)
-            std::cout << "o - Comissao\t";
-          if(gerenciamento[i]->getTipo() == 3)
-            std::cout << "o - Torcedor\t";
-          std::cout << " : " << gerenciamento[i]->getNome() << std::endl;
-        }
+  if (gerenciamento.size() == 0) {
+    std::cout << "Não há pessoas registradas" << std::endl;
+    return;
+  } else {
+    std::cout << "Pessoas registradas:" << std::endl;
+    int contador = 1;
+    for (int i = 0; i < gerenciamento.size(); i++) {
+      std::cout << contador;
+      contador++;
+      if (gerenciamento[i]->getTipo() == 1)
+        std::cout << "o - Atleta\t";
+      if (gerenciamento[i]->getTipo() == 2)
+        std::cout << "o - Comissao\t";
+      if (gerenciamento[i]->getTipo() == 3)
+        std::cout << "o - Torcedor\t";
+      std::cout << " : " << gerenciamento[i]->getNome() << std::endl;
     }
+  }
 }
 
 Pessoa *GerenciamentoOlimpiadas::buscar() {
@@ -404,40 +404,40 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
     }
   }
 
-  // No caso do nome ser incompatível com pelo menos um dos nomes no vector, o retorno será 
+  // No caso do nome ser incompatível com pelo menos um dos nomes no vector, o retorno será
   // um nullptr (ponteiro vazio), esse retorno deverá ser tratado no local de chamada
-  if(contador == 0) {
+  if (contador == 0) {
     std::cout << "Pessoa nao encontrada!" << std::endl;
     return nullptr;
   }
 
-  if(contador == 1) 
+  if (contador == 1)
     return gerenciamento[indice];
 
   int indiceEscolha;
   for (int i = 0; i < gerenciamento.size(); i++) {
-      if(gerenciamento[i]->getNome().find(nome) != -1){
+    if (gerenciamento[i]->getNome().find(nome) != -1) {
 
-        std::cout << i;
+      std::cout << i;
 
-        if(gerenciamento[i]->getTipo() == 1)
-          std::cout << " - Atleta\t";
+      if (gerenciamento[i]->getTipo() == 1)
+        std::cout << " - Atleta\t";
 
-        if(gerenciamento[i]->getTipo() == 2)
-          std::cout << " - Comissao\t";
+      if (gerenciamento[i]->getTipo() == 2)
+        std::cout << " - Comissao\t";
 
-        if(gerenciamento[i]->getTipo() == 3)
-          std::cout << " - Torcedor\t";
+      if (gerenciamento[i]->getTipo() == 3)
+        std::cout << " - Torcedor\t";
 
-        std::cout << gerenciamento[i]->getNome() << std::endl;
-      }
+      std::cout << gerenciamento[i]->getNome() << std::endl;
     }
-    
+  }
+
   std::cout << "Escolha o índice" << std::endl;
   std::cout << "\n-> ";
   std::cin >> indiceEscolha;
   std::cout << "\n";
-  if(indiceEscolha < gerenciamento.size()) {
+  if (indiceEscolha < gerenciamento.size()) {
     return gerenciamento[indiceEscolha];
   } else {
     std::cout << "Índice inválido" << std::endl;
@@ -448,7 +448,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
 void GerenciamentoOlimpiadas::gerarRelatorio() {
   /*
     -> Esse método é responsável por imprimir no terminal as informações gerais das Olimpíadas, sendo elas:
-      - Cidade e ano
+      - cidade e ano
       - Data de Inicio
       - Data Final
       - Nome do Mascote
@@ -456,13 +456,12 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
     -> E é responsável também por imprimir no terminal as informações das Pessoas que estão cadastradas no sistema, sendo esses dados brutos e comparativos. Caso não haja Pessoas cadastradas, ele irá imprimir e retornar
   */
   std::cout << "\n";
-  std::cout << "Olimpiadas de " << Cidade << " " << DatadeInicio.getAno() << std::endl;
+  std::cout << "Olimpiadas de " << cidade << " " << dataInicio.getAno() << std::endl;
   std::cout << "Data de Inicio: ";
-  DatadeInicio.exibir();
+  dataInicio.exibir();
   std::cout << "Data Final: ";
-  DataFinal.exibir();
+  dataFinal.exibir();
   std::cout << "Mascote dos jogos: " << mascote << "\n\n";
-
 
   int countTotal = 0, countTorcedor = 0, countComissao = 0, countAtleta = 0;
 
@@ -504,13 +503,13 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     -> Considerando as propriedades de Pessoa, que são comuns entre as subclassses, essas podem ser
     alterados diretamente sem precisar consultar o tipo
 
-    OBS -> Esse método não irá interagir com o 
+    OBS -> Esse método não irá interagir com o
 
     -> Esse método é responsável pelo EDIT do sistema
 
   */
   Pessoa *p = buscar();
-  if(!p)
+  if (!p)
     return 1;
   int indice = 0;
   for (auto busca : gerenciamento) {
@@ -686,7 +685,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
 
     if ((vip.find("s") != -1) || (vip.find("S") != -1) ||
         (vip.find("y") != -1) || (vip.find("y") != -1)) {
-      dynamic_cast<Torcedor *>(gerenciamento[indice])->setStatus(!dynamic_cast<Torcedor *>(gerenciamento[indice])->getStatusVIP());
+      dynamic_cast<Torcedor *>(gerenciamento[indice])->setStatusVIP(!dynamic_cast<Torcedor *>(gerenciamento[indice])->getStatusVIP());
       std::cout << "Status VIP de " << gerenciamento[indice]->getNome() << " alterado com sucesso!" << std::endl;
       return 0;
     }
@@ -740,7 +739,7 @@ int GerenciamentoOlimpiadas::menu() {
   int opcao;
   std::cin >> opcao;
   std::cout << "\n";
-  
+
   switch (opcao) {
   case 1: {
     int erro = lerDadosPessoa();
@@ -749,7 +748,7 @@ int GerenciamentoOlimpiadas::menu() {
     return 0;
   };
   case 2: {
-    if(gerenciamento.size() == 0){
+    if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
       break;
     }
@@ -758,30 +757,30 @@ int GerenciamentoOlimpiadas::menu() {
     // listar
   };
   case 3: {
-    if(gerenciamento.size() == 0){
+    if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
       return 0;
     }
     Pessoa *p = buscar();
-    if(!p){
+    if (!p) {
       return 0;
     };
     switch (p->getTipo()) {
-      case 1:
-        dynamic_cast<Atleta *>(p)->exibir();
-        break;
-      case 2:
-        dynamic_cast<Comissao *>(p)->exibir();
-        break;
-      case 3:
-        dynamic_cast<Torcedor *>(p)->exibir();
-        break;
-      }
+    case 1:
+      dynamic_cast<Atleta *>(p)->exibir();
+      break;
+    case 2:
+      dynamic_cast<Comissao *>(p)->exibir();
+      break;
+    case 3:
+      dynamic_cast<Torcedor *>(p)->exibir();
+      break;
+    }
     break;
   };
   case 4: {
     // alterar
-    if(gerenciamento.size() == 0){
+    if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
       break;
     }
@@ -791,7 +790,7 @@ int GerenciamentoOlimpiadas::menu() {
     return 0;
   };
   case 5: {
-    if(gerenciamento.size() == 0){
+    if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
       break;
     }
@@ -853,14 +852,14 @@ void GerenciamentoOlimpiadas::salvarArquivo() {
       arquivo << dynamic_cast<Atleta *>(pessoa)->getMedalhaNum() << std::endl;
       arquivo << dynamic_cast<Atleta *>(pessoa)->getModalidade() << std::endl;
       break;
-    
+
     case 2:
       arquivo << dynamic_cast<Comissao *>(pessoa)->getModalidade() << std::endl;
-      arquivo << dynamic_cast<Comissao *>(pessoa)->getEquipe() << std::endl;
+      arquivo << dynamic_cast<Comissao *>(pessoa)->getEquipeResponsavel() << std::endl;
       break;
 
     case 3:
-      if(arquivo << dynamic_cast<Torcedor *>(pessoa)->getStatusVIP())
+      if (arquivo << dynamic_cast<Torcedor *>(pessoa)->getStatusVIP())
         arquivo << 1 << std::endl;
       else
         arquivo << 0 << std::endl;
@@ -869,5 +868,4 @@ void GerenciamentoOlimpiadas::salvarArquivo() {
       break;
     }
   }
-  
 }
