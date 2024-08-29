@@ -5,7 +5,11 @@
 #include <list>
 #include <string>
 #include <vector>
-
+#ifdef _WIN32
+#include <Windows.h>
+#else
+#include <unistd.h>
+#endif
 #include "GerenciamentoOlimpiadas.h"
 
 GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
@@ -449,6 +453,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
     return gerenciamento[indiceEscolha];
   } else {
     std::cout << "Índice inválido" << std::endl;
+    
     return nullptr;
   }
 }
@@ -714,6 +719,7 @@ void GerenciamentoOlimpiadas::removerPessoa() {
   int indice = 0;
   if (pessoaRemov == nullptr) {
     std::cout << "Pessoa nao encontrada, logo, nao sera apagada" << std::endl;
+    sleep(1.4);
     return;
   };
   for (auto p : gerenciamento) {
@@ -759,9 +765,11 @@ int GerenciamentoOlimpiadas::menu() {
   case '2': {
     if(gerenciamento.size() == 0){
       std::cout << "Não possui pessoas registradas" << std::endl;
+      sleep(1.4);
       break;
     }
     exibirTodos();
+    sleep(1.4);
     break;
     // listar
   };
@@ -777,12 +785,15 @@ int GerenciamentoOlimpiadas::menu() {
     switch (p->getTipo()) {
     case 1:
       dynamic_cast<Atleta *>(p)->exibir();
+      sleep(1.4);
       break;
     case 2:
       dynamic_cast<Comissao *>(p)->exibir();
+      sleep(1.4);
       break;
     case 3:
       dynamic_cast<Torcedor *>(p)->exibir();
+      sleep(1.4);
       break;
     }
     break;
@@ -791,6 +802,7 @@ int GerenciamentoOlimpiadas::menu() {
     // alterar
     if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
+      sleep(1.4);
       break;
     }
     int erro = alterarPessoa();
@@ -800,13 +812,16 @@ int GerenciamentoOlimpiadas::menu() {
   case '5': {
     if(gerenciamento.size() == 0){
       std::cout << "Não possui pessoas registradas" << std::endl;
+      sleep(1.4);
       break;
     }
     removerPessoa();
+    sleep(1.4);
     return 0;
   };
   case '6': {
     gerarRelatorio();
+    sleep(1.4);
     break;
   };
   case '7': {
@@ -815,6 +830,7 @@ int GerenciamentoOlimpiadas::menu() {
   };
   default:
     std::cout << "Entrada inválida! " << std::endl;
+    sleep(1.4);
     return 0;
     break;
   }
