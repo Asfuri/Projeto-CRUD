@@ -83,8 +83,33 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
 
   } else {
     arqOlimpiada.close();
-    int diaAux, mesAux, anoAux, anoFinal;
 
+    std::string desenvolvedores[] = {"Eduardo Asfuri Carvalho", "Lucas Henrique Vieira da Silva", "Marco Antonio de Vasconcelos Souza Filho"};
+    std::cout << "**********************************************\n";
+    std::cout << "*                                            *\n";
+    std::cout << "*     Bem-vindo ao nosso projeto de CRUD     *\n";
+    std::cout << "*         com tema de Olimpíadas!            *\n";
+    std::cout << "*                                            *\n";
+    std::cout << "**********************************************\n\n";
+    std::cout << "\033[34m   ***     \033[33m  ***     \033[37m  ***     \033[32m  ***     \033[31m  ***   \n";
+    std::cout << "\033[34m *     *  \033[33m*     *  \033[37m*     *  \033[32m*     *  \033[31m*     *  \n";
+    std::cout << "\033[34m*       * \033[33m*       * \033[37m*       * \033[32m*       * \033[31m*       * \n";
+    std::cout << "\033[34m *     *   \033[33m*     *   \033[37m*     *   \033[32m*     *   \033[31m*     *  \n";
+    std::cout << "\033[34m   ***       \033[33m***       \033[37m***       \033[32m***       \033[31m***    \n";
+    std::cout << "\033[0m\n\n";  // Reseta as cores
+
+    std::cout << "Desenvolvedores do projeto:\n";
+    std::cout << "----------------------------------------------\n";
+    std::cout << "* Eduardo Asfuri Carvalho                    * \n";
+    std::cout << "* Lucas Henrique veira da Silva              * \n";
+    std::cout << "* Marco Antonio de Vasconcelos Souza Filho   * \n";
+
+    std::cout << "----------------------------------------------\n";
+    std::cout << "Professor Responsável:\n";
+    std::cout << "* Derzu Omaia                                *\n";
+    std::cout << "----------------------------------------------\n\n";
+    sleep(1);
+    int diaAux, mesAux, anoAux, anoFinal;
     std::string cidade, mascote;
     std::cout << "Digite a cidade sede " << std::endl;
     std::cout << "\n-> ";
