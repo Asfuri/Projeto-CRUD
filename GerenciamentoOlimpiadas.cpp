@@ -392,14 +392,14 @@ void GerenciamentoOlimpiadas::exibirTodos() {
     std::cout << "Pessoas registradas:" << std::endl;
     int contador = 1;
     for (int i = 0; i < gerenciamento.size(); i++) {
-      std::cout << contador;
+      std::cout << "\033[36m" << contador << "o\033[0m";
       contador++;
       if (gerenciamento[i]->getTipo() == 1)
-        std::cout << "o - Atleta\t";
+        std::cout << " - Atleta\t";
       if (gerenciamento[i]->getTipo() == 2)
-        std::cout << "o - Comissao\t";
+        std::cout << " - Comissao\t";
       if (gerenciamento[i]->getTipo() == 3)
-        std::cout << "o - Torcedor\t";
+        std::cout << " - Torcedor\t";
       std::cout << " : " << gerenciamento[i]->getNome() << std::endl;
     }
   }
@@ -456,7 +456,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
 
     if (paraMinusculo(gerenciamento[i]->getNome()).find(nome) != -1) {
       filtroPessoasIndice.push_back(gerenciamento[i]);
-      std::cout << filtroPessoasIndice.size() - 1;
+      std::cout << "\033[36m" << filtroPessoasIndice.size() - 1 << "\033[0m";
 
       if (gerenciamento[i]->getTipo() == 1)
         std::cout << " - Atleta\t";
@@ -499,12 +499,12 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
     -> E é responsável também por imprimir no terminal as informações das Pessoas que estão cadastradas no sistema, sendo esses dados brutos e comparativos. Caso não haja Pessoas cadastradas, ele irá imprimir e retornar
   */
   std::cout << "\n";
-  std::cout << "Olimpiadas de " << cidade << " " << dataInicio.getAno() << std::endl;
-  std::cout << "Data de Inicio: ";
+  std::cout << "Olimpiadas de \033[33m" << cidade << " " << dataInicio.getAno() << "\033[0m" << std::endl;
+  std::cout << "Data de Inicio: \033[33m";
   dataInicio.exibir();
-  std::cout << "Data Final: ";
+  std::cout << "\033[0mData Final: \033[33m";
   dataFinal.exibir();
-  std::cout << "Mascote dos jogos: " << mascote << "\n\n";
+  std::cout << "\033[0mMascote dos jogos: \033[33m" << mascote << "\n\n\033[0m";
 
   int countTotal = 0, countTorcedor = 0, countComissao = 0, countAtleta = 0;
 
@@ -521,7 +521,7 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
 
   if (countTotal == 0) {
     // Caso o vector seja vazio, ele imprime esse fato e retorna
-    std::cout << "Nao ha pessoas cadastradas" << std::endl;
+    std::cout << "\033[0mNao ha pessoas cadastradas\033[33m" << std::endl;
     return;
   } else {
     // Imprime os dados brutos e comparativos das Pessoas
@@ -529,10 +529,10 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
     float porcComissao = 100 * (float)countComissao / (float)countTotal;
     float porcTorcedor = 100 * (float)countTorcedor / (float)countTotal;
 
-    std::cout << "Quantidade total de pessoas: " << countTotal << std::endl;
-    std::cout << "Quantidade total de Atletas: " << countAtleta << " (" << porcAtleta << "%)" << std::endl;
-    std::cout << "Quantidade total de Membros da Comissao: " << countComissao << " (" << porcComissao << "%)" << std::endl;
-    std::cout << "Quantidade total de Torcedores: " << countTorcedor << " (" << porcTorcedor << "%)" << std::endl;
+    std::cout << "Quantidade total de pessoas: \033[33m" << countTotal << "\033[0m" <<std::endl;
+    std::cout << "Quantidade total de Atletas: \033[33m" << countAtleta << " (" << porcAtleta << "%)\033[0m" << std::endl;
+    std::cout << "Quantidade total de Membros da Comissao: \033[33m" << countComissao << " (" << porcComissao << "%)\033[0m" << std::endl;
+    std::cout << "Quantidade total de Torcedores: \033[33m" << countTorcedor << " (" << porcTorcedor << "%)\033[0m" << std::endl;
   }
 }
 
@@ -570,23 +570,23 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   char escolha;
 
   std::cout << "Digite o que sera alterado" << std::endl;
-  std::cout << "-> 1 Data de Nascimento" << std::endl;
-  std::cout << "-> 2 Nome" << std::endl;
-  std::cout << "-> 3 Codigo" << std::endl;
-  std::cout << "-> 4 Nacionalidade" << std::endl;
+  std::cout << "-> \033[36m1\033[0m Data de Nascimento" << std::endl;
+  std::cout << "-> \033[36m2\033[0m Nome" << std::endl;
+  std::cout << "-> \033[36m3\033[0m Codigo" << std::endl;
+  std::cout << "-> \033[36m4\033[0m Nacionalidade" << std::endl;
 
   if (p->getTipo() == 1) {
-    std::cout << "-> 5 Medalha" << std::endl;
-    std::cout << "-> 6 Modalidade" << std::endl;
+    std::cout << "-> \033[36m5\033[0m Medalha" << std::endl;
+    std::cout << "-> \033[36m6\033[0m Modalidade" << std::endl;
     std::cout << "\n-> ";
 
   } else if (p->getTipo() == 2) {
-    std::cout << "-> 5 Modalidade" << std::endl;
-    std::cout << "-> 6 Equipe de atuacao" << std::endl;
+    std::cout << "-> \033[36m5\033[0m Modalidade" << std::endl;
+    std::cout << "-> \033[36m6\033[0m Equipe de atuacao" << std::endl;
     std::cout << "\n-> ";
 
   } else if (p->getTipo() == 3) {
-    std::cout << "-> 5 Status VIP" << std::endl;
+    std::cout << "-> \033[36m5\033[0m Status VIP" << std::endl;
     std::cout << "\n-> ";
   }
 
@@ -611,11 +611,11 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "\n";
     Data novaDataDeNascimento(diaAux, mesAux, anoAux);
     gerenciamento[indice]->setDataDeNascimento(novaDataDeNascimento);
-    std::cout << "Nova data de nascimento de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+    std::cout << "Nova data de nascimento de " << gerenciamento[indice]->getNome() << " \033[35mdefinida\033[0m com sucesso!" << std::endl;
 
     int idade = dataInicio.getAno() - anoAux;
     gerenciamento[indice]->setIdade(idade);
-    std::cout << "Nova idade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+    std::cout << "Nova idade de " << gerenciamento[indice]->getNome() << " \033[35mdefinida\033[0m com sucesso!" << std::endl;
     return 0;
   } break;
   case '2': {
@@ -627,7 +627,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     getline(std::cin, novoNome);
     std::cout << "\n";
     gerenciamento[indice]->setNome(novoNome);
-    std::cout << "Novo nome definido com sucesso!" << std::endl;
+    std::cout << "Novo nome \033[35mdefinido\033[0m com sucesso!" << std::endl;
     return 0;
   } break;
   case '3': {
@@ -639,7 +639,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     getline(std::cin, novoCodigo);
     std::cout << "\n";
     gerenciamento[indice]->setCodigo(novoCodigo);
-    std::cout << "Novo codigo de " << gerenciamento[indice]->getNome() << " definido com sucesso!" << std::endl;
+    std::cout << "Novo codigo de " << gerenciamento[indice]->getNome() << " \033[35mdefinido\033[0m com sucesso!" << std::endl;
     return 0;
   } break;
   case '4': {
@@ -651,7 +651,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     getline(std::cin, novaNacionalidade);
     std::cout << "\n";
     gerenciamento[indice]->setNacionalidade(novaNacionalidade);
-    std::cout << "Nova nacionalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+    std::cout << "Nova nacionalidade de " << gerenciamento[indice]->getNome() << " \033[35mdefinida\033[0m com sucesso!" << std::endl;
     return 0;
   } break;
   default:
@@ -668,7 +668,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cin >> medalha;
     std::cout << "\n";
     dynamic_cast<Atleta *>(gerenciamento[indice])->setMedalha(medalha);
-    std::cout << "Nova medalha de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+    std::cout << "Nova medalha de " << gerenciamento[indice]->getNome() << " \033[35mdefinida\033[0m com sucesso!" << std::endl;
     return 0;
   } else if (p->getTipo() == 1 && escolha == '6') {
     // alterar a modalidade do atleta
@@ -680,7 +680,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     getline(std::cin, novaModalidade);
     std::cout << "\n";
     dynamic_cast<Atleta *>(gerenciamento[indice])->setModalidade(novaModalidade);
-    std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+    std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " \033[35mdefinida\033[0m com sucesso!" << std::endl;
     return 0;
   }
 
@@ -695,7 +695,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     getline(std::cin, novaModalidade);
     std::cout << "\n";
     dynamic_cast<Comissao *>(gerenciamento[indice])->setModalidade(novaModalidade);
-    std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+    std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " \033[35mdefinida\033[0m com sucesso!" << std::endl;
     return 0;
   } else if (p->getTipo() == 2 && escolha == '6') {
     // alterar a equipe do membro da comissao
@@ -708,7 +708,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     getline(std::cin, novaEquipeResponsavel);
     std::cout << "\n";
     dynamic_cast<Comissao *>(gerenciamento[indice])->setEquipeResponsavel(novaEquipeResponsavel);
-    std::cout << "Nova equipe de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+    std::cout << "Nova equipe de " << gerenciamento[indice]->getNome() << " \033[35mdefinida\033[0m com sucesso!" << std::endl;
     return 0;
   }
 
@@ -727,7 +727,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     if ((vip.find("s") != -1) || (vip.find("S") != -1) ||
         (vip.find("y") != -1) || (vip.find("y") != -1)) {
       dynamic_cast<Torcedor *>(gerenciamento[indice])->setStatusVIP(!dynamic_cast<Torcedor *>(gerenciamento[indice])->getStatusVIP());
-      std::cout << "Status VIP de " << gerenciamento[indice]->getNome() << " alterado com sucesso!" << std::endl;
+      std::cout << "Status VIP de " << gerenciamento[indice]->getNome() << " \033[35malterado\033[0m com sucesso!" << std::endl;
       return 0;
     }
   };
@@ -758,7 +758,7 @@ void GerenciamentoOlimpiadas::removerPessoa() {
     indice++;
   }
   gerenciamento.erase(gerenciamento.begin() + indice);
-  std::cout << "Pessoa removida com sucesso!" << std::endl;
+  std::cout << "Pessoa \033[31mremovida\033[0m com sucesso!" << std::endl;
   // remover
 }
 
@@ -771,13 +771,13 @@ int GerenciamentoOlimpiadas::menu() {
     -> Responsável por chamar os principais grandes métodos a partir da escolha do usuário
   */
   std::cout << "\n\n";
-  std::cout << "1. Inserir pessoa" << std::endl;
-  std::cout << "2. Listar pessoas" << std::endl;
-  std::cout << "3. Exibir pessoa" << std::endl;
-  std::cout << "4. Alterar pessoa" << std::endl;
-  std::cout << "5. Remover pessoa" << std::endl;
-  std::cout << "6. Exibir Relatorio" << std::endl;
-  std::cout << "7. Sair" << std::endl;
+  std::cout << "\033[36m1\033[0m. Inserir pessoa" << std::endl;
+  std::cout << "\033[36m2\033[0m. Listar pessoas" << std::endl;
+  std::cout << "\033[36m3\033[0m. Exibir pessoa" << std::endl;
+  std::cout << "\033[36m4\033[0m. Alterar pessoa" << std::endl;
+  std::cout << "\033[36m5\033[0m. Remover pessoa" << std::endl;
+  std::cout << "\033[36m6\033[0m. Exibir Relatorio" << std::endl;
+  std::cout << "\033[36m7\033[0m. Sair" << std::endl;
 
   std::cout << "\n-> ";
 
@@ -788,6 +788,7 @@ int GerenciamentoOlimpiadas::menu() {
   switch (opcao) {
   case '1': {
     int erro = lerDadosPessoa();
+    std::cout << "Pessoa \033[32mregistrada\033[0m com sucesso!" << std::endl;
     if (erro == 1)
       return 1;
     return 0;
