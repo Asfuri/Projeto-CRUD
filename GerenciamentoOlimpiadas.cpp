@@ -290,18 +290,16 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
   std::cout << "\n";
   Data dataNasc(dia, mes, ano);
 
-  std::cout << "Digite o codigo de " << nome << "\n-> ";
-  std::cin >> codigo;
-  std::cout << "\n";
   std::cin.ignore();
+  std::cout << "Digite o codigo de " << nome << "\n-> ";
+  getline(std::cin, codigo);
+  std::cout << "\n";
 
   std::cout << "Digite a nacionalidade de " << nome << "\n-> ";
   std::getline(std::cin, nacionalidade);
   std::cout << "\n";
 
-  std::cout << "Digite a idade de " << nome << "\n-> ";
-  std::cin >> idade;
-  std::cout << "\n";
+  idade = dataInicio.getAno() - ano;
 
   std::cout << "Digite o tipo" << std::endl;
   std::cout << "-> 1 Atleta\t-> 2 Membro da comissao\n-> 3 Torcedor\t-> 4 Cancelar operacao\n-> ";
@@ -544,20 +542,19 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   std::cout << "-> 2 Nome" << std::endl;
   std::cout << "-> 3 Codigo" << std::endl;
   std::cout << "-> 4 Nacionalidade" << std::endl;
-  std::cout << "-> 5 idade" << std::endl;
 
   if (p->getTipo() == 1) {
-    std::cout << "-> 6 Medalha" << std::endl;
-    std::cout << "-> 7 Modalidade" << std::endl;
+    std::cout << "-> 5 Medalha" << std::endl;
+    std::cout << "-> 6 Modalidade" << std::endl;
     std::cout << "\n-> ";
 
   } else if (p->getTipo() == 2) {
-    std::cout << "-> 6 Modalidade" << std::endl;
-    std::cout << "-> 7 Equipe de atuacao" << std::endl;
+    std::cout << "-> 5 Modalidade" << std::endl;
+    std::cout << "-> 6 Equipe de atuacao" << std::endl;
     std::cout << "\n-> ";
 
   } else if (p->getTipo() == 3) {
-    std::cout << "-> 6 Status VIP" << std::endl;
+    std::cout << "-> 5 Status VIP" << std::endl;
     std::cout << "\n-> ";
   }
 
@@ -583,6 +580,10 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     Data novaDataDeNascimento(diaAux, mesAux, anoAux);
     gerenciamento[indice]->setDataDeNascimento(novaDataDeNascimento);
     std::cout << "Nova data de nascimento de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
+
+    int idade = dataInicio.getAno() - anoAux;
+    gerenciamento[indice]->setIdade(idade);
+    std::cout << "Nova idade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
   } break;
   case '2': {
@@ -621,23 +622,12 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "Nova nacionalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
   } break;
-  case '5': {
-    // Para alterar a idade
-    std::cout << "Digite a nova idade para " << gerenciamento[indice]->getNome() << std::endl;
-    std::cout << "\n-> ";
-    int idade;
-    std::cin >> idade;
-    std::cout << "\n";
-    gerenciamento[indice]->setIdade(idade);
-    std::cout << "Nova idade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
-    return 0;
-  } break;
   default:
     break;
   }
 
 
-  if (p->getTipo() == 1 && escolha == '6') {
+  if (p->getTipo() == 1 && escolha == '5') {
     // alterar a medalha do atleta
 
     int medalha;
@@ -648,7 +638,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     dynamic_cast<Atleta *>(gerenciamento[indice])->setMedalha(medalha);
     std::cout << "Nova medalha de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
-  } else if (p->getTipo() == 1 && escolha == '7') {
+  } else if (p->getTipo() == 1 && escolha == '6') {
     // alterar a modalidade do atleta
 
     std::cout << "Digite a nova modalidade para " << gerenciamento[indice]->getNome() << std::endl;
@@ -662,7 +652,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     return 0;
   }
 
-  if (p->getTipo() == 2 && escolha == '6') {
+  if (p->getTipo() == 2 && escolha == '5') {
     // alterar a modalidade do membro da comissao
 
     std::cout << "Digite a nova modalidade para " << gerenciamento[indice]->getNome() << std::endl;
@@ -675,7 +665,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     dynamic_cast<Comissao *>(gerenciamento[indice])->setModalidade(novaModalidade);
     std::cout << "Nova modalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
-  } else if (p->getTipo() == 2 && escolha == '7') {
+  } else if (p->getTipo() == 2 && escolha == '6') {
     // alterar a equipe do membro da comissao
 
     std::cout << "Digite a nova equipe da comissao para " << gerenciamento[indice]->getNome() << std::endl;
@@ -690,7 +680,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     return 0;
   }
 
-  if (p->getTipo() == 3 && escolha == '6') {
+  if (p->getTipo() == 3 && escolha == '5') {
     // alterar o statusVip do torcedor
 
     std::string vip;
