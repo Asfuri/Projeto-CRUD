@@ -5,11 +5,7 @@
 #include <list>
 #include <string>
 #include <vector>
-#ifdef _WIN32
-#include <Windows.h>
-#else
 #include <unistd.h>
-#endif
 #include "GerenciamentoOlimpiadas.h"
 
 GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
