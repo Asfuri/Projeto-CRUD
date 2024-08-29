@@ -424,7 +424,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
 
   int indiceEscolha;
   for (int i = 0; i < gerenciamento.size(); i++) {
-    if (gerenciamento[i]->getNome().find(nome) != -1) {
+    if (paraMinusculo(gerenciamento[i]->getNome()).find(nome) != -1) {
 
       std::cout << i;
 
