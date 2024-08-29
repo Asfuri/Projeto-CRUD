@@ -529,7 +529,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   if (indice > gerenciamento.size())
     return 1;
 
-  int escolha;
+  char escolha;
 
   std::cout << "Digite o que sera alterado" << std::endl;
   std::cout << "-> 1 Data de Nascimento" << std::endl;
@@ -557,7 +557,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   std::cout << "\n";
 
   switch (escolha) {
-  case 1: {
+  case '1': {
     // Para alterar a data de nascimento
     int diaAux, mesAux, anoAux;
     std::cout << "Digite o dia da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
@@ -577,7 +577,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "Nova data de nascimento de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
   } break;
-  case 2: {
+  case '2': {
     // Para alterar o nome
     std::cout << "Digite o novo nome para alterar " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
@@ -589,7 +589,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "Novo nome definido com sucesso!" << std::endl;
     return 0;
   } break;
-  case 3: {
+  case '3': {
     // Para alterar o codigo
     std::cout << "Digite o novo codigo para " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
@@ -601,7 +601,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "Novo codigo de " << gerenciamento[indice]->getNome() << " definido com sucesso!" << std::endl;
     return 0;
   } break;
-  case 4: {
+  case '4': {
     // Para alterar a nacionalidade
     std::cout << "Digite a nova nacionalidade para " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
@@ -613,7 +613,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "Nova nacionalidade de " << gerenciamento[indice]->getNome() << " definida com sucesso!" << std::endl;
     return 0;
   } break;
-  case 5: {
+  case '5': {
     // Para alterar a idade
     std::cout << "Digite a nova idade para " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
@@ -625,6 +625,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     return 0;
   } break;
   default:
+    std::cout << "Entrada inválida! " << std::endl;
     return 0;
     break;
   }
@@ -793,9 +794,8 @@ int GerenciamentoOlimpiadas::menu() {
       break;
     }
     int erro = alterarPessoa();
-    if (erro == 1)
-      return 1;
     return 0;
+    
   };
   case '5': {
     if(gerenciamento.size() == 0){
