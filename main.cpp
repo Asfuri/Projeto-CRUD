@@ -17,8 +17,25 @@ int main() {
     if (error == 1)
       break;
   }   
+  const std::string vermelho = "\033[31m";  // Vermelho
+  const std::string laranja = "\033[33m";   // Amarelo (laranja pode ser semelhante)
+  const std::string resetar = "\033[0m";    // Resetar cor
 
+  // Desenho da tocha com cores
+  std::cout << vermelho
+            << "        /|, \n"
+            << "       )  (, \n"
+            << "      ( (  ) \n"
+            << laranja
+            << "_______\\__/_______\n"
+            << "`--.._      _..--'\n"
+            << "      `\\  /'\n"
+            << "        ||\n"
+            << "        ||\n"
+            << "        ||\n"
+            << resetar  // Resetar cor
+            << std::endl;
   std::cout << "\nSalvando o programa...\n";
-  sleep(1);
-  std::cout << "Encerrando! \n";
+  sleep(2);
+  std::cout << "Projeto encerrado, obrigado! \n";
 }

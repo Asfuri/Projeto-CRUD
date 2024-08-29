@@ -91,12 +91,34 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::cout << "*         com tema de Olimpíadas!            *\n";
     std::cout << "*                                            *\n";
     std::cout << "**********************************************\n\n";
-    std::cout << "\033[34m   ***     \033[33m  ***     \033[37m  ***     \033[32m  ***     \033[31m   ***   \n";
-    std::cout << "\033[34m *     *  \033[33m *     *  \033[37m *     *  \033[32m *     *  \033[31m  *     *  \n";
-    std::cout << "\033[34m*       * \033[33m*       * \033[37m*       * \033[32m*       * \033[31m *       * \n";
-    std::cout << "\033[34m *     *   \033[33m*     *   \033[37m*     *   \033[32m*     *   \033[31m *     *  \n";
-    std::cout << "\033[34m   ***       \033[33m***       \033[37m***       \033[32m***       \033[31m ***    \n";
-    std::cout << "\033[0m\n\n";  // Reseta as cores
+const std::string azul = "\033[34m";    // Azul
+    const std::string amarelo = "\033[33m"; // Amarelo
+    const std::string preto = "\033[30m";   // Preto
+    const std::string verde = "\033[32m";   // Verde
+    const std::string vermelho = "\033[31m"; // Vermelho
+    const std::string resetar = "\033[0m";  // Resetar cor
+
+    // Desenho com cores
+    std::cout << amarelo
+              << "    ********         *******         ********    \n"
+              << "  **        **    ***       ***    **        **  \n"
+              << " *           **  **           **  **           * \n"
+              << "**            *  *             *  *            **\n"
+              << azul
+              << "*           *********       *********           *\n"
+              << " **        ** **  **  *     *  **  ** **        **\n"
+              << verde
+              << "  **      *  **    **  *   *  **    **  *      ** \n"
+              << "   *********        *********        *********   \n"
+              << vermelho
+              << "        **            ** **            **        \n"
+              << "         **           *   *           **         \n"
+              << "          **        **     **        **          \n"
+              << "            ********         ********    \n"
+              << resetar  // Resetar cor
+              << std::endl;
+
+
 
     std::cout << "Desenvolvedores do projeto:\n";
     std::cout << "----------------------------------------------\n";
