@@ -434,8 +434,8 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   for (int i = 0; i < gerenciamento.size(); i++) {
 
     if (paraMinusculo(gerenciamento[i]->getNome()).find(nome) != -1) {
-      gerenciamentoIndice.push_back(gerenciamento[i]);
-      std::cout << gerenciamentoIndice.size() - 1;
+      filtroPessoasIndice.push_back(gerenciamento[i]);
+      std::cout << filtroPessoasIndice.size() - 1;
 
       if (gerenciamento[i]->getTipo() == 1)
         std::cout << " - Atleta\t";
@@ -455,13 +455,13 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   std::cin >> indiceEscolha;
   std::cout << "\n";
 
-  if (indiceEscolha >= 0 && indiceEscolha < gerenciamentoIndice.size()) {
-    Pessoa* retornoPessoa = gerenciamentoIndice[indiceEscolha];
-    gerenciamentoIndice.clear();
+  if (indiceEscolha >= 0 && indiceEscolha < filtroPessoasIndice.size()) {
+    Pessoa* retornoPessoa = filtroPessoasIndice[indiceEscolha];
+    filtroPessoasIndice.clear();
     return retornoPessoa;
   } else {
     std::cout << "Índice inválido" << std::endl;
-    gerenciamentoIndice.clear();
+    filtroPessoasIndice.clear();
     return nullptr;
   }
   return 0;
