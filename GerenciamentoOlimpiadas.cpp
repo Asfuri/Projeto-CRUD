@@ -397,7 +397,6 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   */
   int count = 0;
   exibirTodos();
-
   std::cout << "\n\nEscolha o nome\n-> ";
   std::string nome;
   std::cin >> std::ws;
@@ -410,6 +409,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   for (int i = 0; i < gerenciamento.size(); i++) {
     if (paraMinusculo(gerenciamento[i]->getNome()).find(nome) != -1) {
       contador++;
+      
       indice = i;
     }
   }
@@ -424,11 +424,18 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   if (contador == 1)
     return gerenciamento[indice];
 
+
+  /* Quando ocorre de mais de uma pessoa possuir a mesma substring, essas pessoas serao 
+     adicionadas a um novo vector de Pessoas, onde será exibido o indice de cada uma e
+     pedir ao usuário pra escolher de acordo com o indice.
+     Detalhe --> O vector é apagado depois de cada interaçao, garantindo que nao terá um
+     lixo de memória de execuções*/
   int indiceEscolha;
   for (int i = 0; i < gerenciamento.size(); i++) {
-    if (paraMinusculo(gerenciamento[i]->getNome()).find(nome) != -1) {
 
-      std::cout << i;
+    if (paraMinusculo(gerenciamento[i]->getNome()).find(nome) != -1) {
+      gerenciamentoIndice.push_back(gerenciamento[i]);
+      std::cout << gerenciamentoIndice.size() - 1;
 
       if (gerenciamento[i]->getTipo() == 1)
         std::cout << " - Atleta\t";
@@ -442,18 +449,22 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
       std::cout << gerenciamento[i]->getNome() << std::endl;
     }
   }
-
+  std::cout<< "\n";
   std::cout << "Escolha o índice" << std::endl;
   std::cout << "\n-> ";
   std::cin >> indiceEscolha;
   std::cout << "\n";
-  if (indiceEscolha < gerenciamento.size()) {
-    return gerenciamento[indiceEscolha];
+
+  if (indiceEscolha >= 0 && indiceEscolha < gerenciamentoIndice.size()) {
+    Pessoa* retornoPessoa = gerenciamentoIndice[indiceEscolha];
+    gerenciamentoIndice.clear();
+    return retornoPessoa;
   } else {
     std::cout << "Índice inválido" << std::endl;
-    
+    gerenciamentoIndice.clear();
     return nullptr;
   }
+  return 0;
 }
 
 void GerenciamentoOlimpiadas::gerarRelatorio() {
