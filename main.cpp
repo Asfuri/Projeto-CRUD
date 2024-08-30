@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 int main() {
-  
+
   GerenciamentoOlimpiadas Olimpiada;
   // READ geral
   Olimpiada.iniciarOlimpiada();

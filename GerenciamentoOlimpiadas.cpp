@@ -90,38 +90,23 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::cout << "*     Bem-vindo ao nosso projeto de CRUD     *\n";
     std::cout << "*         com tema de Olimpíadas!            *\n";
     std::cout << "*                                            *\n";
-    std::cout << "**********************************************\n\n";
-const std::string azul = "\033[34m";    // Azul
-    const std::string amarelo = "\033[33m"; // Amarelo
-    const std::string preto = "\033[30m";   // Preto
-    const std::string verde = "\033[32m";   // Verde
-    const std::string vermelho = "\033[31m"; // Vermelho
-    const std::string roxo = "\033[35m";
-    const std::string resetar = "\033[0m";  // Resetar cor
+    std::cout << "**********************************************\n\n\n";
+    
+    std::cout
+          << "    \033[34m********         \033[30m*******         \033[31m********    \n"
+          << "  \033[34m**        **    \033[30m***       ***    \033[31m**        **  \n"
+          << " \033[34m*           **  \033[30m**           **  \033[31m**           * \n"
+          << "\033[34m**            *  \033[30m*             *  \033[31m*            **\n"
+          << "\033[34m*           \033[33m***\033[34m*\033[33m*\033[30m*\033[33m***        \033[32m****\033[30m*\033[32m****           \033[31m*\n"
+          << " \033[34m**        \033[33m** \033[34m**  \033[30m**  \033[33m*     \033[32m* \033[30m**   \033[31m** \033[32m**       \033[31m**\n"
+          << "  \033[34m**      \033[33m*  \033[34m**    \033[30m**  \033[33m*   \033[32m* \033[30m**     \033[31m**  \033[32m*     \033[31m** \n"
+          << "   \033[34m*****\033[33m*\033[34m***        \033[30m**\033[33m**\033[30m*\033[32m**\033[30m**        \033[31m***\033[32m*\033[31m*****   \n"
+          << "        \033[33m**            ** \033[32m**            **        \n"
+          << "         \033[33m**           *   \033[32m*           **         \n"
+          << "          \033[33m**        **     \033[32m**        **          \n"
+          << "            \033[33m********         \033[32m********    \n\n";
 
-    // Desenho com cores
-    std::cout << amarelo
-              << "    ********         *******         ********    \n"
-              << "  **        **    ***       ***    **        **  \n"
-              << " *           **  **           **  **           * \n"
-              << "**            *  *             *  *            **\n"
-              << azul
-              << "*           *********       *********           *\n"
-              << " **        ** **  **  *     *  **  ** **       **\n"
-              << verde
-              << "  **      *  **    **  *   *  **    **  *     ** \n"
-              << "   *********        *********        *********   \n"
-              << vermelho
-              << "        **            ** **            **        \n"
-              << "         **           *   *           **         \n"
-              << "          **        **     **        **          \n"
-              << "            ********         ********    \n"
-              << resetar  // Resetar cor
-              << std::endl;
-
-
-
-    std::cout << "Desenvolvedores do projeto:\n";
+    std::cout << "\033[0m" << "Desenvolvedores do projeto:\n";
     std::cout << "----------------------------------------------\n";
     std::cout << "* Eduardo Asfuri Carvalho                    * \n";
     std::cout << "* Lucas Henrique veira da Silva              * \n";
@@ -305,7 +290,7 @@ void GerenciamentoOlimpiadas::iniciarOlimpiada() {
   lerArquivoPessoas();
 }
 
-int GerenciamentoOlimpiadas::lerDadosPessoa() {
+void GerenciamentoOlimpiadas::lerDadosPessoa() {
   /*
     Esse método é responsável por ler diretamente do terminal todos os dados de uma determinada Pessoa
     que o usuário desejar inserir, ele vai iniciar um ponteiro de Pessoa com as informações utilizando
@@ -318,8 +303,7 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
   std::string nome, codigo, nacionalidade;
   int dia, mes, ano, idade, tipoPessoa;
 
-  std::cin.ignore();
-  std::cout << "Digite o nome da pessoa a ser adicionada" << "\n-> ";
+  std::cout << "\nDigite o nome da pessoa a ser adicionada" << "\n-> ";
   std::getline(std::cin, nome);
   std::cout << "\n";
 
@@ -396,11 +380,11 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
   } else {
     delete pessoaAux;
     std::cout << "Operação cancelada! \n";
-    return 0;
+    return;
   }
   AdicionarPessoa(pessoaAux);
   std::cout << "Pessoa \033[32mregistrada\033[0m com sucesso!" << std::endl;
-  return 0;
+  return;
 }
 
 void GerenciamentoOlimpiadas::exibirTodos() {
@@ -805,15 +789,21 @@ int GerenciamentoOlimpiadas::menu() {
   std::cout << "\033[36m7\033[0m. Sair" << std::endl;
   std::cout << "\n-> ";
 
-  char opcao;
-  std::cin >> opcao;
+  std::cin >> std::ws;
+  std::string strOpcao;
+  getline(std::cin, strOpcao);
+
+  if(strOpcao.size() > 1){
+    std::cout << "Entrada inválida! " << std::endl;
+    return 0;
+  }
+
+  const char *arrayOpcao = strOpcao.c_str();
+  char opcao = arrayOpcao[0];
 
   switch (opcao) {
   case '1': {
-    int erro = lerDadosPessoa();
-    
-    if (erro == 1)
-      return 1;
+    lerDadosPessoa();
     return 0;
   };
   case '2': {

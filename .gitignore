@@ -50,9 +50,10 @@
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
 # Arquivos .txt sao utilizados no programa para o salvamento de dados
-# Considerando o uso individual do programa, nos, desenvolvedores, preferimos deixa-los invisiveis
+# Considerando o uso individual do programa, nós, desenvolvedores, preferimos deixa-los invisiveis
 # no codigo
 *.txt
 *.lock
+*.exe
 
 

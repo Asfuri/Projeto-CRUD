@@ -28,7 +28,7 @@ private:
   void AdicionarPessoa(Pessoa *p);
   void lerArquivoOlimpiadas();
   void lerArquivoPessoas();
-  int lerDadosPessoa();
+  void lerDadosPessoa();
   void exibirTodos();
   Pessoa *buscar();
   void gerarRelatorio();
