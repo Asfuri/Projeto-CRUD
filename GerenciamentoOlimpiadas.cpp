@@ -728,7 +728,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "O torcedor " << gerenciamento[indice]->getNome();
     std::string retornoStatus = (dynamic_cast<Torcedor *>(gerenciamento[indice])->getStatusVIP()) ? " possui status VIP" : " nao possui status VIP";
     std::cout << retornoStatus;
-    std::cout << "\nGostaria de alterar?\n\n->";
+    std::cout << "\nGostaria de alterar?\n\n-> ";
     std::cin >> std::ws;
     std::getline(std::cin, vip);
     std::cout << "\n";
