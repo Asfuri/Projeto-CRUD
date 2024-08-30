@@ -738,6 +738,9 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
       dynamic_cast<Torcedor *>(gerenciamento[indice])->setStatusVIP(!dynamic_cast<Torcedor *>(gerenciamento[indice])->getStatusVIP());
       std::cout << "Status VIP de " << gerenciamento[indice]->getNome() << " \033[35malterado\033[0m com sucesso!" << std::endl;
       return 0;
+    } else{
+      std::cout << "Não será alterado! \n";
+      return 0;
     }
   };
 
