@@ -36,6 +36,8 @@ O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao u
 
 ## :handball_person: Diagrama de Classes
 
+![DIAGRAMAOLIMPIADAS](https://github.com/user-attachments/assets/97a85095-5bbf-4587-9232-73ead8a1ebb5)
+
 ## :person_fencing: Dependências
 
 ## :bicyclist: Como rodar
