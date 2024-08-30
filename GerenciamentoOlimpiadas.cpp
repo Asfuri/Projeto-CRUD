@@ -85,7 +85,6 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
   } else {
     arqOlimpiada.close();
 
-    std::string desenvolvedores[] = {"Eduardo Asfuri Carvalho", "Lucas Henrique Vieira da Silva", "Marco Antonio de Vasconcelos Souza Filho"};
     std::cout << "**********************************************\n";
     std::cout << "*                                            *\n";
     std::cout << "*     Bem-vindo ao nosso projeto de CRUD     *\n";
