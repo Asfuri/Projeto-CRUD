@@ -7,7 +7,6 @@
 #include "Data.h"
 
 Data::Data() {
-  
 }
 
 Data::Data(int dia, int mes, int ano) {
@@ -17,7 +16,6 @@ Data::Data(int dia, int mes, int ano) {
 }
 
 Data::~Data() {
-
 }
 
 int Data::getDia() {
@@ -44,6 +42,6 @@ void Data::setAno(int ano) {
   this->ano = ano;
 }
 
-void Data::exibir(){
+void Data::exibir() {
   std::cout << this->dia << "/" << this->mes << "/" << this->ano << std::endl;
 };

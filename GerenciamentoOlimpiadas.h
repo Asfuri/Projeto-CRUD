@@ -20,7 +20,7 @@ private:
   std::string cidade;
   Data dataFinal;
   std::vector<Pessoa *> gerenciamento;
-  std::vector<Pessoa*> filtroPessoasIndice;
+  std::vector<Pessoa *> filtroPessoasIndice;
   std::string mascote;
 
   // Metodos privados

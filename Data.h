@@ -25,6 +25,5 @@ public:
   void setDia(int dia);
   void setMes(int mes);
   void setAno(int ano);
-
 };
 #endif

@@ -16,7 +16,6 @@ Pessoa::Pessoa() {
 }
 
 Pessoa::~Pessoa() {
-
 }
 
 Pessoa::Pessoa(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int tipo) {
@@ -49,7 +48,7 @@ int Pessoa::getIdade() {
 };
 
 int Pessoa::getTipo() {
-  return this->tipo; 
+  return this->tipo;
 };
 
 void Pessoa::exibir() {

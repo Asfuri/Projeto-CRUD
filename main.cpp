@@ -1,6 +1,6 @@
 #include "GerenciamentoOlimpiadas.h"
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <unistd.h>
 
 int main() {
@@ -8,7 +8,7 @@ int main() {
   GerenciamentoOlimpiadas Olimpiada;
   // READ geral
   Olimpiada.iniciarOlimpiada();
-  
+
   while (1) {
     // Abrir o menu principal do gerenciamento
     int error = Olimpiada.menu();
@@ -16,10 +16,10 @@ int main() {
     Olimpiada.salvarArquivo();
     if (error == 1)
       break;
-  }   
-  const std::string vermelho = "\033[31m";  // Vermelho
-  const std::string laranja = "\033[33m";   // Amarelo (laranja pode ser semelhante)
-  const std::string resetar = "\033[0m";    // Resetar cor
+  }
+  const std::string vermelho = "\033[31m"; // Vermelho
+  const std::string laranja = "\033[33m";  // Amarelo (laranja pode ser semelhante)
+  const std::string resetar = "\033[0m";   // Resetar cor
 
   // Desenho da tocha com cores
   std::cout << vermelho
@@ -33,7 +33,7 @@ int main() {
             << "        ||\n"
             << "        ||\n"
             << "        ||\n"
-            << resetar  // Resetar cor
+            << resetar // Resetar cor
             << std::endl;
   std::cout << "\nSalvando o programa...\n";
   sleep(2);

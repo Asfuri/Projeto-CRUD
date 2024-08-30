@@ -7,14 +7,12 @@
 #include "Atleta.h"
 
 Atleta::Atleta()
-   : Pessoa() { 
+    : Pessoa() {
   this->medalha = 0;
   this->modalidade = "";
-  
 }
 
 Atleta::~Atleta() {
-
 }
 
 Atleta::Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std::string Nacionalidade, int idade, int tipo, int medalha, std::string modalidade)
@@ -22,7 +20,6 @@ Atleta::Atleta(Data DataDeNascimento, std::string Nome, std::string Codigo, std:
 
   this->medalha = medalha;
   this->modalidade = modalidade;
-
 };
 
 std::string Atleta::getModalidade() {
@@ -31,14 +28,14 @@ std::string Atleta::getModalidade() {
 
 std::string Atleta::getMedalha() {
 
-  if(this->medalha == 1) 
-        return "Ouro";
-  else if(this->medalha == 2) 
-        return "Prata";
-  else if(this->medalha == 3)
-        return "Bronze";
+  if (this->medalha == 1)
+    return "Ouro";
+  else if (this->medalha == 2)
+    return "Prata";
+  else if (this->medalha == 3)
+    return "Bronze";
   else {
-        return "Participacao";
+    return "Participacao";
   }
 };
 

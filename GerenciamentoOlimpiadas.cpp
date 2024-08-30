@@ -1,13 +1,13 @@
-#include <assert.h>
+#include "GerenciamentoOlimpiadas.h"
 #include <algorithm>
-#include <cctype>  
+#include <assert.h>
+#include <cctype>
 #include <iostream>
 #include <list>
 #include <string>
-#include <vector>
-#include <unistd.h>
-#include "GerenciamentoOlimpiadas.h"
 #include <typeinfo>
+#include <unistd.h>
+#include <vector>
 
 GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
   /*
@@ -91,20 +91,20 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::cout << "*         com tema de Olimpíadas!            *\n";
     std::cout << "*                                            *\n";
     std::cout << "**********************************************\n\n\n";
-    
+
     std::cout
-          << "    \033[34m********         \033[30m*******         \033[31m********    \n"
-          << "  \033[34m**        **    \033[30m***       ***    \033[31m**        **  \n"
-          << " \033[34m*           **  \033[30m**           **  \033[31m**           * \n"
-          << "\033[34m**            *  \033[30m*             *  \033[31m*            **\n"
-          << "\033[34m*           \033[33m***\033[34m*\033[33m*\033[30m*\033[33m***        \033[32m****\033[30m*\033[32m****           \033[31m*\n"
-          << " \033[34m**        \033[33m** \033[34m**  \033[30m**  \033[33m*     \033[32m* \033[30m**   \033[31m** \033[32m**       \033[31m**\n"
-          << "  \033[34m**      \033[33m*  \033[34m**    \033[30m**  \033[33m*   \033[32m* \033[30m**     \033[31m**  \033[32m*     \033[31m** \n"
-          << "   \033[34m*****\033[33m*\033[34m***        \033[30m**\033[33m**\033[30m*\033[32m**\033[30m**        \033[31m***\033[32m*\033[31m*****   \n"
-          << "        \033[33m**            ** \033[32m**            **        \n"
-          << "         \033[33m**           *   \033[32m*           **         \n"
-          << "          \033[33m**        **     \033[32m**        **          \n"
-          << "            \033[33m********         \033[32m********    \n\n";
+        << "    \033[34m********         \033[30m*******         \033[31m********    \n"
+        << "  \033[34m**        **    \033[30m***       ***    \033[31m**        **  \n"
+        << " \033[34m*           **  \033[30m**           **  \033[31m**           * \n"
+        << "\033[34m**            *  \033[30m*             *  \033[31m*            **\n"
+        << "\033[34m*           \033[33m***\033[34m*\033[33m*\033[30m*\033[33m***        \033[32m****\033[30m*\033[32m****           \033[31m*\n"
+        << " \033[34m**        \033[33m** \033[34m**  \033[30m**  \033[33m*     \033[32m* \033[30m**   \033[31m** \033[32m**       \033[31m**\n"
+        << "  \033[34m**      \033[33m*  \033[34m**    \033[30m**  \033[33m*   \033[32m* \033[30m**     \033[31m**  \033[32m*     \033[31m** \n"
+        << "   \033[34m*****\033[33m*\033[34m***        \033[30m**\033[33m**\033[30m*\033[32m**\033[30m**        \033[31m***\033[32m*\033[31m*****   \n"
+        << "        \033[33m**            ** \033[32m**            **        \n"
+        << "         \033[33m**           *   \033[32m*           **         \n"
+        << "          \033[33m**        **     \033[32m**        **          \n"
+        << "            \033[33m********         \033[32m********    \n\n";
 
     std::cout << "\033[0m" << "Desenvolvedores do projeto:\n";
     std::cout << "----------------------------------------------\n";
@@ -439,7 +439,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   for (int i = 0; i < gerenciamento.size(); i++) {
     if (paraMinusculo(gerenciamento[i]->getNome()).find(nome) != -1) {
       contador++;
-      
+
       indice = i;
     }
   }
@@ -454,8 +454,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   if (contador == 1)
     return gerenciamento[indice];
 
-
-  /* Quando ocorre de mais de uma pessoa possuir a mesma substring, essas pessoas serao 
+  /* Quando ocorre de mais de uma pessoa possuir a mesma substring, essas pessoas serao
      adicionadas a um novo vector de Pessoas, onde será exibido o indice de cada uma e
      pedir ao usuário pra escolher de acordo com o indice.
      Detalhe --> O vector é apagado depois de cada interaçao, garantindo que nao terá um
@@ -479,14 +478,14 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
       std::cout << gerenciamento[i]->getNome() << std::endl;
     }
   }
-  std::cout<< "\n";
+  std::cout << "\n";
   std::cout << "Escolha o índice" << std::endl;
   std::cout << "\n-> ";
   std::cin >> indiceEscolha;
   std::cout << "\n";
 
   if (indiceEscolha >= 0 && indiceEscolha < filtroPessoasIndice.size()) {
-    Pessoa* retornoPessoa = filtroPessoasIndice[indiceEscolha];
+    Pessoa *retornoPessoa = filtroPessoasIndice[indiceEscolha];
     filtroPessoasIndice.clear();
     return retornoPessoa;
   } else {
@@ -538,7 +537,7 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
     float porcComissao = 100 * (float)countComissao / (float)countTotal;
     float porcTorcedor = 100 * (float)countTorcedor / (float)countTotal;
 
-    std::cout << "Quantidade total de pessoas: \033[33m" << countTotal << "\033[0m" <<std::endl;
+    std::cout << "Quantidade total de pessoas: \033[33m" << countTotal << "\033[0m" << std::endl;
     std::cout << "Quantidade total de Atletas: \033[33m" << countAtleta << " (" << porcAtleta << "%)\033[0m" << std::endl;
     std::cout << "Quantidade total de Membros da Comissao: \033[33m" << countComissao << " (" << porcComissao << "%)\033[0m" << std::endl;
     std::cout << "Quantidade total de Torcedores: \033[33m" << countTorcedor << " (" << porcTorcedor << "%)\033[0m" << std::endl;
@@ -667,7 +666,6 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     break;
   }
 
-
   if (p->getTipo() == 1 && escolha == '5') {
     // alterar a medalha do atleta
 
@@ -738,7 +736,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
       dynamic_cast<Torcedor *>(gerenciamento[indice])->setStatusVIP(!dynamic_cast<Torcedor *>(gerenciamento[indice])->getStatusVIP());
       std::cout << "Status VIP de " << gerenciamento[indice]->getNome() << " \033[35malterado\033[0m com sucesso!" << std::endl;
       return 0;
-    } else{
+    } else {
       std::cout << "Não será alterado! \n";
       return 0;
     }
@@ -796,7 +794,7 @@ int GerenciamentoOlimpiadas::menu() {
   std::string strOpcao;
   getline(std::cin, strOpcao);
 
-  if(strOpcao.size() > 1){
+  if (strOpcao.size() > 1) {
     std::cout << "Entrada inválida! " << std::endl;
     return 0;
   }
@@ -810,7 +808,7 @@ int GerenciamentoOlimpiadas::menu() {
     return 0;
   };
   case '2': {
-    if(gerenciamento.size() == 0){
+    if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
       sleep(1.4);
       break;
@@ -821,7 +819,7 @@ int GerenciamentoOlimpiadas::menu() {
     // listar
   };
   case '3': {
-    if(gerenciamento.size() == 0){
+    if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
       return 0;
     }
@@ -854,10 +852,9 @@ int GerenciamentoOlimpiadas::menu() {
     }
     int erro = alterarPessoa();
     return 0;
-    
   };
   case '5': {
-    if(gerenciamento.size() == 0){
+    if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
       sleep(1.4);
       break;
@@ -883,7 +880,6 @@ int GerenciamentoOlimpiadas::menu() {
   }
   return 0;
 }
-
 
 void GerenciamentoOlimpiadas::salvarArquivo() {
   /*
