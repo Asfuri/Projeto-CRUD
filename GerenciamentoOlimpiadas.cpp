@@ -347,7 +347,7 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
   idade = dataInicio.getAno() - ano;
 
   std::cout << "Digite o tipo" << std::endl;
-  std::cout << "-> 1 Atleta\t-> 2 Membro da comissao\n-> 3 Torcedor\t-> 4 Cancelar operacao\n-> ";
+  std::cout << "-> \033[36m1\033[0m Atleta\t-> \033[36m2\033[0m Membro da comissao\n-> \033[36m3\033[0m Torcedor\t-> \033[36m4\033[0m Cancelar operacao\n-> ";
   std::cin >> tipoPessoa;
   std::cout << "\n";
 
@@ -395,10 +395,12 @@ int GerenciamentoOlimpiadas::lerDadosPessoa() {
 
     pessoaAux = new Torcedor(dataNasc, nome, codigo, nacionalidade, idade, tipoPessoa, vipBool);
   } else {
-    // delete pessoaAux;
+    delete pessoaAux;
+    std::cout << "Operação cancelada! \n";
+    return 0;
   }
   AdicionarPessoa(pessoaAux);
-  // delete pessoaAux;
+  std::cout << "Pessoa \033[32mregistrada\033[0m com sucesso!" << std::endl;
   return 0;
 }
 
@@ -804,101 +806,92 @@ int GerenciamentoOlimpiadas::menu() {
   std::cout << "\033[36m7\033[0m. Sair" << std::endl;
   std::cout << "\n-> ";
 
+  char opcao;
+  std::cin >> opcao;
 
-  // std::string opcao;
-  // std::getline(std::cin, opcao);
-  // char filtro;
-  // std::string filtroStrings = {'0', '1', '2', '3', '4', '5', '6', '7', '8'};
-  // if(opcao.length()>10){
-  //   std::cout << "Entrada invalida!\n";
-  //   sleep(1);
-  //   return 0;
-  // }
-  //   else {
-  //   filtro = opcao[0];
-    switch (filtro) {
-    case '1': {
-      int erro = lerDadosPessoa();
-      std::cout << "Pessoa \033[32mregistrada\033[0m com sucesso!" << std::endl;
-      if (erro == 1)
-        return 1;
-      return 0;
-    };
-    case '2': {
-      if(gerenciamento.size() == 0){
-        std::cout << "Não possui pessoas registradas" << std::endl;
-        sleep(1.4);
-        break;
-      }
-      exibirTodos();
-      sleep(1.4);
-      break;
-      // listar
-    };
-    case '3': {
-      if(gerenciamento.size() == 0){
-        std::cout << "Não possui pessoas registradas" << std::endl;
-        return 0;
-      }
-      Pessoa *p = buscar();
-      if (!p) {
-        return 0;
-      };
-      switch (p->getTipo()) {
-      case 1:
-        dynamic_cast<Atleta *>(p)->exibir();
-        sleep(1.4);
-        break;
-      case 2:
-        dynamic_cast<Comissao *>(p)->exibir();
-        sleep(1.4);
-        break;
-      case 3:
-        dynamic_cast<Torcedor *>(p)->exibir();
-        sleep(1.4);
-        break;
-      }
-      break;
-    };
-    case '4': {
-      // alterar
-      if (gerenciamento.size() == 0) {
-        std::cout << "Não possui pessoas registradas" << std::endl;
-        sleep(1.4);
-        break;
-      }
-      int erro = alterarPessoa();
-      return 0;
-      
-    };
-    case '5': {
-      if(gerenciamento.size() == 0){
-        std::cout << "Não possui pessoas registradas" << std::endl;
-        sleep(1.4);
-        break;
-      }
-      removerPessoa();
-      sleep(1.4);
-      return 0;
-    };
-    case '6': {
-      gerarRelatorio();
-      sleep(1.4);
-      break;
-    };
-    case '7': {
+  switch (opcao) {
+  case '1': {
+    int erro = lerDadosPessoa();
+    
+    if (erro == 1)
       return 1;
-      // sair
-    };
-    default:
-      std::cout << "Entrada inválida! " << std::endl;
+    return 0;
+  };
+  case '2': {
+    if(gerenciamento.size() == 0){
+      std::cout << "Não possui pessoas registradas" << std::endl;
       sleep(1.4);
-      return 0;
       break;
     }
+    exibirTodos();
+    sleep(1.4);
+    break;
+    // listar
+  };
+  case '3': {
+    if(gerenciamento.size() == 0){
+      std::cout << "Não possui pessoas registradas" << std::endl;
+      return 0;
+    }
+    Pessoa *p = buscar();
+    if (!p) {
+      return 0;
+    };
+    switch (p->getTipo()) {
+    case 1:
+      dynamic_cast<Atleta *>(p)->exibir();
+      sleep(1.4);
+      break;
+    case 2:
+      dynamic_cast<Comissao *>(p)->exibir();
+      sleep(1.4);
+      break;
+    case 3:
+      dynamic_cast<Torcedor *>(p)->exibir();
+      sleep(1.4);
+      break;
+    }
+    break;
+  };
+  case '4': {
+    // alterar
+    if (gerenciamento.size() == 0) {
+      std::cout << "Não possui pessoas registradas" << std::endl;
+      sleep(1.4);
+      break;
+    }
+    int erro = alterarPessoa();
+    return 0;
+    
+  };
+  case '5': {
+    if(gerenciamento.size() == 0){
+      std::cout << "Não possui pessoas registradas" << std::endl;
+      sleep(1.4);
+      break;
+    }
+    removerPessoa();
+    sleep(1.4);
+    return 0;
+  };
+  case '6': {
+    gerarRelatorio();
+    sleep(1.4);
+    break;
+  };
+  case '7': {
+    return 1;
+    // sair
+  };
+  default:
+    std::cout << "Entrada inválida! " << std::endl;
+    sleep(1.4);
+    return 0;
+    break;
   }
   return 0;
-};
+}
+
 
 void GerenciamentoOlimpiadas::salvarArquivo() {
   /*
