@@ -1,9 +1,9 @@
 # :medal_sports: Projeto CRUD - Jogos Olímpicos
 
-- ### [:dart: Objetivo](#dart-objetivo)
-- ### [:handball_person: Diagrama de Classes](#handball_person-diagrama-de-classes)
-- ### [:person_fencing: Dependências](#person_fencing-dependências)
-- ### [:bicyclist: Como rodar](#bicyclist-como-rodar)
+- ### [:dart: Objetivo](#dart-objetivo-1)
+- ### [:handball_person: Diagrama de Classes](#handball_person-diagrama-de-classes-1)
+- ### [:person_fencing: Dependências](#person_fencing-dependências-1)
+- ### [:bicyclist: Como rodar](#bicyclist-como-rodar-1)
 - ### [:arrow_down: Baixar o projeto](https://github.com/Asfuri/Projeto-CRUD/archive/refs/heads/main.zip)
 
 ## Disciplina de Linguagem de Programação I e Laboratório
