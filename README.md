@@ -24,7 +24,7 @@ Esse foi um projeto desenvolvido por discentes do curso de *Engenharia da Comput
 <br>
 <br>
 
-![olimpiada-101](https://github.com/user-attachments/assets/c4a37856-d934-4f63-867c-e3f9f500bf49)
+[![olimpiada-101](https://github.com/user-attachments/assets/c4a37856-d934-4f63-867c-e3f9f500bf49)](#medal_sports-projeto-crud---jogos-olímpicos)
 
 ## :dart: Objetivo:
 
