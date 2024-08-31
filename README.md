@@ -89,7 +89,7 @@ cd /path/to/Projeto-CRUD
 clang++ main.cpp -I include/ src/*.cpp -o olimpiadas
 ```
 
-**OBS.:** Utilizamos de barra normal('/') considerando um ambiente como Git Bash, WSL e PowerShell, considere utilizar de barra invertida ('\') em caso de não compilar
+**OBS.:** Utilizamos de barra normal('/') considerando um ambiente como Git Bash, WSL e PowerShell, considere utilizar de barra invertida ('\\') em caso de não compilar
 
 Para rodar
 
