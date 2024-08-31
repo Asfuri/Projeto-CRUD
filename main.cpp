@@ -46,6 +46,6 @@ int main() {
             << resetar // Resetar cor
             << std::endl;
   std::cout << "\nSalvando o programa...\n";
-  sleep(2);
+  sleep(1);
   std::cout << "Projeto encerrado, obrigado! \n";
 }

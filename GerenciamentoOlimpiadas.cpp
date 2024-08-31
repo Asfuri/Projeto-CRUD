@@ -401,7 +401,7 @@ void GerenciamentoOlimpiadas::exibirTodos() {
     std::cout << "Pessoas registradas:" << std::endl;
     int contador = 1;
     for (int i = 0; i < gerenciamento.size(); i++) {
-      std::cout << "\033[36m" << contador << "o\033[0m";
+      std::cout << "\033[36m" << contador << "°\033[0m";
       contador++;
       if (gerenciamento[i]->getTipo() == 1)
         std::cout << " - Atleta\t";
@@ -759,7 +759,7 @@ void GerenciamentoOlimpiadas::removerPessoa() {
   int indice = 0;
   if (pessoaRemov == nullptr) {
     std::cout << "Pessoa nao encontrada, logo, nao sera apagada" << std::endl;
-    sleep(1.4);
+    sleep(1);
     return;
   };
   for (auto p : gerenciamento) {
@@ -810,11 +810,11 @@ int GerenciamentoOlimpiadas::menu() {
   case '2': {
     if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
-      sleep(1.4);
+      sleep(1);
       break;
     }
     exibirTodos();
-    sleep(1.4);
+    sleep(1);
     break;
     // listar
   };
@@ -830,15 +830,15 @@ int GerenciamentoOlimpiadas::menu() {
     switch (p->getTipo()) {
     case 1:
       dynamic_cast<Atleta *>(p)->exibir();
-      sleep(1.4);
+      sleep(1);
       break;
     case 2:
       dynamic_cast<Comissao *>(p)->exibir();
-      sleep(1.4);
+      sleep(1);
       break;
     case 3:
       dynamic_cast<Torcedor *>(p)->exibir();
-      sleep(1.4);
+      sleep(1);
       break;
     }
     break;
@@ -847,7 +847,7 @@ int GerenciamentoOlimpiadas::menu() {
     // alterar
     if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
-      sleep(1.4);
+      sleep(1);
       break;
     }
     int erro = alterarPessoa();
@@ -856,16 +856,16 @@ int GerenciamentoOlimpiadas::menu() {
   case '5': {
     if (gerenciamento.size() == 0) {
       std::cout << "Não possui pessoas registradas" << std::endl;
-      sleep(1.4);
+      sleep(1);
       break;
     }
     removerPessoa();
-    sleep(1.4);
+    sleep(1);
     return 0;
   };
   case '6': {
     gerarRelatorio();
-    sleep(1.4);
+    sleep(1);
     break;
   };
   case '7': {
@@ -874,7 +874,7 @@ int GerenciamentoOlimpiadas::menu() {
   };
   default:
     std::cout << "Entrada inválida! " << std::endl;
-    sleep(1.4);
+    sleep(1);
     return 0;
     break;
   }
