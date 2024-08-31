@@ -23,7 +23,7 @@ private:
   std::vector<Pessoa *> filtroPessoasIndice;
   std::string mascote;
 
-  // Metodos privados
+  // Métodos privados
   void setOlimpiada(Data dataInicio, std::string cidade, Data dataFinal, std::string mascote);
   void AdicionarPessoa(Pessoa *p);
   void lerArquivoOlimpiadas();

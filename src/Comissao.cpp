@@ -34,7 +34,7 @@ void Comissao::exibir() {
   std::cout << "Membro da Comissao" << std::endl;
   Pessoa::exibir();
   std::cout << "Modalidade: " << this->modalidade << std::endl;
-  std::cout << "Equipe responsavel: " << this->equipeResponsavel << std::endl;
+  std::cout << "Equipe responsável: " << this->equipeResponsavel << std::endl;
 };
 
 void Comissao::setDataDeNascimento(Data DataDeNascimento) {
