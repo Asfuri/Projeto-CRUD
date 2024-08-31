@@ -58,7 +58,7 @@ O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao u
 - Um compilador c++, recomendamos o `clang++` ou o `g++`
 - Um terminal de linha de comando
 <br>
-{c:red}Lembre de baixar o projeto e extrai-lo devidamente do .zip{/c} 
+<span style="color : red">Lembre de baixar o projeto e extrai-lo devidamente do .zip</span>
 
 ### Bash
 
