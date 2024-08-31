@@ -1,4 +1,4 @@
-#include "GerenciamentoOlimpiadas.h"
+#include "../headers/GerenciamentoOlimpiadas.h"
 #include <algorithm>
 #include <assert.h>
 #include <cctype>

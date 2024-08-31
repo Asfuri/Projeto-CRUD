@@ -3,8 +3,7 @@
 #include <list>
 #include <string>
 #include <vector>
-
-#include "Atleta.h"
+#include "../headers/Atleta.h"
 
 Atleta::Atleta()
     : Pessoa() {

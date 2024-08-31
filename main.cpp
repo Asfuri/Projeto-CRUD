@@ -1,4 +1,4 @@
-#include "GerenciamentoOlimpiadas.h"
+#include "./headers/GerenciamentoOlimpiadas.h"
 #include <fstream>
 #include <iostream>
 #include <unistd.h>

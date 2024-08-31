@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include "Torcedor.h"
+#include "../headers/Torcedor.h"
 
 Torcedor::Torcedor()
     : Pessoa() {
