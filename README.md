@@ -70,7 +70,7 @@ clang++ main.cpp -I include/ src/*.cpp -o olimpiadas
 Para rodar
 
 ```sh
-./programa.out
+./olimpiadas.out
 ```
 
 ### No Windows
@@ -89,18 +89,10 @@ cd /path/to/Projeto-CRUD
 clang++ main.cpp -I include/ src/*.cpp -o olimpiadas
 ```
 
-**OBS.:** Utilizamos de barra normal('/') considerando um ambiente como Git Bash, WSL e PowerShell, considere utilizar de barra invertida ('\\') em caso de não compilar
-
 Para rodar
-
-### Linux
-
-```sh
-./olimpiadas.out
-```
-
-### Windows
 
 ```sh
 ./olimpiadas.exe
 ```
+
+**OBS.:** Utilizamos de barra normal('/') considerando um ambiente como Git Bash, WSL e PowerShell, considere utilizar de barra invertida ('\\') em caso de não compilar
