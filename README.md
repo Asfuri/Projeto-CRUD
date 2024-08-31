@@ -29,7 +29,7 @@ Esse foi um projeto desenvolvido por discentes do curso de *Engenharia da Comput
 
 ## :dart: Objetivo:
 
-O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao usuário, de maneira eficiente, a partir de entradas no terminal e utilizando C++, a possibilidade de gerir dados de uma competição olímpica. O gerenciamento do registro das pessoas completamente autonoma por parte do usuário e o gerenciamento dos dados da competição. O sistema tem requisitos de desenvolvimento estabelecidos pelas especificações determinadas pelo docente, sendo eles[^1][^2]:
+O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao usuário, de maneira eficiente, a partir de entradas no terminal e utilizando C++, a possibilidade de gerir dados de uma competição olímpica. O processo de gerenciamento do registro das pessoas é completamente autônomo por parte do usuário, enquanto o gerenciamento dos dados da competição é parcial, permitindo a inserção dos dados somente quando não houverem dados registrados. O sistema tem requisitos de desenvolvimento estabelecidos pelas especificações determinadas pelo docente, sendo eles[^1][^2]:
 
 1. Ser um sistema CRUD que possua menu e tenha opões para gerir
 2. Ter um diagrama de classes bem estabelecido que concorde com o código
