@@ -1,10 +1,8 @@
 #ifndef GERENCIAMENTO_OLIMPIADAS_H
 #define GERENCIAMENTO_OLIMPIADAS_H
 
-#include <assert.h>
 #include <fstream>
 #include <iostream>
-#include <list>
 #include <string>
 #include <vector>
 

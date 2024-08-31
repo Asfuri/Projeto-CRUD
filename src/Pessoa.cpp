@@ -1,10 +1,7 @@
-#include <assert.h>
+#include "../headers/Pessoa.h"
 #include <iostream>
-#include <list>
 #include <string>
 #include <vector>
-
-#include "../headers/Pessoa.h"
 
 Pessoa::Pessoa() {
   this->DataDeNascimento = Data();

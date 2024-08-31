@@ -1,10 +1,7 @@
-#include <assert.h>
+#include "../headers/Data.h"
 #include <iostream>
-#include <list>
 #include <string>
 #include <vector>
-
-#include "../headers/Data.h"
 
 Data::Data() {
 }

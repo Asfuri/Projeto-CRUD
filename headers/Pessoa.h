@@ -1,13 +1,10 @@
 #ifndef PESSOA_H
 #define PESSOA_H
 
-#include <assert.h>
+#include "Data.h"
 #include <iostream>
-#include <list>
 #include <string>
 #include <vector>
-
-#include "Data.h"
 
 class Pessoa {
 protected:

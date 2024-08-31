@@ -1,14 +1,11 @@
-#include <assert.h>
+#include "../headers/Torcedor.h"
 #include <iostream>
-#include <list>
 #include <string>
 #include <vector>
 
-#include "../headers/Torcedor.h"
-
 /*
   Torcedor é uma subclasse de Pessoa, tendo o atributo StatusVIP como adicional
-  -> Com esse atributo extra possuímos métodos extras, seu set e seu get 
+  -> Com esse atributo extra possuímos métodos extras, seu set e seu get
   -> Torcedor também possui o método exibir() individual
 */
 

@@ -1,10 +1,7 @@
-#include <assert.h>
+#include "../headers/Comissao.h"
 #include <iostream>
-#include <list>
 #include <string>
 #include <vector>
-
-#include "../headers/Comissao.h"
 
 Comissao::Comissao()
     : Pessoa() {

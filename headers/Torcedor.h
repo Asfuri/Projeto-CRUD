@@ -1,13 +1,10 @@
 #ifndef TORCEDOR_H
 #define TORCEDOR_H
 
-#include <assert.h>
+#include "Pessoa.h"
 #include <iostream>
-#include <list>
 #include <string>
 #include <vector>
-
-#include "Pessoa.h"
 
 class Torcedor : public Pessoa {
 protected:

@@ -1,9 +1,7 @@
-#include <assert.h>
+#include "../headers/Atleta.h"
 #include <iostream>
-#include <list>
 #include <string>
 #include <vector>
-#include "../headers/Atleta.h"
 
 Atleta::Atleta()
     : Pessoa() {

@@ -1,10 +1,7 @@
 #include "../headers/GerenciamentoOlimpiadas.h"
 #include <algorithm>
-#include <assert.h>
-#include <cctype>
 #include <iostream>
 #include <limits>
-#include <list>
 #include <string>
 #include <typeinfo>
 #include <unistd.h>
