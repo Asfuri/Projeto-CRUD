@@ -279,7 +279,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
 
   // Declaração de variáveis auxiliares para receberem os valores salvos
   int tipoPessoa, diaAux, mesAux, anoAux;
-  std::string pessoaNome, pessoaCódigo, pessoaNac;
+  std::string pessoaNome, pessoaCodigo, pessoaNac;
   int idadeAux;
 
   while (arquivo >> tipoPessoa >> diaAux >> mesAux >> anoAux) {
@@ -287,7 +287,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
     Data dataAux = Data(diaAux, mesAux, anoAux);
 
     std::getline(arquivo, pessoaNome);
-    std::getline(arquivo, pessoaCódigo);
+    std::getline(arquivo, pessoaCodigo);
     std::getline(arquivo, pessoaNac);
     arquivo >> idadeAux;
 
@@ -298,7 +298,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
       arquivo >> auxMedalha;
       arquivo.ignore();
       std::getline(arquivo, auxMod);
-      Pessoa *pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCódigo, pessoaNac, idadeAux, tipoPessoa, auxMedalha, auxMod);
+      Pessoa *pessoaAux = new Atleta(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMedalha, auxMod);
       // Instanciando um atleta a partir dos dados do arquivo em PessoaAux
 
       // Alocando pessoa auxiliar no vector
@@ -310,7 +310,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
       arquivo.ignore();
       std::getline(arquivo, auxMod);
       std::getline(arquivo, auxEquipResp);
-      Pessoa *pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCódigo, pessoaNac, idadeAux, tipoPessoa, auxMod, auxEquipResp);
+      Pessoa *pessoaAux = new Comissao(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxMod, auxEquipResp);
 
       // Instanciando um membro da comissão a partir dos dados do arquivo em PessoaAux
 
@@ -323,7 +323,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
       int bitStatusVip;
       arquivo >> bitStatusVip;
       bool auxStatusVip = (bitStatusVip == 1) ? true : false;
-      Pessoa *pessoaAux = new Torcedor(dataAux, pessoaNome, pessoaCódigo, pessoaNac, idadeAux, tipoPessoa, auxStatusVip);
+      Pessoa *pessoaAux = new Torcedor(dataAux, pessoaNome, pessoaCodigo, pessoaNac, idadeAux, tipoPessoa, auxStatusVip);
 
       // Instanciando um torcedor a partir dos dados do arquivo em PessoaAux
 
