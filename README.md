@@ -57,14 +57,14 @@ Utilizando `g++` para compilar
 
 ```sh
 cd /path/to/Projeto-CRUD
-g++ main.cpp -I include/ src/*.cpp -o olimpiadas
+g++ main.cpp -I include/ src/*.cpp -o olimpiadas.out
 ```
 
 Utilizando `clang++` para compilar
 
 ```sh
 cd /path/to/Projeto-CRUD
-clang++ main.cpp -I include/ src/*.cpp -o olimpiadas
+clang++ main.cpp -I include/ src/*.cpp -o olimpiadas.out
 ```
 
 Para rodar
@@ -79,14 +79,14 @@ Utilizando `g++` para compilar
 
 ```sh
 cd /path/to/Projeto-CRUD
-g++ main.cpp -I include/ src/*.cpp -o olimpiadas
+g++ main.cpp -I include/ src/*.cpp -o olimpiadas.exe
 ```
 
 Utilizando `clang++` para compilar
 
 ```sh
 cd /path/to/Projeto-CRUD
-clang++ main.cpp -I include/ src/*.cpp -o olimpiadas
+clang++ main.cpp -I include/ src/*.cpp -o olimpiadas.exe
 ```
 
 Para rodar
