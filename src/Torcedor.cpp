@@ -6,6 +6,12 @@
 
 #include "../headers/Torcedor.h"
 
+/*
+  Torcedor é uma subclasse de Pessoa, tendo o atributo StatusVIP como adicional
+  -> Com esse atributo extra possuímos métodos extras, seu set e seu get 
+  -> Torcedor também possui o método exibir() individual
+*/
+
 Torcedor::Torcedor()
     : Pessoa() {
   this->statusVIP = false;

@@ -8,6 +8,7 @@
 #include <locale>
 
 int main() {
+// Adicionando formatação no português brasileiro, facilitando o uso de acentos outros caracteres
 #ifdef _WIN32
   std::setlocale(LC_ALL, "Portuguese_Brazil.1252");
   SetConsoleOutputCP(1252);
@@ -15,6 +16,7 @@ int main() {
 #else
   std::setlocale(LC_ALL, "pt_BR.UTF-8");
 #endif
+  // Única instância de olimpíada durante toda a execução
   GerenciamentoOlimpiadas Olimpiada;
   // READ geral
   Olimpiada.iniciarOlimpiada();
@@ -22,7 +24,7 @@ int main() {
   while (1) {
     // Abrir o menu principal do gerenciamento
     int error = Olimpiada.menu();
-    // Salvar aquivos antes de sair
+    // Salvando o arquivo periodicamente para evitar a perda de dados
     Olimpiada.salvarArquivo();
     if (error == 1)
       break;
