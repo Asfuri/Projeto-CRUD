@@ -41,3 +41,61 @@ O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao u
 ## :person_fencing: Dependências
 
 ## :bicyclist: Como rodar
+
+***Requisitos***
+- Um compilador c++, recomendamos o `clang++` ou o `g++`
+- Um terminal de linha de comando
+
+### Bash
+
+Utilizando `g++` para compilar
+
+```sh
+cd /path/to/Projeto-CRUD
+g++ main.cpp -I include/ src/*.cpp -o olimpiadas
+```
+
+Utilizando `clang++` para compilar
+
+```sh
+cd /path/to/Projeto-CRUD
+clang++ main.cpp -I include/ src/*.cpp -o olimpiadas
+```
+
+Para rodar
+
+```sh
+./programa.out
+```
+
+### No Windows
+
+Utilizando `g++` para compilar
+
+```sh
+cd /path/to/Projeto-CRUD
+g++ main.cpp -I include/ src/*.cpp -o olimpiadas
+```
+
+Utilizando `clang++` para compilar
+
+```sh
+cd /path/to/Projeto-CRUD
+clang++ main.cpp -I include/ src/*.cpp -o olimpiadas
+```
+
+**OBS.:** Utilizamos de barra normal('/') considerando um ambiente como Git Bash, WSL e PowerShell, considere utilizar de barra invertida ('\') em caso de não compilar
+
+Para rodar
+
+###Linux
+
+```sh
+./olimpiadas.out
+```
+
+###Windows
+
+```sh
+./olimpiadas.exe
+```
