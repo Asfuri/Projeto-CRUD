@@ -2,9 +2,19 @@
 #include <fstream>
 #include <iostream>
 #include <unistd.h>
+#ifdef _WIN32
+#include <windows.h>
+#endif
+#include <locale>
 
 int main() {
-
+#ifdef _WIN32
+  std::setlocale(LC_ALL, "Portuguese_Brazil.1252");
+  SetConsoleOutputCP(1252);
+  SetConsoleCP(1252);
+#else
+  std::setlocale(LC_ALL, "pt_BR.UTF-8");
+#endif
   GerenciamentoOlimpiadas Olimpiada;
   // READ geral
   Olimpiada.iniciarOlimpiada();

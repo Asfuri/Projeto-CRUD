@@ -109,7 +109,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::cout << "\033[0m" << "Desenvolvedores do projeto:\n";
     std::cout << "----------------------------------------------\n";
     std::cout << "* Eduardo Asfuri Carvalho                    * \n";
-    std::cout << "* Lucas Henrique veira da Silva              * \n";
+    std::cout << "* Lucas Henrique Vieira da Silva              * \n";
     std::cout << "* Marco Antonio de Vasconcelos Souza Filho   * \n";
 
     std::cout << "----------------------------------------------\n";
