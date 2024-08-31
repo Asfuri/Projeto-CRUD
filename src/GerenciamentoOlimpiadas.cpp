@@ -127,34 +127,88 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
 
     std::cout << "Digite o ano das olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
-    std::cin >> anoAux;
+    while (1) {
+      std::cin >> anoAux;
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     std::cout << "\n";
 
     std::cout << "Digite o mes de " << anoAux << " que comecam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
-    std::cin >> mesAux;
+    while (1) {
+      std::cin >> mesAux;
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     std::cout << "\n";
 
     std::cout << "Digite dia do mes de " << mesAux << "/" << anoAux << " que comecam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
-    std::cin >> diaAux;
+    while (1) {
+      std::cin >> diaAux;
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     std::cout << "\n";
 
     Data dataInicioAux(diaAux, mesAux, anoAux);
 
     std::cout << "Digite o ano que acabam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
-    std::cin >> anoFinal;
+    while (1) {
+      std::cin >> anoFinal;
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     std::cout << "\n";
 
-    std::cout << "Digite o mes de " << anoAux << " que acabam as olimpiadas de " << cidade << std::endl;
+    std::cout << "Digite o mes de " << anoFinal << " que acabam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
-    std::cin >> mesAux;
+    while (1) {
+      std::cin >> mesAux;
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     std::cout << "\n";
 
-    std::cout << "Digite dia do mes de " << mesAux << "/" << anoAux << " que acabam as olimpiadas de " << cidade << std::endl;
+    std::cout << "Digite dia do mes de " << mesAux << "/" << anoFinal << " que acabam as olimpiadas de " << cidade << std::endl;
     std::cout << "\n-> ";
-    std::cin >> diaAux;
+    while (1) {
+      std::cin >> diaAux;
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     std::cout << "\n";
 
     Data dataFinalAux(diaAux, mesAux, anoFinal);
@@ -304,27 +358,54 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
   std::string nome, codigo, nacionalidade;
   int dia, mes, ano, idade, tipoPessoa;
 
-  std::cout << "\nDigite o nome da pessoa a ser adicionada" << "\n-> ";
+  std::cout << "\nDigite o nome da pessoa a ser adicionada" << "\n\n-> ";
   std::getline(std::cin, nome);
   std::cout << "\n";
 
-  std::cout << "Digite o dia do nascimento de " << nome << "\n-> ";
-  std::cin >> dia;
+  std::cout << "Digite o dia do nascimento de " << nome << "\n\n-> ";
+  while (1) {
+    std::cin >> dia;
+    if (std::cin.fail() || std::cin.peek() != '\n') {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      std::cout << "\nDigite um número válido! \n\n-> ";
+    } else {
+      break;
+    }
+  }
   std::cout << "\n";
-  std::cout << "Digite o mes do nascimento de " << nome << "\n-> ";
-  std::cin >> mes;
+  std::cout << "Digite o mes do nascimento de " << nome << "\n\n-> ";
+  while (1) {
+    std::cin >> mes;
+    if (std::cin.fail() || std::cin.peek() != '\n') {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      std::cout << "\nDigite um número válido! \n\n-> ";
+    } else {
+      break;
+    }
+  }
   std::cout << "\n";
-  std::cout << "Digite o ano do nascimento de " << nome << "\n-> ";
-  std::cin >> ano;
+  std::cout << "Digite o ano do nascimento de " << nome << "\n\n-> ";
+  while (1) {
+    std::cin >> ano;
+    if (std::cin.fail() || std::cin.peek() != '\n') {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      std::cout << "\nDigite um número válido! \n\n-> ";
+    } else {
+      break;
+    }
+  }
   std::cout << "\n";
   Data dataNasc(dia, mes, ano);
 
   std::cin.ignore();
-  std::cout << "Digite o codigo de " << nome << "\n-> ";
+  std::cout << "Digite o codigo de " << nome << "\n\n-> ";
   getline(std::cin, codigo);
   std::cout << "\n";
 
-  std::cout << "Digite a nacionalidade de " << nome << "\n-> ";
+  std::cout << "Digite a nacionalidade de " << nome << "\n\n-> ";
   std::getline(std::cin, nacionalidade);
   std::cout << "\n";
 
@@ -448,7 +529,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   // No caso do nome ser incompatível com pelo menos um dos nomes no vector, o retorno será
   // um nullptr (ponteiro vazio), esse retorno deverá ser tratado no local de chamada
   if (contador == 0) {
-    std::cout << "Pessoa nao encontrada!" << std::endl;
+    std::cout << "Pessoa não encontrada!" << std::endl;
     return nullptr;
   }
 
@@ -484,7 +565,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   std::cout << "\n-> ";
   while (1) {
     std::cin >> indiceEscolha;
-    if (std::cin.fail() || indiceEscolha < 0 || indiceEscolha >= filtroPessoasIndice.size()) {
+    if (std::cin.fail() || std::cin.peek() != '\n' || indiceEscolha < 0 || indiceEscolha >= filtroPessoasIndice.size()) {
       std::cin.clear();
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       std::cout << "\nDigite um número válido! \n\n-> ";
@@ -610,15 +691,42 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     int diaAux, mesAux, anoAux;
     std::cout << "Digite o dia da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
-    std::cin >> diaAux;
+    while (1) {
+      std::cin >> diaAux;
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     std::cout << "\n";
     std::cout << "Digite o mes da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
-    std::cin >> mesAux;
+    while (1) {
+      std::cin >> mesAux;
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     std::cout << "\n";
     std::cout << "Digite o ano da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
-    std::cin >> anoAux;
+    while (1) {
+      std::cin >> anoAux;
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     std::cout << "\n";
     Data novaDataDeNascimento(diaAux, mesAux, anoAux);
     gerenciamento[indice]->setDataDeNascimento(novaDataDeNascimento);
