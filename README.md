@@ -1,9 +1,9 @@
 # :medal_sports: Projeto CRUD - Jogos Olímpicos
 
-[:dart: Objetivo](#dart-objetivo)
-[:handball_person: Diagrama de Classes](#handball_person-diagrama-de-classes)
-[:person_fencing: Dependências](#person_fencing-dependências)
-[:bicyclist: Como rodar](#bicyclist-como-rodar)
+- ### [:dart: Objetivo](#dart-objetivo)
+- ### [:handball_person: Diagrama de Classes](#handball_person-diagrama-de-classes)
+- ### [:person_fencing: Dependências](#person_fencing-dependências)
+- ### [:bicyclist: Como rodar](#bicyclist-como-rodar)
 
 ## Disciplina de Linguagem de Programação I e Laboratório
 
