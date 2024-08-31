@@ -3,6 +3,7 @@
 #include <assert.h>
 #include <cctype>
 #include <iostream>
+#include <limits>
 #include <list>
 #include <string>
 #include <typeinfo>
@@ -481,18 +482,20 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   std::cout << "\n";
   std::cout << "Escolha o índice" << std::endl;
   std::cout << "\n-> ";
-  std::cin >> indiceEscolha;
-  std::cout << "\n";
-
-  if (indiceEscolha >= 0 && indiceEscolha < filtroPessoasIndice.size()) {
-    Pessoa *retornoPessoa = filtroPessoasIndice[indiceEscolha];
-    filtroPessoasIndice.clear();
-    return retornoPessoa;
-  } else {
-    std::cout << "Índice inválido" << std::endl;
-    filtroPessoasIndice.clear();
-    return nullptr;
+  while (1) {
+    std::cin >> indiceEscolha;
+    if (std::cin.fail() || indiceEscolha < 0 || indiceEscolha >= filtroPessoasIndice.size()) {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      std::cout << "\nDigite um número válido! \n\n-> ";
+    } else {
+      break;
+    }
   }
+  std::cout << "\n";
+  Pessoa *retornoPessoa = filtroPessoasIndice[indiceEscolha];
+  filtroPessoasIndice.clear();
+  return retornoPessoa;
   return 0;
 }
 
@@ -742,7 +745,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     }
   };
 
-  std::cout << "Entrada inválida! " << std::endl;
+  std::cout << "Entrada inválida2! " << std::endl;
   return 0;
 }
 
@@ -795,7 +798,7 @@ int GerenciamentoOlimpiadas::menu() {
   getline(std::cin, strOpcao);
 
   if (strOpcao.size() > 1) {
-    std::cout << "Entrada inválida! " << std::endl;
+    std::cout << "Entrada inválida0! " << std::endl;
     return 0;
   }
 
