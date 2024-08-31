@@ -4,6 +4,7 @@
 - ### [:handball_person: Diagrama de Classes](#handball_person-diagrama-de-classes)
 - ### [:person_fencing: Dependências](#person_fencing-dependências)
 - ### [:bicyclist: Como rodar](#bicyclist-como-rodar)
+- ### [:arrow_down: Baixar o projeto](https://github.com/Asfuri/Projeto-CRUD/archive/refs/heads/main.zip)
 
 ## Disciplina de Linguagem de Programação I e Laboratório
 
