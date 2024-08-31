@@ -104,4 +104,4 @@ Para rodar
 ./olimpiadas.exe
 ```
 
-**OBS.:** Utilizamos de barra normal('/') considerando um ambiente como Git Bash, WSL e PowerShell, considere utilizar de barra invertida ('\\') em caso de não compilar
+**OBS.:** Utilizamos de barra normal ('/') considerando um ambiente como Git Bash, WSL e PowerShell, considere utilizar de barra invertida ('\\') em caso de não compilar
