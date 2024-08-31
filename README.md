@@ -57,6 +57,7 @@ O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao u
 ***Requisitos***
 - Um compilador c++, recomendamos o `clang++` ou o `g++`
 - Um terminal de linha de comando
+
 [**Atenção:** Lembre de baixar o projeto e extraí-lo devidamente do `.zip`.](#medal_sports-projeto-crud---jogos-olímpicos)
 
 ### Bash
