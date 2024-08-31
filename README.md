@@ -59,7 +59,7 @@ O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao u
 - Um terminal de linha de comando
 <br>
 
-{c:red}Lembre de baixar o projeto e extrai-lo devidamente do `.zip`{/c}
+{c:red}[Lembre de baixar o projeto e extrai-lo devidamente do `.zip`]{/c}
 
 ### Bash
 
