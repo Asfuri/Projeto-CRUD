@@ -88,13 +88,13 @@ clang++ main.cpp -I include/ src/*.cpp -o olimpiadas
 
 Para rodar
 
-###Linux
+### Linux
 
 ```sh
 ./olimpiadas.out
 ```
 
-###Windows
+### Windows
 
 ```sh
 ./olimpiadas.exe
