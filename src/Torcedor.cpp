@@ -34,26 +34,6 @@ void Torcedor::exibir() {
   std::cout << resposta;
 };
 
-void Torcedor::setDataDeNascimento(Data DataDeNascimento) {
-  Pessoa::setDataDeNascimento(DataDeNascimento);
-};
-
-void Torcedor::setNome(std::string Nome) {
-  Pessoa::setNome(Nome);
-};
-
-void Torcedor::setCodigo(std::string Codigo) {
-  Pessoa::setCodigo(Codigo);
-};
-
-void Torcedor::setNacionalidade(std::string Nacionalidade) {
-  Pessoa::setNacionalidade(Nacionalidade);
-};
-
-void Torcedor::setIdade(int idade) {
-  Pessoa::setIdade(idade);
-};
-
 void Torcedor::setStatusVIP(bool statusVIP) {
   this->statusVIP = statusVIP;
 };

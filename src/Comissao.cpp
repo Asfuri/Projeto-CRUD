@@ -34,26 +34,6 @@ void Comissao::exibir() {
   std::cout << "Equipe responsável: " << this->equipeResponsavel << std::endl;
 };
 
-void Comissao::setDataDeNascimento(Data DataDeNascimento) {
-  Pessoa::setDataDeNascimento(DataDeNascimento);
-};
-
-void Comissao::setNome(std::string Nome) {
-  Pessoa::setNome(Nome);
-};
-
-void Comissao::setCodigo(std::string Codigo) {
-  Pessoa::setCodigo(Codigo);
-};
-
-void Comissao::setNacionalidade(std::string Nacionalidade) {
-  Pessoa::setNacionalidade(Nacionalidade);
-};
-
-void Comissao::setIdade(int idade) {
-  Pessoa::setIdade(idade);
-};
-
 void Comissao::setModalidade(std::string modalidade) {
   this->modalidade = modalidade;
 };

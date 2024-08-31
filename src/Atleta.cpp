@@ -47,26 +47,6 @@ void Atleta::exibir() {
   std::cout << "Medalha: " << getMedalha() << std::endl;
 };
 
-void Atleta::setDataDeNascimento(Data DataDeNascimento) {
-  Pessoa::setDataDeNascimento(DataDeNascimento);
-};
-
-void Atleta::setNome(std::string Nome) {
-  Pessoa::setNome(Nome);
-};
-
-void Atleta::setCodigo(std::string Codigo) {
-  Pessoa::setCodigo(Codigo);
-};
-
-void Atleta::setNacionalidade(std::string Nacionalidade) {
-  Pessoa::setNacionalidade(Nacionalidade);
-};
-
-void Atleta::setIdade(int idade) {
-  Pessoa::setIdade(idade);
-};
-
 void Atleta::setMedalha(int medalha) {
   this->medalha = medalha;
 };
