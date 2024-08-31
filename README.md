@@ -1,4 +1,10 @@
 # :medal_sports: Projeto CRUD - Jogos Olímpicos
+
+[:dart: Objetivo](#objetivo)
+[:handball_person: Diagrama de Classes](#diagrama-de-classes)
+[:person_fencing: Dependências](#dependencias)
+[:bicyclist: Como rodar](#como-rodar)
+
 ## Disciplina de Linguagem de Programação I e Laboratório
 
 Esse foi um projeto desenvolvido por discentes do curso de *Engenharia da Computação da Universidade Federal da Paraíba*, curso este que pertence ao *[Centro de Informática](http://ci.ufpb.br/)*, localizado na *[Rua dos Escoteiros S/N - Mangabeira - João Pessoa - Paraíba - Brasil](https://g.co/kgs/xobLzCE)*. O programa decorrente do desenvolvimento do código foi empregado com o objetivo de permitir ao docente, utilizando de métodos avaliativos, calcular e atribuir as respectivas notas dos participiantes do projeto. 
