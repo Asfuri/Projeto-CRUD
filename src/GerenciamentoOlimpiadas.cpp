@@ -11,7 +11,7 @@ GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
   /*
   Construtor padrão -> Será utilizado na inicialização do programa,
   a única instância dessa classe deverá ser inicializada sem os dados armazenados,
-  para então serem 'settados' todos os seus dados com "setOlimpiadas", método esse que
+  para então serem 'setados' todos os seus dados com "setOlimpiadas", método esse que
   é chamado no momento de leitura dos dados das olimpíadas, seja do arquivo, seja diretamente
   do terminal
   */
@@ -107,7 +107,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::cout << "\033[0m" << "Desenvolvedores do projeto:\n";
     std::cout << "----------------------------------------------\n";
     std::cout << "* Eduardo Asfuri Carvalho                    * \n";
-    std::cout << "* Lucas Henrique Vieira da Silva              * \n";
+    std::cout << "* Lucas Henrique Vieira da Silva             * \n";
     std::cout << "* Marco Antonio de Vasconcelos Souza Filho   * \n";
 
     std::cout << "----------------------------------------------\n";
@@ -136,7 +136,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     }
     std::cout << "\n";
 
-    std::cout << "Digite o mes de " << anoAux << " que começam as olimpíadas de " << cidade << std::endl;
+    std::cout << "Digite o mês de " << anoAux << " que começam as olimpíadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     while (1) {
       std::cin >> mesAux;
@@ -150,7 +150,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     }
     std::cout << "\n";
 
-    std::cout << "Digite dia do mes de " << mesAux << "/" << anoAux << " que começam as olimpíadas de " << cidade << std::endl;
+    std::cout << "Digite dia do mês de " << mesAux << "/" << anoAux << " que começam as olimpíadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     while (1) {
       std::cin >> diaAux;
@@ -180,7 +180,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     }
     std::cout << "\n";
 
-    std::cout << "Digite o mes de " << anoFinal << " que acabam as olimpíadas de " << cidade << std::endl;
+    std::cout << "Digite o mês de " << anoFinal << " que acabam as olimpíadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     while (1) {
       std::cin >> mesAux;
@@ -194,7 +194,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     }
     std::cout << "\n";
 
-    std::cout << "Digite dia do mes de " << mesAux << "/" << anoFinal << " que acabam as olimpíadas de " << cidade << std::endl;
+    std::cout << "Digite dia do mês de " << mesAux << "/" << anoFinal << " que acabam as olimpíadas de " << cidade << std::endl;
     std::cout << "\n-> ";
     while (1) {
       std::cin >> diaAux;
@@ -382,21 +382,24 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
   }
   std::cout << "\n";
   std::cout << "Digite o ano do nascimento de " << nome << "\n\n-> ";
+
   while (1) {
     std::cin >> ano;
-    if (std::cin.fail() || std::cin.peek() != '\n') {
+    std::cout << "\n";
+    if (std::cin.fail() || std::cin.peek() != '\n' || dataInicio.getAno() < ano) {
       std::cin.clear();
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      std::cout << "\nDigite um número válido! \n\n-> ";
+      std::cout << "Digite um ano válido! \n\n-> ";
     } else {
       break;
     }
   }
-  std::cout << "\n";
+
+  idade = dataInicio.getAno() - ano;
   Data dataNasc(dia, mes, ano);
 
   std::cin.ignore();
-  std::cout << "Digite o codigo de " << nome << "\n\n-> ";
+  std::cout << "Digite o código de " << nome << "\n\n-> ";
   getline(std::cin, codigo);
   std::cout << "\n";
 
@@ -404,13 +407,20 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
   std::getline(std::cin, nacionalidade);
   std::cout << "\n";
 
-  idade = dataInicio.getAno() - ano;
-
   std::cout << "Digite o tipo\n"
             << std::endl;
-  std::cout << "-> \033[36m1\033[0m Atleta\t-> \033[36m2\033[0m Membro da comissão\n-> \033[36m3\033[0m Torcedor\t-> \033[36m4\033[0m Cancelar operacao\n\n-> ";
-  std::cin >> tipoPessoa;
-  std::cout << "\n";
+  std::cout << "-> \033[36m1\033[0m Atleta\t-> \033[36m2\033[0m Membro da comissão\n-> \033[36m3\033[0m Torcedor\t-> \033[36m4\033[0m Cancelar operação\n\n-> ";
+  while (1) {
+    std::cin >> tipoPessoa;
+    std::cout << "\n";
+    if (std::cin.fail() || std::cin.peek() != '\n') {
+      std::cin.clear();
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      std::cout << "Digite um número válido! \n\n-> ";
+    } else {
+      break;
+    }
+  }
 
   if (tipoPessoa == 1) {
 
@@ -421,9 +431,18 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
     std::getline(std::cin, modalidade);
     std::cout << "\n";
     std::cout << "Digite a colocação de " << nome << " em " << modalidade << "\n\n-> ";
-    std::cin >> medalha;
-    std::cout << "\n";
 
+    while (1) {
+      std::cin >> medalha;
+      std::cout << "\n";
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\nDigite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     pessoaAux = new Atleta(dataNasc, nome, codigo, nacionalidade, idade, tipoPessoa, medalha, modalidade);
 
   } else if (tipoPessoa == 2) {
@@ -561,15 +580,15 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   std::cout << "\n-> ";
   while (1) {
     std::cin >> indiceEscolha;
+    std::cout << "\n";
     if (std::cin.fail() || std::cin.peek() != '\n' || indiceEscolha < 0 || indiceEscolha >= filtroPessoasIndice.size()) {
       std::cin.clear();
       std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-      std::cout << "\nDigite um número válido! \n\n-> ";
+      std::cout << "Digite um número válido! \n\n-> ";
     } else {
       break;
     }
   }
-  std::cout << "\n";
   Pessoa *retornoPessoa = filtroPessoasIndice[indiceEscolha];
   filtroPessoasIndice.clear();
   return retornoPessoa;
@@ -656,9 +675,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   if (indice > gerenciamento.size())
     return 1;
 
-  char escolha;
-
-  std::cout << "Digite o que sera alterado" << std::endl;
+  std::cout << "Digite o que será alterado" << std::endl;
   std::cout << "-> \033[36m1\033[0m Data de Nascimento" << std::endl;
   std::cout << "-> \033[36m2\033[0m Nome" << std::endl;
   std::cout << "-> \033[36m3\033[0m Codigo" << std::endl;
@@ -667,20 +684,27 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   if (p->getTipo() == 1) {
     std::cout << "-> \033[36m5\033[0m Medalha" << std::endl;
     std::cout << "-> \033[36m6\033[0m Modalidade" << std::endl;
-    std::cout << "\n-> ";
 
   } else if (p->getTipo() == 2) {
     std::cout << "-> \033[36m5\033[0m Modalidade" << std::endl;
     std::cout << "-> \033[36m6\033[0m Equipe de atuação" << std::endl;
-    std::cout << "\n-> ";
 
   } else if (p->getTipo() == 3) {
     std::cout << "-> \033[36m5\033[0m Status VIP" << std::endl;
-    std::cout << "\n-> ";
+  }
+  
+  std::cout << "-> \033[31mOutro\033[0m Cancelar operação\n\n-> " << std::endl;
+  std::cin >> std::ws;
+  std::string strEscolha;
+  getline(std::cin, strEscolha);
+
+  if (strEscolha.size() > 1) {
+    std::cout << "\nOperação cancelada" << std::endl;
+    return 0;
   }
 
-  std::cin >> escolha;
-  std::cout << "\n";
+  const char *arrayEscolha = strEscolha.c_str();
+  char escolha = arrayEscolha[0];
 
   switch (escolha) {
   case '1': {
@@ -699,7 +723,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
       }
     }
     std::cout << "\n";
-    std::cout << "Digite o mes da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
+    std::cout << "Digite o mês da nova data de nascimento de " << gerenciamento[indice]->getNome() << std::endl;
     std::cout << "\n-> ";
     while (1) {
       std::cin >> mesAux;
@@ -780,8 +804,17 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     int medalha;
     std::cout << "Digite a nova colocação de " << gerenciamento[indice]->getNome() << " em " << dynamic_cast<Atleta *>(gerenciamento[indice])->getModalidade() << std::endl;
     std::cout << "\n-> ";
-    std::cin >> medalha;
-    std::cout << "\n";
+    while (1) {
+      std::cin >> medalha;
+      std::cout << "\n";
+      if (std::cin.fail() || std::cin.peek() != '\n') {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Digite um número válido! \n\n-> ";
+      } else {
+        break;
+      }
+    }
     dynamic_cast<Atleta *>(gerenciamento[indice])->setMedalha(medalha);
     std::cout << "Nova medalha de " << gerenciamento[indice]->getNome() << " \033[35mdefinida\033[0m com sucesso!" << std::endl;
     return 0;
@@ -850,7 +883,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     }
   };
 
-  std::cout << "Entrada inválida! " << std::endl;
+  std::cout << "Operação Cancelada! " << std::endl;
   return 0;
 }
 
