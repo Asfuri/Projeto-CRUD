@@ -63,7 +63,7 @@ Este projeto foi desenvolvido utilizando apenas funcionalidades da biblioteca pa
   - **Implementação:** Em interações direta com um usuário, via terminal.
 
 - **`<string>`**: Fornece suporte à manipulação de strings, permitindo o uso da classe `std::string` para trabalhar com cadeias de caracteres de maneira mais conveniente a partir dos métodos fornecidos pela classe.
-  - **Implementação:** Em validações de entradas do tipo `std::string` pelo usuário, em comparações utilizando `.find()` e em conversões entre tipos utilizando dos métodos `.toString()` e `.stoi`.
+  - **Implementação:** Em validações de entradas do tipo `std::string` pelo usuário, em comparações utilizando `.find()` e em conversões entre tipos utilizando dos métodos `.toString()` e `.stoi()`.
 
 - **`<vector>`**: Fornece a classe `std::vector`, facilitando armazenar e manipular coleções de dados dinâmicos em formato de lista. A classe `std::vector` permite criar arrays dinâmicos que podem redimensionar automaticamente à medida que novos elementos são adicionados, que tornam sua utilização, a priori, intuitiva com os métodos da classe.
   - **Implementação:** Em compor o Objeto de GerencimentoOlimpada com dois arrays dinâmicos primordiais para o funcionamento de todo o CRUD, que teve como auxílio métodos como `push_back()` e `erase()`
