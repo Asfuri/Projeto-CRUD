@@ -140,7 +140,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::cout << "\n-> ";
     while (1) {
       std::cin >> mesAux;
-      if (std::cin.fail() || std::cin.peek() != '\n') {
+      if (std::cin.fail() || std::cin.peek() != '\n' || mesAux < 1 || mesAux > 12) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "\nDigite um número válido! \n\n-> ";
@@ -170,7 +170,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::cout << "\n-> ";
     while (1) {
       std::cin >> anoFinal;
-      if (std::cin.fail() || std::cin.peek() != '\n') {
+      if (std::cin.fail() || std::cin.peek() != '\n' || anoFinal < anoAux) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "\nDigite um número válido! \n\n-> ";
@@ -184,10 +184,10 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::cout << "\n-> ";
     while (1) {
       std::cin >> mesAux;
-      if (std::cin.fail() || std::cin.peek() != '\n') {
+      if (std::cin.fail() || std::cin.peek() != '\n' || (anoFinal == anoAux && mesAux < dataInicioAux.getMes()) || mesAux > 12 || mesAux < 1) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "\nDigite um número válido! \n\n-> ";
+        std::cout << "\nDigite um mês válido! \n\n-> ";
       } else {
         break;
       }
@@ -198,7 +198,7 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
     std::cout << "\n-> ";
     while (1) {
       std::cin >> diaAux;
-      if (std::cin.fail() || std::cin.peek() != '\n') {
+      if (std::cin.fail() || std::cin.peek() != '\n' || (anoFinal == anoAux && mesAux == dataInicioAux.getMes() && diaAux < dataInicioAux.getDia()) || diaAux < 1) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "\nDigite um número válido! \n\n-> ";
@@ -263,7 +263,6 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
     -> Responsável por iniciar índices do vector "gerenciamento", ou seja, iniciando ponteiros de Pessoa com os construtores das subclasses (realizando polimorfismo)
     -> Também chama o método de inserir Pessoas no vector (AdicionarPessoa())
   */
-
 
   std::fstream arquivo;
   arquivo.open("dadosPessoas.txt", std::ios_base::in);
@@ -407,7 +406,8 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
 
   idade = dataInicio.getAno() - ano;
 
-  std::cout << "Digite o tipo\n" << std::endl;
+  std::cout << "Digite o tipo\n"
+            << std::endl;
   std::cout << "-> \033[36m1\033[0m Atleta\t-> \033[36m2\033[0m Membro da comissão\n-> \033[36m3\033[0m Torcedor\t-> \033[36m4\033[0m Cancelar operacao\n\n-> ";
   std::cin >> tipoPessoa;
   std::cout << "\n";

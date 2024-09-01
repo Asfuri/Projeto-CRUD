@@ -23,7 +23,7 @@ public:
   void setDia(int dia);
   void setMes(int mes);
   void setAno(int ano);
-  int getDataString();
+  int getDataInt();
   void validacaoData();
 };
 #endif

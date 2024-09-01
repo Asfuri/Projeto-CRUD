@@ -51,7 +51,8 @@ void Data::exibir() {
   else if (this->dia < 10 && this->mes < 10)
     std::cout << "0" << this->dia << "/0" << this->mes << "/" << this->ano << std::endl;
 };
-int Data::getDataString() {
+
+int Data::getDataInt() {
   std::string data = std::to_string(this->ano) + std::to_string(this->mes) + std::to_string(this->dia);
   return std::stoi(data);
 }
