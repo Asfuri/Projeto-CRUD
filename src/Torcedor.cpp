@@ -1,7 +1,4 @@
 #include "../headers/Torcedor.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
 /*
   Torcedor é uma subclasse de Pessoa, tendo o atributo StatusVIP como adicional

@@ -1,7 +1,4 @@
 #include "../headers/Pessoa.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
 Pessoa::Pessoa() {
   this->DataDeNascimento = Data();

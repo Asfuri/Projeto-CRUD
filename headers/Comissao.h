@@ -2,9 +2,6 @@
 #define COMISSAO_H
 
 #include "Pessoa.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
 class Comissao : public Pessoa {
 protected:

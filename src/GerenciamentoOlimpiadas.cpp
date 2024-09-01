@@ -3,7 +3,7 @@
 #include <iostream>
 #include <limits>
 #include <string>
-#include <typeinfo>
+// #include <typeinfo>
 #include <unistd.h>
 #include <vector>
 
@@ -264,7 +264,6 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
     -> Também chama o método de inserir Pessoas no vector (AdicionarPessoa())
   */
 
-  // ->> MÉTODO COM PROBLEMA
 
   std::fstream arquivo;
   arquivo.open("dadosPessoas.txt", std::ios_base::in);
@@ -408,8 +407,8 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
 
   idade = dataInicio.getAno() - ano;
 
-  std::cout << "Digite o tipo" << std::endl;
-  std::cout << "-> \033[36m1\033[0m Atleta\t-> \033[36m2\033[0m Membro da comissão\n-> \033[36m3\033[0m Torcedor\t-> \033[36m4\033[0m Cancelar operacao\n-> ";
+  std::cout << "Digite o tipo\n" << std::endl;
+  std::cout << "-> \033[36m1\033[0m Atleta\t-> \033[36m2\033[0m Membro da comissão\n-> \033[36m3\033[0m Torcedor\t-> \033[36m4\033[0m Cancelar operacao\n\n-> ";
   std::cin >> tipoPessoa;
   std::cout << "\n";
 
@@ -421,7 +420,7 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
     std::cout << "Digite a modalidade do atleta\n\n-> ";
     std::getline(std::cin, modalidade);
     std::cout << "\n";
-    std::cout << "Digite a colocação de " << nome << " em " << modalidade << "\n-> ";
+    std::cout << "Digite a colocação de " << nome << " em " << modalidade << "\n\n-> ";
     std::cin >> medalha;
     std::cout << "\n";
 
@@ -445,7 +444,7 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
     std::cin.ignore();
     bool vipBool;
     std::string vip;
-    std::cout << "O torcedor " << nome << " possui acesso vip? (Sim/Nao)\n-> ";
+    std::cout << "O torcedor " << nome << " possui acesso vip? (Sim/Nao)\n\n-> ";
     std::getline(std::cin, vip);
     std::cout << "\n";
 
@@ -457,7 +456,6 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
 
     pessoaAux = new Torcedor(dataNasc, nome, codigo, nacionalidade, idade, tipoPessoa, vipBool);
   } else {
-    delete pessoaAux;
     std::cout << "Operação cancelada! \n";
     return;
   }
@@ -575,7 +573,6 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   Pessoa *retornoPessoa = filtroPessoasIndice[indiceEscolha];
   filtroPessoasIndice.clear();
   return retornoPessoa;
-  return 0;
 }
 
 void GerenciamentoOlimpiadas::gerarRelatorio() {
@@ -641,14 +638,16 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     -> Esse método é responsável pelo EDIT do sistema
 
   */
+
   Pessoa *p = buscar();
-  if (!p)
-    return 1;
+  if (p == nullptr) {
+    return 0;
+  };
 
   int indice = 0;
 
   for (auto busca : gerenciamento) {
-    if (busca->getCodigo() == p->getCodigo())
+    if (busca->getNome() == p->getNome() && busca->getCodigo() == p->getCodigo())
       break;
 
     indice++;
@@ -933,7 +932,7 @@ int GerenciamentoOlimpiadas::menu() {
       return 0;
     }
     Pessoa *p = buscar();
-    if (!p) {
+    if (p == nullptr) {
       return 0;
     };
     switch (p->getTipo()) {

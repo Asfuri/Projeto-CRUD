@@ -2,9 +2,6 @@
 #define PESSOA_H
 
 #include "Data.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
 class Pessoa {
 protected:

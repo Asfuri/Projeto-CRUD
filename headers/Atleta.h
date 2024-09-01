@@ -2,9 +2,6 @@
 #define ATLETA_H
 
 #include "Pessoa.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
 class Atleta : public Pessoa {
 protected:

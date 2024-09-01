@@ -2,9 +2,6 @@
 #define TORCEDOR_H
 
 #include "Pessoa.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
 class Torcedor : public Pessoa {
 protected:

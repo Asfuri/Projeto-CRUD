@@ -1,7 +1,4 @@
 #include "../headers/Atleta.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
 Atleta::Atleta()
     : Pessoa() {

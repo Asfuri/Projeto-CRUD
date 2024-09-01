@@ -2,14 +2,10 @@
 #define GERENCIAMENTO_OLIMPIADAS_H
 
 #include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
 
 #include "Atleta.h"
 #include "Comissao.h"
 #include "Data.h"
-#include "Pessoa.h"
 #include "Torcedor.h"
 
 class GerenciamentoOlimpiadas {

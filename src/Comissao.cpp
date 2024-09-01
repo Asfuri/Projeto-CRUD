@@ -1,7 +1,4 @@
 #include "../headers/Comissao.h"
-#include <iostream>
-#include <string>
-#include <vector>
 
 Comissao::Comissao()
     : Pessoa() {
