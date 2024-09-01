@@ -104,4 +104,10 @@ Para rodar
 ./olimpiadas.exe
 ```
 
+### Atenção
+Para warnings referentes a codificação, recomendamos o uso da seguinte flag na compilação (válido para clang++)
+```sh
+-Wno-invalid-source-encoding
+```
+
 **OBS.:** Utilizamos de barra normal ('/') considerando um ambiente como Git Bash, WSL e PowerShell, considere utilizar de barra invertida ('\\') em caso de não compilar
