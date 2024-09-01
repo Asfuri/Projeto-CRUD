@@ -4,6 +4,20 @@
 #include <string>
 #include <vector>
 
+/*
+  -Corpo dos métodos de Data-
+
+  Data é uma classe responsável por representar as datas como nós utilizamos no cotidiano
+  (Calendário gregoriano), possui os atributos:
+    int dia
+    int mes
+    int ano
+
+  -> Com esses atributos possuímos métodos que nos auxiliam em suas manipulações, seus respectivos getters e setters
+
+  -> Data também possui o método validacaoData(), que, sendo chamada dentro do construtor, irá validar se os valores dos atributos atribuidos são válidos. Tendo em vista uma entrada de Data do usuário (Tomando como pressuposto que todos os dados no .txt estão corretos), o método irá pedir na entrada padrão (std::cin) que o usuário digite valores válidos para o método validar a instância de Data
+*/
+
 Data::Data() {
 }
 
@@ -51,11 +65,6 @@ void Data::exibir() {
   else if (this->dia < 10 && this->mes < 10)
     std::cout << "0" << this->dia << "/0" << this->mes << "/" << this->ano << std::endl;
 };
-
-int Data::getDataInt() {
-  std::string data = std::to_string(this->ano) + std::to_string(this->mes) + std::to_string(this->dia);
-  return std::stoi(data);
-}
 
 void Data::validacaoData() {
   while (true) {

@@ -3,6 +3,16 @@
 
 #include "Pessoa.h"
 
+/*
+  -Header da classe Atleta-
+
+  -> Aqui estão declarados os atributos da classe e as assinaturas dos métodos
+
+  Atleta é uma subclasse de Pessoa, tendo os atributos medalha e modalidade como adicional
+  -> Com esses atributos extras possuímos métodos extras, os seus respectivos getters e setters
+  -> Atleta também possui o método exibir() individual, que utiliza o exibir de Pessoa como molde
+*/
+
 class Atleta : public Pessoa {
 protected:
   int medalha;

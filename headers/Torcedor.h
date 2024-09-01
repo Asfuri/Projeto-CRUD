@@ -3,6 +3,17 @@
 
 #include "Pessoa.h"
 
+/*
+  -Header da classe Torcedor-
+
+  -> Aqui estão declarados os atributos da classe e as assinaturas dos métodos
+
+  Torcedor é uma subclasse de Pessoa, tendo o atributo StatusVIP como adicional
+  -> Com esse atributo extra possuímos métodos extras, seu get e seu get
+  -> Torcedor também possui o método exibir() individual, que utiliza o exibir de Pessoa como molde
+*/
+
+
 class Torcedor : public Pessoa {
 protected:
   bool statusVIP;

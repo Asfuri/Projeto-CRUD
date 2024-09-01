@@ -1,5 +1,20 @@
 #include "../headers/Pessoa.h"
 
+/*
+  -Corpo dos métodos de Pessoa-
+
+  Pessoa é uma superclasse, possuindo os atributos:
+    Data DataDeNascimento
+    std::string Nome
+    std::string Codigo
+    std::string Nacionalidade
+    int idade
+    int tipo
+
+  -> Todos esses atributos são comuns entre suas subclasses e cada atributo possui getters e setters
+  -> Pessoa também possui o método exibir(), sendo este sobrescrito por cada subclasse, mas que utiliza esse método como molde
+*/
+
 Pessoa::Pessoa() {
   this->DataDeNascimento = Data();
   this->Nome = "";

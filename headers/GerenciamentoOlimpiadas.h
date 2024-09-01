@@ -8,6 +8,31 @@
 #include "Data.h"
 #include "Torcedor.h"
 
+/*
+  -Header da classe GerenciamentoOlimpiadas-
+
+  GerenciamentoOlimpiadas é a principal classe do sistema, possuindo os atributos:
+  
+    Data dataInicio
+    std::string Cidade
+    Data dataFinal
+    vector<Pessoa*> gerenciamento
+    vector<Pessoa*> filtroPessoasIndice
+    std::string Mascote
+
+  -> Essa classe possui métodos principais e auxiliares, sendo eles comentados em seu corpo com a sua utilidade e funcionamento
+  -> Possui métodos que interagem com os arquivos .txt e com o usuário
+
+  -> Alguns métodos principais são privados, pois são chamados a partir do menu(), que é um método público
+  -> Apenas 4 métodos são públicos:
+    void iniciarOlimpiada();   -> Inicia todo o processamento dos dados salvos em .txt
+    int menu();                -> Imprimir o menu que interage com o usuário
+    void salvarArquivo();      -> Responsável por salvar o arquivo periodicamente
+    GerenciamentoOlimpiadas(); -> Construtor
+
+  -> Comentários internos dos métodos no arquivo .cpp da classe
+*/
+
 class GerenciamentoOlimpiadas {
 private:
   Data dataInicio;
@@ -30,6 +55,7 @@ private:
   void removerPessoa();
 
 public:
+  // Métodos Públicos
   void iniciarOlimpiada();
   int menu();
   void salvarArquivo();

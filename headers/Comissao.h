@@ -3,6 +3,16 @@
 
 #include "Pessoa.h"
 
+/*
+  -Header da classe Comissao-
+
+  -> Aqui estão declarados os atributos da classe e as assinaturas dos métodos
+
+  Comissao é uma subclasse de Pessoa, tendo os atributos modalidade e equipeResponsavel como adicional
+  -> Com esses atributos extras possuímos métodos extras, os seus respectivos getters e setters
+  -> Comissao também possui o método exibir() individual, que utiliza o exibir de Pessoa como molde
+*/
+
 class Comissao : public Pessoa {
 protected:
   std::string modalidade;

@@ -1,5 +1,13 @@
 #include "../headers/Comissao.h"
 
+/*
+  -Corpo dos métodos de Comissao-
+
+  Comissao é uma subclasse de Pessoa, tendo os atributos modalidade e equipeResponsavel como adicional
+  -> Com esses atributos extras possuímos métodos extras, os seus respectivos getters e setters
+  -> Comissao também possui o método exibir() individual, que utiliza o exibir de Pessoa como molde
+*/
+
 Comissao::Comissao()
     : Pessoa() {
   this->modalidade = "";
