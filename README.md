@@ -52,9 +52,12 @@ O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao u
 
 ## :person_fencing: Dependências
 
-Este projeto foi desenvolvido utilizando apenas bibliotecas padrões do C++ e do sistema operacional[^3], ou seja, nenhuma biblioteca externa foi incluída no código. Abaixo, dissertamos sobre a utilidade de cada uma das bibliotecas implementadas, e exemplos de sua utilidade dentro do projeto:
+Este projeto foi desenvolvido utilizando apenas funcionalidades da biblioteca padrão do C++ e do sistema operacional[^3][^4], ou seja, nenhuma biblioteca externa foi incluída no código. Abaixo, dissertamos sobre a utilidade de cada uma das funcionalidades da biblioteca padrão implementadas, e exemplos de sua utilidade dentro do projeto:
 
-### Bibliotecas Padrão
+[^3]: ***[Biblioteca Padrão do C++](https://en.cppreference.com/w/cpp/header)***
+[^4]: ***[Sistema Operacional](https://tecnoblog.net/responde/o-que-e-um-sistema-operacional/)***
+
+### Biblioteca Padrão
 
 - **`<iostream>`**: Usada para operações básicas de entrada e saída, como leitura de dados do teclado (`std::cin`) e escrita de dados na tela (`std::cout`).
   - **Implementação:** Em interações direta com um usuário, via terminal.
