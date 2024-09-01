@@ -52,6 +52,38 @@ O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao u
 
 ## :person_fencing: Dependências
 
+## Dependências
+
+Este projeto foi desenvolvido utilizando apenas bibliotecas padrões do C++, ou seja, nenhuma biblioteca externa foi incluída no código. Abaixo, dissertamos sobre a utilidade de cada uma das bibliotecas implementadas, e sua utilidade dentro do projeto:
+
+### Bibliotecas Padrão
+
+- **`<iostream>`**: Usada para operações básicas de entrada e saída, como leitura de dados do teclado (`std::cin`) e escrita de dados na tela (`std::cout`).
+
+- **`<string>`**: Fornece suporte à manipulação de strings, permitindo o uso da classe `std::string` para trabalhar com cadeias de caracteres de maneira mais conveniente e segura do que o uso de arrays de `char`.
+
+- **`<vector>`**: Utilizada para armazenar e manipular coleções de dados dinâmicos em formato de lista. A classe `std::vector` permite criar arrays dinâmicos que podem redimensionar automaticamente à medida que novos elementos são adicionados.
+
+- **`<fstream>`**: Facilita a leitura e escrita em arquivos. `std::ifstream` é usada para ler de arquivos, enquanto `std::ofstream` é usada para escrever em arquivos.
+
+- **`<limits>`**: Fornece informações sobre os limites das variáveis numéricas (como o valor máximo e mínimo que um tipo de dado pode armazenar) usando a classe `std::numeric_limits`.
+
+- **`<algorithm>`**: Inclui uma variedade de algoritmos genéricos, como ordenação (`std::sort`), busca (`std::find`), entre outros, que podem ser aplicados a contêineres como vetores.
+
+- **`<locale>`**: Usada para trabalhar com diferentes configurações regionais, como formatos de números, datas, e outros parâmetros que podem variar conforme a localidade. A classe `std::locale` permite adaptar o comportamento do programa ao ambiente cultural do usuário.
+
+### Bibliotecas Específicas de Plataforma
+
+- **`<unistd.h>`** (Linux/Unix): Usada para acessar várias funcionalidades do sistema operacional POSIX, como chamadas de sistema para manipulação de arquivos, gerenciamento de processos, e manipulação de diretórios. Esta biblioteca é exclusiva para sistemas Unix-like.
+
+- **`<windows.h>`** (Windows): Inclui funcionalidades específicas para o sistema operacional Windows, como manipulação de janelas, interação com hardware, gerenciamento de processos e threads, e muito mais. Esta biblioteca é exclusiva para o sistema operacional Windows.
+
+### Notas
+
+- O uso de `<unistd.h>` e `<windows.h>` depende da plataforma em que o programa está sendo compilado. Certifique-se de compilar o código no ambiente correto ou de usar diretrizes de pré-processamento (`#ifdef`) para garantir a compatibilidade multiplataforma.
+
+
+
 ## :bicyclist: Como rodar
 
 ***Requisitos***
