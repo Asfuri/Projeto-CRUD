@@ -78,7 +78,7 @@ Este projeto foi desenvolvido utilizando apenas funcionalidades da biblioteca pa
   - **Implementação:** Ao converter os ìndices (`char`) de uma determinada `std::string` em minúsculo utilizando do método `std::transform`.
 
 - **`<locale>`**: Usada para trabalhar com diferentes configurações regionais, como formatos de números, datas, e outros parâmetros que podem variar conforme a localidade. A classe `std::locale` permite adaptar o comportamento do programa ao ambiente cultural do usuário.
-  - **Implementação:** Ao formatar todo nosso código para o idioma Português brasileiro, para assim utilizar de acentos e caracteres especifícos do idioma `ç, ~`, utilizamos do método `std::setlocale()`.
+  - **Implementação:** Ao formatar todo nosso código para o idioma Português brasileiro, para, assim, utilizar de acentos e caracteres especifícos do idioma, como `ç, ~`, utilizamos do método `std::setlocale()`.
 
 ### Bibliotecas Específicas de Plataforma
 - O uso de `<unistd.h>` e `<windows.h>` depende da plataforma em que o programa está sendo compilado.
