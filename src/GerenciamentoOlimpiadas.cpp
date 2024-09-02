@@ -625,6 +625,8 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
      Detalhe --> O vector é apagado depois de cada interação, garantindo que nao terá um
      lixo de memória de execuções*/
   int indiceEscolha;
+  // Imprimir a lista de pessoas que coincidem com o nome digitado pelo usuário
+  // filtrando a partir das letras minusculas (normalização) dos nomes utilizando o método .find()
   for (int i = 0; i < gerenciamento.size(); i++) {
 
     if (paraMinusculo(gerenciamento[i]->getNome()).find(nome) != -1) {
