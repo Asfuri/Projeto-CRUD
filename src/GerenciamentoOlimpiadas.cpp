@@ -33,11 +33,11 @@
 
 GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
   /*
-  Construtor padrão -> Será utilizado na inicialização do programa,
-  a única instância dessa classe deverá ser inicializada sem os dados armazenados,
-  para então serem 'setados' todos os seus dados com "setOlimpiadas", método esse que
-  é chamado no momento de leitura dos dados das olimpíadas, seja do arquivo, seja diretamente
-  do terminal
+    Construtor padrão -> Será utilizado na inicialização do programa,
+    a única instância dessa classe deverá ser inicializada sem os dados armazenados,
+    para então serem 'setados' todos os seus dados com "setOlimpiadas", método esse que
+    é chamado no momento de leitura dos dados das olimpíadas, seja do arquivo, seja diretamente
+    do terminal
   */
   this->dataInicio = Data();
   this->cidade = "";
@@ -284,7 +284,7 @@ void GerenciamentoOlimpiadas::lerArquivoPessoas() {
 
     OBS.: Na primeira execução do código, o arquivo não deverá existir, tendo isso em vista, o mesmo não será lido e o método retorna
 
-    -> Responsável por iniciar índices do vector "gerenciamento", ou seja, iniciando ponteiros de Pessoa com os construtores das subclasses (realizando polimorfismo)
+    -> Responsável por iniciar os índices do vector "gerenciamento", ou seja, iniciar os ponteiros de Pessoa com os construtores das subclasses (realizando polimorfismo)
     -> Também chama o método de inserir Pessoas no vector (AdicionarPessoa())
   */
 
@@ -371,7 +371,9 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
     o construtor da subclasse escolhida pelo usuário (tipo) e ao final do método irá chamar o método
     de adicionar a pessoa no vector "gerenciamento"
 
-    -> A partir desse método possuímos o  CREATE do sistema
+    -> Esse método lê os dados específicos das subclasses, sendo a leitura filtrada pela escolha do usuário
+
+    -> A partir desse método possuímos o CREATE do sistema
   */
   Pessoa *pessoaAux;
   std::string nome, codigo, nacionalidade;
@@ -542,7 +544,8 @@ std::string paraMinusculo(const std::string &stringComMaiusculo) {
 
 Pessoa *GerenciamentoOlimpiadas::buscar() {
   /*
-    Esse método é responsável por realizar a busca por determinada Pessoa no vector, chamando primeiramente o método de exibição dos índices (exibirTodos()) e após isso tratando da escolha do usuário a partir do nome (que deverá coincidir com um dos nomes exibidos no terminal)
+    Esse método é responsável por realizar a busca por determinada Pessoa no vector, chamando primeiramente o método de exibição dos índices (exibirTodos()), após isso, o usuário deverá digitar um nome que coincide com uma das pessoas registradas, podendo ser completamente coincidente ou parcialmente. Em caso do usuário digitar uma entrada que coincide parcialmente com mais de uma pessoa registrada, o usuário será apresentado a uma nova lista de índices válidos para as pessoas que coincidem parcialmente com o que ele digitou anteriormente
+
     -> Esse método retorna a Pessoa encontrada (que é um ponteiro), retorno esse que deve ser tratado na chamada
     -> Esse método é chamado nos métodos de exibir (exibir com detalhe apenas uma Pessoa), alterar e remover
   */
@@ -672,7 +675,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     alterando o elemento do vector, sendo o método de salvar o arquivo ao final da execução responsável por alterar no arquivo
 
     -> Primeiramente permite ao usuário selecionar o elemento do vector, utilizando do método "buscar()"
-    -> Após o êxito em selecionar a Pessoa a ser alterada, o método irá ler qual propriedade, de acordo com o tipo, o usuário quer alterar
+    -> Após o êxito em selecionar a Pessoa a ser alterada (ele compara o código e o nome para ter acesso ao índice do vector), o método irá ler qual propriedade, de acordo com o tipo, o usuário quer alterar
     -> Considerando as propriedades de Pessoa, que são comuns entre as subclasses, essas podem ser
     alterados diretamente sem precisar consultar o tipo
 
@@ -913,7 +916,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
 
 void GerenciamentoOlimpiadas::removerPessoa() {
   /*
-    Esse método é responsável por remover o registro de uma Pessoa, tendo em vista que o arquivo só será salvo ao final da execução, ele exclui diretamente do registro do vector "gerenciamento", deixando a alteração no arquivo, caso já tenha dados salvos dessa instância, por responsabilidade do método de salvar o arquivo
+    Esse método é responsável por remover o registro de uma Pessoa, tendo em vista que o arquivo só será salvo ao final da execução, ele exclui diretamente do registro do vector "gerenciamento", deixando a alteração no arquivo para o método, caso já tenha dados salvos dessa instância, por responsabilidade do método de salvar o arquivo
 
     -> Primeiramente permite ao usuário selecionar o elemento do vector, utilizando do método "buscar()"
     -> Após o êxito em selecionar a Pessoa a ser removida, o método irá remover e comunicar no terminal se a operação foi bem sucedida
