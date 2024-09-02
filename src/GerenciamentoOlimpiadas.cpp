@@ -530,7 +530,7 @@ void GerenciamentoOlimpiadas::lerDadosPessoa() {
     std::cin.ignore();
     bool vipBool;
     std::string vip;
-    std::cout << "O torcedor " << nome << " possui acesso vip? (Sim/Nao)\n\n-> ";
+    std::cout << "O torcedor " << nome << " possui acesso vip? (Sim/Não)\n\n-> ";
     std::getline(std::cin, vip);
     std::cout << "\n";
 
@@ -622,7 +622,7 @@ Pessoa *GerenciamentoOlimpiadas::buscar() {
   /* Quando ocorre de mais de uma pessoa possuir a mesma substring, essas pessoas serão
      adicionadas a um novo vector de Pessoas, onde será exibido o índice de cada uma e
      pedir ao usuário pra escolher de acordo com o índice.
-     Detalhe --> O vector é apagado depois de cada interação, garantindo que nao terá um
+     Detalhe --> O vector é apagado depois de cada interação, garantindo que não terá um
      lixo de memória de execuções*/
   int indiceEscolha;
   // Imprimir a lista de pessoas que coincidem com o nome digitado pelo usuário
@@ -938,7 +938,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
 
     std::string vip;
     std::cout << "O torcedor " << gerenciamento[indice]->getNome();
-    std::string retornoStatus = (dynamic_cast<Torcedor *>(gerenciamento[indice])->getStatusVIP()) ? " possui status VIP" : " nao possui status VIP";
+    std::string retornoStatus = (dynamic_cast<Torcedor *>(gerenciamento[indice])->getStatusVIP()) ? " possui status VIP" : " não possui status VIP";
     std::cout << retornoStatus;
     std::cout << "\nGostaria de alterar?\n\n-> ";
     std::cin >> std::ws;
@@ -972,7 +972,7 @@ void GerenciamentoOlimpiadas::removerPessoa() {
   Pessoa *pessoaRemov = buscar();
   int indice = 0;
   if (pessoaRemov == nullptr) {
-    std::cout << "Pessoa nao encontrada, logo, nao sera apagada" << std::endl;
+    std::cout << "Pessoa não encontrada, logo, não sera apagada" << std::endl;
     sleep(1);
     return;
   };

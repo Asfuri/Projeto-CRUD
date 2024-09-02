@@ -29,7 +29,7 @@ void Torcedor::exibir() {
   std::cout << "Torcedor" << std::endl;
   Pessoa::exibir();
   std::cout << "VIP: ";
-  std::string resposta = this->statusVIP ? "Sim\n" : "Nao\n";
+  std::string resposta = this->statusVIP ? "Sim\n" : "Não\n";
   std::cout << resposta;
 };
 
