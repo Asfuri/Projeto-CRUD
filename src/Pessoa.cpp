@@ -64,7 +64,7 @@ void Pessoa::exibir() {
   std::cout << "Nome: " << this->Nome << std::endl;
   std::cout << "Data de Nascimento: ";
   this->DataDeNascimento.exibir();
-  std::cout << "Codigo: " << this->Codigo << std::endl;
+  std::cout << "Código: " << this->Codigo << std::endl;
   std::cout << "Nacionalidade: " << this->Nacionalidade << std::endl;
   std::cout << "Idade: " << this->idade << std::endl;
 }

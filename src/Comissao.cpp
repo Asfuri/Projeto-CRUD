@@ -33,7 +33,7 @@ std::string Comissao::getEquipeResponsavel() {
 };
 
 void Comissao::exibir() {
-  std::cout << "Membro da Comissao" << std::endl;
+  std::cout << "Membro da Comissão" << std::endl;
   Pessoa::exibir();
   std::cout << "Modalidade: " << this->modalidade << std::endl;
   std::cout << "Equipe responsável: " << this->equipeResponsavel << std::endl;

@@ -695,7 +695,7 @@ void GerenciamentoOlimpiadas::gerarRelatorio() {
 
   if (countTotal == 0) {
     // Caso o vector seja vazio, ele imprime esse fato e retorna
-    std::cout << "\033[0mNao ha pessoas cadastradas\033[33m" << std::endl;
+    std::cout << "\033[0mNão há pessoas cadastradas\033[33m" << std::endl;
     return;
   } else {
     // Imprime os dados brutos e comparativos das Pessoas
@@ -972,7 +972,7 @@ void GerenciamentoOlimpiadas::removerPessoa() {
     return;
   };
   for (auto p : gerenciamento) {
-    if (p->getNome() == pessoaRemov->getNome())
+     if (p->getNome() == pessoaRemov->getNome() && p->getCodigo() == pessoaRemov->getCodigo())
       break;
     indice++;
   }
@@ -1002,10 +1002,13 @@ int GerenciamentoOlimpiadas::menu() {
   std::cin >> std::ws;
   std::string strOpcao;
   getline(std::cin, strOpcao);
+  std::cout << "\n";
 
   if (strOpcao.size() > 1) {
     if(strOpcao == "7777777"){
-      std::cout << "Parabéns! Você descobriu Timbaúba" << std::endl;
+      std::cout << "Querido programador:\nQuando eu escrevi este código,\napenas eu e Deus sabíamos como\nele funcionava. Agora, apenas Deus sabe!"  << std::endl;
+      std::cout << "Portanto, se estiver tentando\nmelhorar este código porque está com bug...\ne com certeza está, por favor, aumente este contador\ncomo um aviso para o próximo programador:" << std::endl;
+      std::cout << "total_de_horas_gastas_aqui: 79 horas" << std::endl;
       return 0;
     }
     std::cout << "Entrada inválida! " << std::endl;
