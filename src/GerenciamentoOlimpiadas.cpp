@@ -1007,8 +1007,11 @@ int GerenciamentoOlimpiadas::menu() {
   if (strOpcao.size() > 1) {
     if(strOpcao == "7777777"){
       std::cout << "Querido programador:\nQuando eu escrevi este código,\napenas eu e Deus sabíamos como\nele funcionava. Agora, apenas Deus sabe!"  << std::endl;
-      std::cout << "Portanto, se estiver tentando\nmelhorar este código porque está com bug...\ne com certeza está, por favor, aumente este contador\ncomo um aviso para o próximo programador:" << std::endl;
-      std::cout << "total_de_horas_gastas_aqui: 79 horas" << std::endl;
+      sleep(4);
+      std::cout << "\nPortanto, se estiver tentando\nmelhorar este código porque está com bug...\ne com certeza está, por favor, aumente este contador\ncomo um aviso para o próximo programador:" << std::endl;
+      sleep(4);
+      std::cout << "\ntotal_de_horas_gastas_aqui: 79 horas" << std::endl;
+      sleep(2);
       return 0;
     }
     std::cout << "Entrada inválida! " << std::endl;
