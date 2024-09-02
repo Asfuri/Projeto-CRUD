@@ -27,7 +27,7 @@
 *.lib
 
 # Executables
-*.exe
+#*.exe
 *.out
 *.app
 
@@ -54,6 +54,6 @@
 # no codigo
 *.txt
 *.lock
-*.exe
+# *.exe
 # O executável não foi incluído no repositório para deixar a compilação por parte do interessado em rodar o código
 # Vale pontuar também possíveis alterações sem compilar o código, tornando o .exe do repositório obsoleto 
