@@ -763,7 +763,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "-> \033[36m5\033[0m Status VIP" << std::endl;
   }
   
-  std::cout << "-> \033[31mOutro\033[0m Cancelar operação\n\n-> " << std::endl;
+  std::cout << "-> \033[31mOutro\033[0m Cancelar operação\n\n-> ";
   std::cin >> std::ws;
   std::string strEscolha;
   getline(std::cin, strEscolha);
@@ -784,10 +784,11 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "\n-> ";
     while (1) {
       std::cin >> diaAux;
+      std::cout << "\n";
       if (std::cin.fail() || std::cin.peek() != '\n') {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "\nDigite um número válido! \n\n-> ";
+        std::cout << "Digite um número válido! \n\n-> ";
       } else {
         break;
       }
@@ -797,10 +798,11 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "\n-> ";
     while (1) {
       std::cin >> mesAux;
+      std::cout << "\n";
       if (std::cin.fail() || std::cin.peek() != '\n') {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "\nDigite um número válido! \n\n-> ";
+        std::cout << "Digite um número válido! \n\n-> ";
       } else {
         break;
       }
@@ -810,10 +812,11 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     std::cout << "\n-> ";
     while (1) {
       std::cin >> anoAux;
+      std::cout << "\n";
       if (std::cin.fail() || std::cin.peek() != '\n') {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        std::cout << "\nDigite um número válido! \n\n-> ";
+        std::cout << "Digite um número válido! \n\n-> ";
       } else {
         break;
       }
