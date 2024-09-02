@@ -11,7 +11,7 @@
   -Corpo dos métodos de GerenciamentoOlimpiadas-
 
   GerenciamentoOlimpiadas é a principal classe do sistema, possuindo os atributos:
-  
+
     Data dataInicio
     std::string Cidade
     Data dataFinal
@@ -762,7 +762,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
   } else if (p->getTipo() == 3) {
     std::cout << "-> \033[36m5\033[0m Status VIP" << std::endl;
   }
-  
+
   std::cout << "-> \033[31mOutro\033[0m Cancelar operação\n\n-> ";
   std::cin >> std::ws;
   std::string strEscolha;
@@ -956,7 +956,7 @@ int GerenciamentoOlimpiadas::alterarPessoa() {
     }
   };
 
-  std::cout << "Operação Cancelada! " << std::endl;
+  std::cout << "Operação cancelada! " << std::endl;
   return 0;
 }
 
@@ -972,12 +972,12 @@ void GerenciamentoOlimpiadas::removerPessoa() {
   Pessoa *pessoaRemov = buscar();
   int indice = 0;
   if (pessoaRemov == nullptr) {
-    std::cout << "Pessoa não encontrada, logo, não sera apagada" << std::endl;
+    std::cout << "Pessoa não encontrada, logo, não será apagada" << std::endl;
     sleep(1);
     return;
   };
   for (auto p : gerenciamento) {
-     if (p->getNome() == pessoaRemov->getNome() && p->getCodigo() == pessoaRemov->getCodigo())
+    if (p->getNome() == pessoaRemov->getNome() && p->getCodigo() == pessoaRemov->getCodigo())
       break;
     indice++;
   }
@@ -1000,7 +1000,7 @@ int GerenciamentoOlimpiadas::menu() {
   std::cout << "\033[36m3\033[0m. Exibir pessoa" << std::endl;
   std::cout << "\033[36m4\033[0m. Alterar pessoa" << std::endl;
   std::cout << "\033[36m5\033[0m. Remover pessoa" << std::endl;
-  std::cout << "\033[36m6\033[0m. Exibir Relatório" << std::endl;
+  std::cout << "\033[36m6\033[0m. Exibir relatório" << std::endl;
   std::cout << "\033[36m7\033[0m. Sair" << std::endl;
   std::cout << "\n-> ";
 
@@ -1010,8 +1010,8 @@ int GerenciamentoOlimpiadas::menu() {
   std::cout << "\n";
 
   if (strOpcao.size() > 1) {
-    if(strOpcao == "7777777"){
-      std::cout << "Querido programador:\nQuando eu escrevi este código,\napenas eu e Deus sabíamos como\nele funcionava. Agora, apenas Deus sabe!"  << std::endl;
+    if (strOpcao == "7777777") {
+      std::cout << "Querido programador:\nQuando eu escrevi este código,\napenas eu e Deus sabíamos como\nele funcionava. Agora, apenas Deus sabe!" << std::endl;
       sleep(4);
       std::cout << "\nPortanto, se estiver tentando\nmelhorar este código porque está com bug...\ne com certeza está, por favor, aumente este contador\ncomo um aviso para o próximo programador:" << std::endl;
       sleep(4);

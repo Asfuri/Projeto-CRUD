@@ -62,4 +62,5 @@ int main() {
   std::cout << "\nSalvando o programa...\n";
   sleep(1);
   std::cout << "Programa encerrado, obrigado! Até a Próxima \n";
+  sleep(3);
 }
