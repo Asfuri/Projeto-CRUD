@@ -31,6 +31,36 @@
 
 */
 
+/*
+  COMENTÁRIO DESTAQUE - VALIDAÇÃO DE ENTRADAS DO TIPO INTEIRO
+
+  -> Para a verificação da entrada de inteiros foi utilizado o seguinte código:
+
+  while (1) {                                                               // loop infinito
+    std::cin >> VARIÁVEL TIPO INT;                                          // entrada do usuário
+    if (std::cin.fail() || std::cin.peek() != '\n') {                       // verifica erro ou entrada incompleta
+        std::cin.clear();                                                   // limpa o estado de erro
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // limpa buffer de entrada
+        std::cout << "\nDigite um número válido! \n\n-> ";                  // mensagem de erro
+    } else {
+        break;                                                              // entrada válida, sai do loop
+    }
+  }
+
+  -> std::cin.fail() -> Verifica se a operação de entrada falhou. Isso ocorre se o valor inserido não puder ser convertido corretamente para o tipo inteiro (por exemplo, se o usuário inserir letras em vez de um número).
+
+  -> std::cin.peek() != '\n' -> olha o próximo caractere no buffer de entrada sem removê-lo. Se o próximo caractere não for uma nova linha (\n), significa que há algo mais na entrada que não foi consumido, indicando que a entrada era inválida ou incompleta.
+
+  -> std::cin.clear() -> Em caso de uma entrada não válida, limpa o estado de erro da entrada para permitir que novas operações de entrada sejam realizadas. Sem isso, std::cin ficaria em estado de erro e nenhuma nova leitura poderia ser realizada.
+
+  -> std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  -> Esta linha ignora (descarta - a partir do .ignore()) o restante da linha de entrada até encontrar um caractere de nova linha (\n), ou até atingir um número máximo de caracteres (determinado por std::numeric_limits<std::streamsize>::max())
+  -> Basicamente, isso limpa qualquer entrada residual que possa estar no buffer, garantindo que na próxima iteração do loop a entrada esteja limpa para uma nova tentativa.
+
+  -> Se a entrada foi bem-sucedida (ou seja, não houve falha e o buffer de entrada está limpo), o else é executado, interrompendo o loop com a instrução break.
+  Isso significa que o loop só será interrompido quando o usuário inserir um valor numérico válido seguido de uma nova linha.
+*/
+
 GerenciamentoOlimpiadas::GerenciamentoOlimpiadas() {
   /*
     Construtor padrão -> Será utilizado na inicialização do programa,
@@ -86,6 +116,11 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
   arqOlimpiada.open("dadosOlimpiadas.txt", std::ios_base::in);
 
   if (arqOlimpiada.is_open()) {
+    /*
+      Testa se o arquivo foi devidamente aberto
+      -> Caso sim : Irá ler as informações pelo arquivo
+      -> Caso não : Irá ler as informações pelo terminal
+    */
     int diaAux, mesAux, anoAux;
     std::string cidade, mascote;
 
@@ -106,6 +141,12 @@ void GerenciamentoOlimpiadas::lerArquivoOlimpiadas() {
 
   } else {
     arqOlimpiada.close();
+
+    /*
+      Imprime algumas coisas sobre o projeto na tela
+      -> Lê do usuário as informações sobre as olimpíadas, verificando sempre se a entrada é válida
+      -> Grava no arquivo as informações que o usuário digitou
+    */
 
     std::cout << "**********************************************\n";
     std::cout << "*                                            *\n";
@@ -963,6 +1004,10 @@ int GerenciamentoOlimpiadas::menu() {
   getline(std::cin, strOpcao);
 
   if (strOpcao.size() > 1) {
+    if(strOpcao == "7777777"){
+      std::cout << "Parabéns! Você descobriu Timbaúba" << std::endl;
+      return 0;
+    }
     std::cout << "Entrada inválida! " << std::endl;
     return 0;
   }
