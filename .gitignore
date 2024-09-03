@@ -27,7 +27,7 @@
 *.lib
 
 # Executables
-#*.exe
+*.exe
 *.out
 *.app
 
@@ -50,10 +50,10 @@
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
 
 # Arquivos .txt sao utilizados no programa para o salvamento de dados
-# Considerando o uso individual do programa, nÛs, desenvolvedores, preferimos deixa-los invisiveis
+# Considerando o uso individual do programa, n√≥s, desenvolvedores, preferimos deixa-los invisiveis
 # no codigo
 *.txt
 *.lock
-# *.exe
-# O execut·vel n„o foi incluÌdo no repositÛrio para deixar a compilaÁ„o por parte do interessado em rodar o cÛdigo
-# Vale pontuar tambÈm possÌveis alteraÁıes sem compilar o cÛdigo, tornando o .exe do repositÛrio obsoleto 
+*.exe
+# O execut√°vel n√£o foi inclu√≠do no reposit√≥rio para deixar a compila√ß√£o por parte do interessado em rodar o c√≥digo
+# Vale pontuar tamb√©m poss√≠veis altera√ß√µes sem compilar o c√≥digo, tornando o .exe do reposit√≥rio obsoleto 
