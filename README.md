@@ -27,7 +27,7 @@ Esse foi um projeto desenvolvido por discentes do curso de *Engenharia da Comput
 
 [![olimpiada-101](https://github.com/user-attachments/assets/c4a37856-d934-4f63-867c-e3f9f500bf49)](#medal_sports-projeto-crud---jogos-olímpicos)
 
-## :dart: Objetivo:
+## :dart: Objetivo
 
 O projeto tem como objetivo desenvolver um sistema que consiga proporcionar ao usuário, de maneira eficiente, a partir de entradas no terminal e utilizando C++, a possibilidade de gerir dados de uma competição olímpica. O processo de gerenciamento do registro das pessoas é completamente autônomo por parte do usuário, enquanto o gerenciamento dos dados da competição é parcial, permitindo a inserção dos dados somente quando não houverem dados registrados. O sistema tem requisitos de desenvolvimento estabelecidos pelas especificações determinadas pelo docente, sendo eles[^1][^2]:
 
